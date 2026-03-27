@@ -4,9 +4,11 @@
       "Battery-powered items and powered electronic devices go to the side drawer.",
       "Wired or plug-in items go to the coffee table.",
       "Plastic, foam, rubber, or similar durable synthetic items go to the coffee table.",
-      "The bookshelf is also used for items such as hardcover book, glass coaster, delicate figurine.",
-      "The side table is also used for items such as filled ceramic mug, fresh cut flowers, filled glass tumbler.",
-      "The decorative basket is also used for items such as paperback book, dried flowers, dry potting soil."
+      "The bookshelf is also used for items such as hardcover book, glass coaster.",
+      "The coffee table is also used for items such as empty ceramic mug, ceramic coaster.",
+      "The storage box is also used for items such as wooden bowl.",
+      "The side table is also used for items such as filled ceramic mug, fresh cut flowers.",
+      "The decorative basket is also used for items such as paperback book, dried flowers."
     ],
     "receptacles": [
       "bookshelf",
@@ -158,8 +160,10 @@
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Fragile items such as glass, ceramic, porcelain, crystal, or other delicate pieces go to the coffee table.",
       "Soft textile or plush items go to the floor basket.",
-      "The storage ottoman is also used for items such as paperback novel, paperback magazine, paperback mystery book.",
-      "The end table is also used for items such as wooden puzzle, manual remote control, leather pillow."
+      "The coffee table is also used for items such as iced coffee in mug.",
+      "The side table is also used for items such as warm tea in thermos.",
+      "The storage ottoman is also used for items such as paperback novel, paperback magazine.",
+      "The end table is also used for items such as wooden puzzle, manual remote control."
     ],
     "receptacles": [
       "coffee table",
@@ -313,7 +317,9 @@
       "Plastic, foam, rubber, or similar durable synthetic items go to the coffee table.",
       "Wooden, woven, leather, or similar natural-material items go to the side table.",
       "The bookshelf is also used for items such as ceramic mug, glass vase, ceramic bowl.",
-      "The storage ottoman is also used for items such as seasonal ornament, holiday decoration."
+      "The side table is also used for items such as daily-use ornament.",
+      "The storage ottoman is also used for items such as seasonal ornament.",
+      "The TV stand is also used for items such as battery-powered lamp."
     ],
     "receptacles": [
       "coffee table",
@@ -443,9 +449,10 @@
       "Wired or plug-in items go to the bottom shelf.",
       "Fragile items such as glass, ceramic, porcelain, crystal, or other delicate pieces go to the top shelf.",
       "Plastic, foam, rubber, or similar durable synthetic items go to the bottom shelf.",
+      "The bottom shelf is also used for items such as wooden bowl, stainless steel tray.",
+      "The lidded container is also used for items such as watermelon.",
       "The side table is also used for items such as canned beans, apple, velvet pillow.",
-      "The bottom shelf is also used for items such as plastic bowl, wooden bowl, stainless steel tray.",
-      "The lidded container is also used for items such as watermelon, melon slices."
+      "The drawer is also used for items such as remote control (with batteries), battery-powered lamp."
     ],
     "receptacles": [
       "top shelf",
@@ -596,8 +603,11 @@
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Soft textile or plush items go to the coffee table.",
       "Plastic, foam, rubber, or similar durable synthetic items go to the coffee table.",
-      "The TV stand is also used for items such as wireless speaker, LED nightlight, Bluetooth headset.",
-      "The side drawer is also used for items such as remote control car, battery-operated fan."
+      "The coffee table is also used for items such as board game.",
+      "The side drawer is also used for items such as remote control car.",
+      "The bookshelf is also used for items such as glass snow globe.",
+      "The storage ottoman is also used for items such as paperback novel.",
+      "The TV stand is also used for items such as wireless speaker, LED nightlight."
     ],
     "receptacles": [
       "coffee table",
@@ -728,8 +738,10 @@
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Fragile items such as glass, ceramic, porcelain, crystal, or other delicate pieces go to the lidded bin.",
       "Plastic, foam, rubber, or similar durable synthetic items go to the sofa.",
-      "The storage box is also used for items such as thin paperback book, children's book set, instruction manual.",
-      "The coffee table is also used for items such as wired lamp, large ceramic vase, LED desk lamp."
+      "The coffee table is also used for items such as wired lamp, large ceramic vase.",
+      "The storage box is also used for items such as thin paperback book, children's book set.",
+      "The sofa is also used for items such as velvet cushion.",
+      "The side drawer is also used for items such as non-battery wall clock."
     ],
     "receptacles": [
       "coffee table",
@@ -881,8 +893,9 @@
       "Manual or wind-up items go to the storage box.",
       "Fragile items such as glass, ceramic, porcelain, crystal, or other delicate pieces go to the bookshelf.",
       "Plastic, foam, rubber, or similar durable synthetic items go to the side table.",
-      "The storage box is also used for items such as damaged hardcover book, torn softcover book, wooden car.",
-      "The sofa is also used for items such as plush cat, plush dog, plush rabbit."
+      "The coffee table is also used for items such as hardcover book, softcover book.",
+      "The sofa is also used for items such as plush cat, plush dog.",
+      "The storage box is also used for items such as damaged hardcover book, torn softcover book, wooden car."
     ],
     "receptacles": [
       "coffee table",
@@ -1032,9 +1045,12 @@
       "Wired or plug-in items go to the TV stand.",
       "Hardcover or rigid-cover books go to the padded shelf.",
       "Soft textile or plush items go to the storage basket.",
-      "The padded shelf is also used for items such as hardcover book, indoor potted plant, glass picture frame.",
-      "The floor cabinet is also used for items such as outdoor potted plant, board game, outdoor palm.",
-      "The storage basket is also used for items such as paperback book, wooden picture frame, plush toy."
+      "The padded shelf is also used for items such as indoor potted plant, glass picture frame.",
+      "The lidded tray is also used for items such as ceramic mug.",
+      "The storage basket is also used for items such as paperback book, wooden picture frame.",
+      "The floor cabinet is also used for items such as outdoor potted plant, board game.",
+      "The side drawer is also used for items such as battery-powered remote.",
+      "The TV stand is also used for items such as plastic mug."
     ],
     "receptacles": [
       "padded shelf",
@@ -1186,8 +1202,10 @@
       "Manual or wind-up items go to the coffee table.",
       "Paperback or soft-cover reading materials go to the coffee table.",
       "Plastic, foam, rubber, or similar durable synthetic items go to the coffee table.",
-      "The coffee table is also used for items such as ceramic mug, plastic tumbler, light paperback book.",
-      "The sturdy shelf is also used for items such as heavy hardcover book, metal picture frame, thick art book."
+      "The coffee table is also used for items such as ceramic mug, fresh flower bouquet, wooden picture frame.",
+      "The lidded basket is also used for items such as glass ornament.",
+      "The sturdy shelf is also used for items such as heavy hardcover book, metal picture frame.",
+      "The storage caddy is also used for items such as metal keychain, dried floral arrangement."
     ],
     "receptacles": [
       "coffee table",
@@ -1337,9 +1355,12 @@
       "Battery-powered items and powered electronic devices go to the media cabinet.",
       "Wired or plug-in items go to the floor mat.",
       "Hardcover or rigid-cover books go to the bookshelf.",
+      "The coffee table is also used for items such as full ceramic mug, framed family portrait.",
+      "The side table is also used for items such as metallic key rack.",
       "The storage basket is also used for items such as paperback novel, loose travel photo, wooden photo frame.",
-      "The coffee table is also used for items such as full ceramic mug, framed family portrait, framed artwork.",
-      "The floor mat is also used for items such as wired floor lamp, ceramic plant pot, terracotta pot."
+      "The floor mat is also used for items such as ceramic plant pot.",
+      "The media cabinet is also used for items such as glass candy jar.",
+      "The trash bucket is also used for items such as empty plastic bottle."
     ],
     "receptacles": [
       "coffee table",
@@ -1491,9 +1512,10 @@
       "The coffee table is also used for items such as plastic mug, fresh cut flowers, wooden sculpture.",
       "The bookshelf is also used for items such as corded lamp, dried flowers, hardcover book.",
       "The side table is also used for items such as ceramic mug, dry sponge, aluminum remote.",
-      "The floor basket is also used for items such as paperback book, metal sculpture, dry towel.",
-      "The waterproof bin is also used for items such as wet sponge, plastic remote, wet towel.",
-      "The under-table cooler is also used for items such as spoiled fruit bowl, stale bread loaf."
+      "The waterproof bin is also used for items such as wet sponge, plastic remote.",
+      "The floor basket is also used for items such as paperback book, metal sculpture.",
+      "The under-table cooler is also used for items such as spoiled fruit bowl.",
+      "The side drawer is also used for items such as battery-powered lamp."
     ],
     "receptacles": [
       "coffee table",
@@ -1676,8 +1698,11 @@
       "Manual or wind-up items go to the basket.",
       "Fragile items such as glass, ceramic, porcelain, crystal, or other delicate pieces go to the coffee table.",
       "Soft textile or plush items go to the sofa.",
+      "The coffee table is also used for items such as pristine DVD, pristine VHS tape.",
+      "The lidded bin is also used for items such as damaged DVD, damaged VHS tape.",
       "The storage box is also used for items such as hard plastic bear, electronic game console, plastic action figure.",
-      "The lidded bin is also used for items such as damaged DVD, damaged VHS tape, scratched Blu-ray."
+      "The side drawer is also used for items such as metal keychain.",
+      "The basket is also used for items such as board game set."
     ],
     "receptacles": [
       "coffee table",
@@ -1896,11 +1921,11 @@
   {
     "annotator_notes": [
       "Fresh, clean, sealed, intact, new, or otherwise ready-to-use items go to the coffee table.",
-      "Wet, cut, spoiled, damaged, dirty, or otherwise degraded items go to the lidded basket.",
-      "The entertainment unit is also used for items such as discharged tablet, wireless keyboard, batteries for remote.",
       "The storage ottoman is also used for items such as paperback novel, plastic plant, remote control.",
-      "The bookshelf is also used for items such as hardcover novel, glass terrarium, hardcover cookbook.",
-      "The side table is also used for items such as charged tablet, wired headphones, charged phone."
+      "The bookshelf is also used for items such as hardcover novel, glass terrarium.",
+      "The side table is also used for items such as charged tablet, wired headphones.",
+      "The lidded basket is also used for items such as dirty ceramic vase.",
+      "The entertainment unit is also used for items such as discharged tablet, wireless keyboard, batteries for remote."
     ],
     "receptacles": [
       "coffee table",
@@ -2051,9 +2076,10 @@
       "Battery-powered items and powered electronic devices go to the storage ottoman.",
       "Manual or wind-up items go to the side table.",
       "Fragile items such as glass, ceramic, porcelain, crystal, or other delicate pieces go to the bookshelf.",
-      "Wet, cut, spoiled, damaged, dirty, or otherwise degraded items go to the TV stand.",
       "The coffee table is also used for items such as novel, wooden puzzle, velvet throw pillow.",
-      "The side table is also used for items such as lego set, wind-up robot, velvet pillow cover."
+      "The bookshelf is also used for items such as encyclopedia.",
+      "The side table is also used for items such as lego set.",
+      "The TV stand is also used for items such as damp cloth, tissue box."
     ],
     "receptacles": [
       "coffee table",
@@ -2204,8 +2230,9 @@
       "Fragile items such as glass, ceramic, porcelain, crystal, or other delicate pieces go to the bookshelf.",
       "The coffee table is also used for items such as clean linen shirt, plush unicorn, fresh potted plant.",
       "The storage ottoman is also used for items such as dirty linen shirt, wilted potted plant, torn wool blanket.",
-      "The media console is also used for items such as plastic tumbler, handwoven basket, stainless steel tumbler.",
-      "The floor basket is also used for items such as battery-powered robot, electronic photo frame."
+      "The bookshelf is also used for items such as stuffed dinosaur.",
+      "The media console is also used for items such as plastic tumbler, handwoven basket.",
+      "The floor basket is also used for items such as battery-powered robot."
     ],
     "receptacles": [
       "coffee table",
@@ -2376,9 +2403,12 @@
       "Battery-powered items and powered electronic devices go to the tv stand.",
       "Wired or plug-in items go to the ottoman.",
       "Manual or wind-up items go to the storage shelf.",
-      "The floor basket is also used for items such as children's picture book, soggy crackers, small plush toy.",
+      "The coffee table is also used for items such as hardcover novel, crispy chips.",
+      "The ottoman is also used for items such as paperback novel.",
       "The side table is also used for items such as hot tea, hot coffee, wireless earbuds.",
-      "The coffee table is also used for items such as hardcover novel, crispy chips, hardcover cookbook."
+      "The storage shelf is also used for items such as iced tea, chewy granola bar.",
+      "The floor basket is also used for items such as children's picture book, soggy crackers, small plush toy.",
+      "The tv stand is also used for items such as Bluetooth speaker."
     ],
     "receptacles": [
       "coffee table",
@@ -2560,8 +2590,11 @@
       "Wired or plug-in items go to the coffee table.",
       "Wooden, woven, leather, or similar natural-material items go to the bookshelf.",
       "Fresh, clean, sealed, intact, new, or otherwise ready-to-use items go to the coffee table.",
+      "The coffee table is also used for items such as plastic mug, glass bowl.",
+      "The bookshelf is also used for items such as blunt chef's knife, light photo frame.",
       "The storage ottoman is also used for items such as ceramic mug, worn remote control, ceramic vase.",
-      "The coffee table is also used for items such as plastic mug, glass bowl, new remote control."
+      "The side drawer is also used for items such as sharp paring knife.",
+      "The entertainment unit is also used for items such as plastic book, metal spice rack."
     ],
     "receptacles": [
       "coffee table",
@@ -2753,7 +2786,11 @@
       "Plastic, foam, rubber, or similar durable synthetic items go to the coffee table.",
       "Wooden, woven, leather, or similar natural-material items go to the end table.",
       "The coffee table is also used for items such as paperback book, filled ceramic mug, remote control without batteries.",
-      "The side table is also used for items such as clean throw blanket, metal keychain, clean fleece blanket."
+      "The bookshelf is also used for items such as delicate glass ornament.",
+      "The storage basket is also used for items such as used throw blanket.",
+      "The TV stand is also used for items such as remote control with batteries.",
+      "The side table is also used for items such as clean throw blanket, metal keychain.",
+      "The end table is also used for items such as empty ceramic mug."
     ],
     "receptacles": [
       "coffee table",
@@ -2903,10 +2940,10 @@
     "annotator_notes": [
       "Battery-powered items and powered electronic devices go to the side table.",
       "Wired or plug-in items go to the console cabinet.",
-      "Wet, cut, spoiled, damaged, dirty, or otherwise degraded items go to the console cabinet.",
-      "The storage ottoman is also used for items such as paperback novel, holiday decoration, stackable storage bin.",
       "The coffee table is also used for items such as serving tray, everyday vase, dry kitchen sponge.",
-      "The bookshelf is also used for items such as hardcover novel, sturdy ceramic mug."
+      "The bookshelf is also used for items such as hardcover novel, sturdy ceramic mug.",
+      "The storage ottoman is also used for items such as paperback novel, holiday decoration.",
+      "The console cabinet is also used for items such as cutting board, delicate porcelain mug, wet kitchen sponge."
     ],
     "receptacles": [
       "coffee table",
@@ -3023,7 +3060,9 @@
       "Fragile items such as glass, ceramic, porcelain, crystal, or other delicate pieces go to the coffee table.",
       "Plastic, foam, rubber, or similar durable synthetic items go to the storage ottoman.",
       "The coffee table is also used for items such as fresh apple, dry sponge, softcover book.",
-      "The lidded bin is also used for items such as crushed apple, wet sponge, overripe banana."
+      "The lidded bin is also used for items such as crushed apple, wet sponge.",
+      "The storage ottoman is also used for items such as wooden action figure.",
+      "The floor shelf is also used for items such as hardcover book, plush dog."
     ],
     "receptacles": [
       "coffee table",
@@ -3173,9 +3212,10 @@
       "Battery-powered items and powered electronic devices go to the drawer.",
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Wooden, woven, leather, or similar natural-material items go to the coffee table.",
+      "The bookshelf is also used for items such as corded headphones, glass jar, succulent.",
       "The storage box is also used for items such as paperback book, metal jar, wired speaker.",
-      "The bookshelf is also used for items such as hardcover book, corded headphones, glass jar.",
-      "The side table is also used for items such as ceramic mug, potted plant, ceramic cup."
+      "The side table is also used for items such as ceramic mug, potted plant.",
+      "The coffee table is also used for items such as plastic tumbler, remote control."
     ],
     "receptacles": [
       "bookshelf",
@@ -3355,9 +3395,10 @@
       "Manual or wind-up items go to the storage basket.",
       "Hardcover or rigid-cover books go to the shelf.",
       "Plastic, foam, rubber, or similar durable synthetic items go to the coffee table.",
+      "The side table is also used for items such as paperback novel, sturdy ceramic bowl.",
+      "The shelf is also used for items such as wireless speaker.",
       "The storage box is also used for items such as glass water tumbler, ceramic figurine, delicate vase.",
-      "The side table is also used for items such as paperback novel, sturdy ceramic bowl, sturdy plant pot.",
-      "The drawer is also used for items such as battery-powered robot, wired speaker, solar-powered lamp."
+      "The drawer is also used for items such as battery-powered robot, wired speaker."
     ],
     "receptacles": [
       "coffee table",
@@ -3507,10 +3548,10 @@
     "annotator_notes": [
       "Battery-powered items and powered electronic devices go to the side drawer.",
       "Manual or wind-up items go to the side table.",
-      "The lidded bin is also used for items such as wet sponge, cut melon pieces, open bulk snack container.",
       "The coffee table is also used for items such as clean glass vase, freshly washed fruit bowl, packaged snack bag.",
-      "The storage shelf is also used for items such as delicate porcelain cup, boxed board game, fragile figurine.",
-      "The side table is also used for items such as sturdy ceramic mug, manual desk lamp, torn board game box."
+      "The lidded bin is also used for items such as wet sponge, cut melon pieces, open bulk snack container.",
+      "The storage shelf is also used for items such as delicate porcelain cup, boxed board game.",
+      "The side table is also used for items such as sturdy ceramic mug, torn board game box."
     ],
     "receptacles": [
       "coffee table",
@@ -3660,10 +3701,9 @@
     "annotator_notes": [
       "Small or lightweight items go to the shelf.",
       "Large, heavy, or bulky items go to the bookshelf.",
+      "The side table is also used for items such as glass vase.",
       "The storage bin is also used for items such as infrequently used textbook, ceramic vase, weekly use mug.",
-      "The coffee table is also used for items such as frequently used novel, daily use mug, heavily used dictionary.",
-      "The side table is also used for items such as glass vase, delicate glass ornament.",
-      "The bookshelf is also used for items such as large wooden book, large plastic bowl, ornate wooden box."
+      "The coffee table is also used for items such as frequently used novel, daily use mug."
     ],
     "receptacles": [
       "bookshelf",
@@ -3792,8 +3832,11 @@
       "Battery-powered items and powered electronic devices go to the side drawer.",
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Paperback or soft-cover reading materials go to the storage ottoman.",
-      "Wet, cut, spoiled, damaged, dirty, or otherwise degraded items go to the lidded container.",
       "The coffee table is also used for items such as fresh floral arrangement, remote control, charging cable.",
+      "The lidded container is also used for items such as wet towel.",
+      "The bookshelf is also used for items such as glass ornament.",
+      "The storage ottoman is also used for items such as plastic ornament, dry towel.",
+      "The side drawer is also used for items such as plug-in lamp.",
       "The TV stand is also used for items such as small potted plant, artificial plant, dried floral arrangement."
     ],
     "receptacles": [
@@ -3987,7 +4030,10 @@
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Small or lightweight items go to the coffee table.",
       "The coffee table is also used for items such as paperback book, sealed soda can, plastic action figure.",
-      "The storage ottoman is also used for items such as plush dog toy, open sandwich, dry beach towel."
+      "The bookshelf is also used for items such as non-battery remote, wet beach towel.",
+      "The storage ottoman is also used for items such as plush dog toy, open sandwich, dry beach towel.",
+      "The side table is also used for items such as hot coffee mug, glass candle jar.",
+      "The TV stand is also used for items such as large potted plant, sharp kitchen knife."
     ],
     "receptacles": [
       "coffee table",
@@ -4217,9 +4263,11 @@
       "Battery-powered items and powered electronic devices go to the side table.",
       "Wired or plug-in items go to the TV stand.",
       "Plastic, foam, rubber, or similar durable synthetic items go to the coffee table.",
-      "Wet, cut, spoiled, damaged, dirty, or otherwise degraded items go to the coffee table.",
+      "The coffee table is also used for items such as paperback novel, open soda can, wilted flowers.",
       "The bookshelf is also used for items such as hardcover novel, sealed juice box, fresh flowers.",
-      "The coffee table is also used for items such as paperback novel, open soda can, plastic figurine."
+      "The TV stand is also used for items such as ceramic vase.",
+      "The storage ottoman is also used for items such as small plush rabbit, empty water pitcher.",
+      "The sofa is also used for items such as large plush dog."
     ],
     "receptacles": [
       "coffee table",
@@ -4390,9 +4438,11 @@
       "Hardcover or rigid-cover books go to the bookcase.",
       "Paperback or soft-cover reading materials go to the coffee table.",
       "Fresh, clean, sealed, intact, new, or otherwise ready-to-use items go to the coffee table.",
-      "Wet, cut, spoiled, damaged, dirty, or otherwise degraded items go to the basket.",
+      "The side table is also used for items such as cold soda can, cold water bottle.",
       "The storage shelf is also used for items such as room-temperature juice box, uncharged portable speaker, warm tea cup.",
-      "The side table is also used for items such as cold soda can, cold water bottle, frozen juice box."
+      "The TV stand is also used for items such as charged remote control.",
+      "The bookcase is also used for items such as hardbound book.",
+      "The basket is also used for items such as open bag of chips."
     ],
     "receptacles": [
       "coffee table",
@@ -4523,9 +4573,10 @@
       "Battery-powered items and powered electronic devices go to the side table.",
       "Wired or plug-in items go to the TV stand.",
       "Soft textile or plush items go to the TV stand.",
-      "Wet, cut, spoiled, damaged, dirty, or otherwise degraded items go to the storage ottoman.",
       "The coffee table is also used for items such as glass vase (fragile), coasters (set), magazine (current).",
-      "The bookshelf is also used for items such as hardcover book (intact), paperback book (new), board game (complete)."
+      "The bookshelf is also used for items such as hardcover book (intact), paperback book (new), board game (complete).",
+      "The storage ottoman is also used for items such as hardcover book (spine damaged), paperback book (water damaged), board game (missing pieces).",
+      "The TV stand is also used for items such as photo frame (wooden), ceramic mug (non-fragile)."
     ],
     "receptacles": [
       "coffee table",
@@ -4658,7 +4709,7 @@
       "cookbook (spilled on)",
       "velvet throw pillow",
       "cotton throw pillow",
-      "bluetooth音箱 (wireless)",
+      "bluetooth\u97f3\u7bb1 (wireless)",
       "cable splitter (wired)",
       "wine glasses (set)",
       "mason jar set (chipped)",
@@ -4697,7 +4748,7 @@
         "TV stand"
       ],
       [
-        "bluetooth音箱 (wireless)",
+        "bluetooth\u97f3\u7bb1 (wireless)",
         "side table"
       ],
       [
@@ -4756,8 +4807,10 @@
       "Fresh, clean, sealed, intact, new, or otherwise ready-to-use items go to the side table.",
       "Small or lightweight items go to the bookshelf.",
       "Large, heavy, or bulky items go to the floor shelf.",
-      "The storage ottoman is also used for items such as cold bottled water, used wireless mouse, chilled juice box.",
-      "The coffee table is also used for items such as room-temperature soda can, plastic figurine, warm mug."
+      "The coffee table is also used for items such as room-temperature soda can, plastic figurine.",
+      "The bookshelf is also used for items such as delicate glass bowl.",
+      "The storage ottoman is also used for items such as cold bottled water, used wireless mouse.",
+      "The TV stand is also used for items such as ceramic vase, wooden cutting board."
     ],
     "receptacles": [
       "coffee table",
@@ -4888,9 +4941,10 @@
       "Hardcover or rigid-cover books go to the bookshelf.",
       "The coffee table is also used for items such as paperback novel, photo frame, plush throw.",
       "The side table is also used for items such as ceramic vase, wired lamp, coffee mug.",
+      "The bookshelf is also used for items such as magnetic bookends.",
       "The storage ottoman is also used for items such as wooden puzzle, USB cable, velvet pillow.",
-      "The lidded basket is also used for items such as glass ornament, vintage figurine, porcelain bowl.",
-      "The TV stand is also used for items such as remote control, batteries, plastic storage box."
+      "The TV stand is also used for items such as remote control, batteries, plastic storage box.",
+      "The lidded basket is also used for items such as glass ornament, vintage figurine."
     ],
     "receptacles": [
       "coffee table",
@@ -5121,9 +5175,10 @@
       "Battery-powered items and powered electronic devices go to the side table.",
       "Paperback or soft-cover reading materials go to the storage ottoman.",
       "Soft textile or plush items go to the sofa.",
-      "Wet, cut, spoiled, damaged, dirty, or otherwise degraded items go to the storage ottoman.",
-      "The bookshelf is also used for items such as hardcover book 1, wooden figurine, hardcover book 2.",
-      "The TV stand is also used for items such as glass figurine, ceramic vase, plastic figurine."
+      "The bookshelf is also used for items such as hardcover book 1, wooden figurine.",
+      "The TV stand is also used for items such as glass figurine, ceramic vase.",
+      "The storage ottoman is also used for items such as damaged hardcover book.",
+      "The sofa is also used for items such as stuffed animal 1."
     ],
     "receptacles": [
       "bookshelf",
@@ -5254,8 +5309,9 @@
       "Manual or wind-up items go to the coffee table.",
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Fragile items such as glass, ceramic, porcelain, crystal, or other delicate pieces go to the bookshelf.",
-      "The side table is also used for items such as paperback book, loose photo print, paperback magazine.",
-      "The coffee table is also used for items such as plastic cup, manual remote, manual lamp."
+      "The coffee table is also used for items such as plastic cup.",
+      "The side table is also used for items such as paperback book, loose photo print.",
+      "The TV stand is also used for items such as framed photo."
     ],
     "receptacles": [
       "coffee table",
@@ -5386,8 +5442,10 @@
       "Wired or plug-in items go to the TV stand.",
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Fragile items such as glass, ceramic, porcelain, crystal, or other delicate pieces go to the bookshelf.",
-      "The side table is also used for items such as cold soda can, cold juice box, cold energy drink.",
-      "The coffee table is also used for items such as warm tea cup, warm coffee mug, warm herbal tea."
+      "The coffee table is also used for items such as warm tea cup, warm coffee mug.",
+      "The TV stand is also used for items such as durable ceramic vase, durable plastic bowl.",
+      "The side table is also used for items such as cold soda can, cold juice box.",
+      "The storage ottoman is also used for items such as paperback book."
     ],
     "receptacles": [
       "coffee table",
@@ -5559,8 +5617,10 @@
       "Manual or wind-up items go to the storage box.",
       "Soft textile or plush items go to the sofa.",
       "Plastic, foam, rubber, or similar durable synthetic items go to the storage box.",
-      "The storage box is also used for items such as small Lego brick, large Lego brick, wind-up car.",
-      "The coffee table is also used for items such as fresh apple, fresh banana, fresh orange."
+      "The coffee table is also used for items such as fresh apple, fresh banana.",
+      "The lidded bin is also used for items such as overripe apple, cut banana.",
+      "The storage box is also used for items such as small Lego brick, large Lego brick, metal toy robot.",
+      "The sofa is also used for items such as stuffed rabbit."
     ],
     "receptacles": [
       "coffee table",
@@ -5711,8 +5771,11 @@
       "Wired or plug-in items go to the TV stand.",
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Plastic, foam, rubber, or similar durable synthetic items go to the coffee table.",
+      "The coffee table is also used for items such as unchipped ceramic mug.",
+      "The side table is also used for items such as charged tablet.",
+      "The bookshelf is also used for items such as glass ornament.",
       "The storage ottoman is also used for items such as paperback book, uncharged tablet, chipped ceramic mug.",
-      "The bookshelf is also used for items such as hardcover book, glass ornament, crystal vase."
+      "The TV stand is also used for items such as wired speaker."
     ],
     "receptacles": [
       "coffee table",
@@ -5853,8 +5916,10 @@
       "Wired or plug-in items go to the TV stand.",
       "Hardcover or rigid-cover books go to the storage ottoman.",
       "Paperback or soft-cover reading materials go to the coffee table.",
-      "The coffee table is also used for items such as thin paperback book, plastic vase, electric fan.",
-      "The TV stand is also used for items such as plug-in desk lamp, sharp kitchen scissors, space heater."
+      "The coffee table is also used for items such as plastic vase, electric fan, plastic mug.",
+      "The side table is also used for items such as dull kitchen scissors, normal kettle.",
+      "The bookshelf is also used for items such as glass vase, ceramic mug.",
+      "The TV stand is also used for items such as sharp kitchen scissors, space heater, electric kettle."
     ],
     "receptacles": [
       "coffee table",
@@ -6025,8 +6090,9 @@
       "Manual or wind-up items go to the side table.",
       "Plastic, foam, rubber, or similar durable synthetic items go to the storage ottoman.",
       "The coffee table is also used for items such as fresh juice, glass vase, wooden bowl.",
-      "The storage ottoman is also used for items such as dark-colored book, expired juice, plastic vase.",
-      "The bookshelf is also used for items such as light-colored book, thick novel, ceramic bowl."
+      "The bookshelf is also used for items such as light-colored book, thick novel, ceramic bowl.",
+      "The storage ottoman is also used for items such as dark-colored book, expired juice, rarely used remote.",
+      "The entertainment stand is also used for items such as frequently used remote."
     ],
     "receptacles": [
       "coffee table",
@@ -6217,8 +6283,9 @@
       "Hardcover or rigid-cover books go to the TV stand.",
       "Fragile items such as glass, ceramic, porcelain, crystal, or other delicate pieces go to the bookshelf.",
       "Plastic, foam, rubber, or similar durable synthetic items go to the coffee table.",
-      "The TV stand is also used for items such as hardcover book, daily-use lamp, non-battery remote.",
-      "The ottoman is also used for items such as paperback book, seasonal ornament, mass-market novel."
+      "The coffee table is also used for items such as wooden bowl.",
+      "The TV stand is also used for items such as daily-use lamp, non-battery remote.",
+      "The ottoman is also used for items such as paperback book, seasonal ornament."
     ],
     "receptacles": [
       "coffee table",
@@ -6368,9 +6435,11 @@
       "Battery-powered items and powered electronic devices go to the entertainment unit.",
       "Wired or plug-in items go to the side table.",
       "The coffee table is also used for items such as plastic vase, paperback book, metal bookends.",
+      "The bookshelf is also used for items such as hardcover book, seasonal cookbook.",
       "The storage ottoman is also used for items such as ceramic vase, wooden bookends, glass photo frame.",
-      "The bookshelf is also used for items such as hardcover book, seasonal cookbook, paper recipe book.",
-      "The side table is also used for items such as wired headphones, plastic photo frame, e-cookbook reader."
+      "The side table is also used for items such as plastic photo frame.",
+      "The lidded basket is also used for items such as board game.",
+      "The entertainment unit is also used for items such as remote control."
     ],
     "receptacles": [
       "coffee table",
@@ -6561,9 +6630,11 @@
       "Wired or plug-in items go to the coffee table.",
       "Plastic, foam, rubber, or similar durable synthetic items go to the storage ottoman.",
       "Fresh, clean, sealed, intact, new, or otherwise ready-to-use items go to the coffee table.",
-      "Wet, cut, spoiled, damaged, dirty, or otherwise degraded items go to the lidded bin.",
+      "The coffee table is also used for items such as manual lamp, woven placemat.",
+      "The lidded bin is also used for items such as used ceramic mug, damp bag of chips.",
       "The bookshelf is also used for items such as glass vase, paperback book, ceramic plate.",
-      "The side table is also used for items such as battery-powered lamp, wireless speaker, rechargeable Bluetooth speaker."
+      "The side table is also used for items such as battery-powered lamp, wireless speaker.",
+      "The couch is also used for items such as fluffy throw pillow."
     ],
     "receptacles": [
       "coffee table",
@@ -6756,7 +6827,9 @@
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Paperback or soft-cover reading materials go to the storage ottoman.",
       "The coffee table is also used for items such as framed family photo, plastic flowerpot, board game box.",
-      "The storage ottoman is also used for items such as paperback novel, loose travel photo, wooden jigsaw puzzle."
+      "The bookshelf is also used for items such as ceramic vase.",
+      "The TV stand is also used for items such as plastic building blocks.",
+      "The storage ottoman is also used for items such as loose travel photo, wooden jigsaw puzzle."
     ],
     "receptacles": [
       "coffee table",
@@ -6926,9 +6999,9 @@
       "Battery-powered items and powered electronic devices go to the side table.",
       "Hardcover or rigid-cover books go to the coffee table.",
       "Paperback or soft-cover reading materials go to the coffee table.",
-      "The TV stand is also used for items such as wooden coaster, metal candle holder, sturdy plastic bowl.",
-      "The bookshelf is also used for items such as glass vase, delicate figurine, glass candle jar.",
-      "The storage ottoman is also used for items such as ceramic mug, plastic storage box, ceramic plant pot."
+      "The bookshelf is also used for items such as glass vase, delicate figurine.",
+      "The storage ottoman is also used for items such as ceramic mug, plastic storage box.",
+      "The TV stand is also used for items such as wooden coaster, metal candle holder."
     ],
     "receptacles": [
       "coffee table",
@@ -7059,8 +7132,11 @@
       "Wired or plug-in items go to the storage basket.",
       "Manual or wind-up items go to the storage basket.",
       "Hardcover or rigid-cover books go to the bookshelf.",
-      "The storage basket is also used for items such as Paperback Novel B, Manual Puzzle, Wooden Block Set.",
-      "The sofa is also used for items such as Stuffed Bunny, Stuffed Bear, Velvet Pillow."
+      "The coffee table is also used for items such as Glass Water Jar.",
+      "The cooler is also used for items such as Plastic Drink Bottle.",
+      "The sofa is also used for items such as Stuffed Bunny, Stuffed Bear.",
+      "The storage basket is also used for items such as Paperback Novel B, Wooden Block Set.",
+      "The entertainment center is also used for items such as Ceramic Vase."
     ],
     "receptacles": [
       "coffee table",
@@ -7212,9 +7288,10 @@
       "Battery-powered items and powered electronic devices go to the side drawer.",
       "Soft textile or plush items go to the sofa.",
       "Fresh, clean, sealed, intact, new, or otherwise ready-to-use items go to the coffee table.",
-      "Wet, cut, spoiled, damaged, dirty, or otherwise degraded items go to the lidded bin.",
+      "The coffee table is also used for items such as ceramic mug.",
+      "The lidded bin is also used for items such as chipped glass vase, cracked ceramic mug.",
       "The storage box is also used for items such as wooden puzzle, wound-up robot, metal puzzle.",
-      "The coffee table is also used for items such as fresh glass vase, ceramic mug, ceramic plate."
+      "The sofa is also used for items such as stuffed crocodile."
     ],
     "receptacles": [
       "coffee table",
@@ -7366,7 +7443,8 @@
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Fragile items such as glass, ceramic, porcelain, crystal, or other delicate pieces go to the bookshelf.",
       "The coffee table is also used for items such as fresh cookies, durable ceramic vase, decorative pillow.",
-      "The storage ottoman is also used for items such as stale cookies, paperback novel, wet sponge."
+      "The storage ottoman is also used for items such as stale cookies, paperback novel, wet sponge.",
+      "The side table is also used for items such as dry sponge."
     ],
     "receptacles": [
       "coffee table",
@@ -7517,8 +7595,8 @@
       "Wired or plug-in items go to the side table.",
       "Fragile items such as glass, ceramic, porcelain, crystal, or other delicate pieces go to the lidded bin.",
       "Soft textile or plush items go to the storage ottoman.",
-      "The lidded bin is also used for items such as spoiled banana, cut apple slices, hard plastic car.",
-      "The coffee table is also used for items such as fresh banana, fresh orange, fresh grapes."
+      "The coffee table is also used for items such as fresh banana, fresh orange.",
+      "The lidded bin is also used for items such as spoiled banana, cut apple slices, hard plastic car."
     ],
     "receptacles": [
       "coffee table",
@@ -7659,8 +7737,10 @@
       "Manual or wind-up items go to the storage box.",
       "Soft textile or plush items go to the sofa.",
       "Fresh, clean, sealed, intact, new, or otherwise ready-to-use items go to the coffee table.",
+      "The lidded bin is also used for items such as overripe banana, cut apple slices.",
       "The storage box is also used for items such as small Lego brick, large Lego brick, plastic action figure.",
-      "The lidded bin is also used for items such as overripe banana, cut apple slices, bruised orange."
+      "The sofa is also used for items such as stuffed rabbit.",
+      "The side drawer is also used for items such as toy car with batteries."
     ],
     "receptacles": [
       "coffee table",
@@ -7811,8 +7891,8 @@
       "Wired or plug-in items go to the coffee table.",
       "Hardcover or rigid-cover books go to the storage ottoman.",
       "Fragile items such as glass, ceramic, porcelain, crystal, or other delicate pieces go to the bookshelf.",
-      "The coffee table is also used for items such as paperback book, plug-in lamp, small plush toy.",
-      "The end table is also used for items such as large plush toy, wooden puzzle, cotton throw."
+      "The coffee table is also used for items such as paperback book, small plush toy, plastic puzzle.",
+      "The end table is also used for items such as large plush toy, wooden puzzle."
     ],
     "receptacles": [
       "coffee table",
@@ -7942,9 +8022,11 @@
       "Battery-powered items and powered electronic devices go to the storage ottoman.",
       "Fragile items such as glass, ceramic, porcelain, crystal, or other delicate pieces go to the coffee table.",
       "Fresh, clean, sealed, intact, new, or otherwise ready-to-use items go to the side table.",
+      "The coffee table is also used for items such as ornamental figurine.",
+      "The side table is also used for items such as current magazine, wired lamp.",
       "The bookshelf is also used for items such as hardcover book, paperback book, sturdy cotton blanket.",
-      "The basket is also used for items such as soft wool blanket, fuzzy throw, synthetic fiber blanket.",
-      "The storage ottoman is also used for items such as battery-powered lamp, old magazine, vintage catalog."
+      "The storage ottoman is also used for items such as old magazine.",
+      "The basket is also used for items such as soft wool blanket."
     ],
     "receptacles": [
       "coffee table",
@@ -8096,7 +8178,11 @@
       "Plastic, foam, rubber, or similar durable synthetic items go to the ottoman.",
       "Small or lightweight items go to the ottoman.",
       "The coffee table is also used for items such as charged tablet, durable vase, remote control.",
-      "The side table is also used for items such as uncharged tablet, battery-powered lamp, LED strip with batteries."
+      "The bookshelf is also used for items such as wooden clock.",
+      "The side table is also used for items such as uncharged tablet, battery-powered lamp, LED strip with batteries.",
+      "The entertainment center is also used for items such as regular lamp.",
+      "The storage basket is also used for items such as paperback book.",
+      "The sofa is also used for items such as large plush toy."
     ],
     "receptacles": [
       "coffee table",
@@ -8289,8 +8375,11 @@
       "Paperback or soft-cover reading materials go to the coffee table.",
       "Fragile items such as glass, ceramic, porcelain, crystal, or other delicate pieces go to the TV stand.",
       "Plastic, foam, rubber, or similar durable synthetic items go to the storage basket.",
-      "The coffee table is also used for items such as hardcover novel, paperback novel, unused book.",
-      "The storage basket is also used for items such as manual car, plastic puzzle, used book."
+      "The coffee table is also used for items such as hardcover novel, unused book, board game box.",
+      "The bookshelf is also used for items such as wooden puzzle, wooden bowl.",
+      "The storage basket is also used for items such as used book, plush toy.",
+      "The side drawer is also used for items such as battery-powered car, tangled cord.",
+      "The TV stand is also used for items such as remote control."
     ],
     "receptacles": [
       "coffee table",
@@ -8467,12 +8556,12 @@
   },
   {
     "annotator_notes": [
-      "The storage ottoman is also used for items such as paperback book, dirty drinking glass, dried potted plant.",
-      "The bookshelf is also used for items such as hardcover book, wired remote control, large decorative box.",
       "The coffee table is also used for items such as clean drinking glass, fresh potted plant, canned soda.",
+      "The bookshelf is also used for items such as hardcover book, wired remote control, large decorative box.",
+      "The storage ottoman is also used for items such as paperback book, dirty drinking glass, dried potted plant.",
+      "The side table is also used for items such as battery-powered remote control, electronic gadget.",
       "The entertainment stand is also used for items such as non-electronic gadget, thin cotton blanket, infrequently used plush rabbit.",
-      "The side table is also used for items such as battery-powered remote control, electronic gadget, dry remote control.",
-      "The sofa is also used for items such as frequently used plush bear, unused plush rabbit."
+      "The sofa is also used for items such as frequently used plush bear."
     ],
     "receptacles": [
       "coffee table",
@@ -8709,8 +8798,10 @@
       "Paperback or soft-cover reading materials go to the coffee table.",
       "Small or lightweight items go to the bookshelf.",
       "Large, heavy, or bulky items go to the TV stand.",
-      "The TV stand is also used for items such as rarely used encyclopedia, sturdy ceramic vase, large photo frame.",
-      "The storage ottoman is also used for items such as delicate glass vase, board game box, frosted glass bowl."
+      "The coffee table is also used for items such as corded lamp, remote control.",
+      "The bookshelf is also used for items such as hardcover novel.",
+      "The storage ottoman is also used for items such as delicate glass vase, board game box.",
+      "The TV stand is also used for items such as rarely used encyclopedia, sturdy ceramic vase."
     ],
     "receptacles": [
       "coffee table",
@@ -8861,8 +8952,10 @@
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Paperback or soft-cover reading materials go to the bookshelf.",
       "Fragile items such as glass, ceramic, porcelain, crystal, or other delicate pieces go to the TV stand.",
+      "The coffee table is also used for items such as remote control, loose photo print.",
+      "The bookshelf is also used for items such as framed photo, wooden puzzle.",
       "The storage ottoman is also used for items such as plush bear, wind-up car, stuffed rabbit.",
-      "The bookshelf is also used for items such as hardcover novel, paperback novel, framed photo."
+      "The TV stand is also used for items such as glass vase, ceramic vase."
     ],
     "receptacles": [
       "coffee table",
@@ -9013,8 +9106,11 @@
       "Wired or plug-in items go to the coffee table.",
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Paperback or soft-cover reading materials go to the bookshelf.",
+      "The coffee table is also used for items such as ceramic vase, decorative bowl, framed photo (glass).",
       "The side table is also used for items such as warm mug, plastic vase, metal tray.",
-      "The coffee table is also used for items such as wired speaker, ceramic vase, decorative bowl."
+      "The bookshelf is also used for items such as wooden photo frame.",
+      "The storage ottoman is also used for items such as cold water bottle.",
+      "The TV stand is also used for items such as battery-powered speaker."
     ],
     "receptacles": [
       "coffee table",
@@ -9162,11 +9258,11 @@
   {
     "annotator_notes": [
       "Plastic, foam, rubber, or similar durable synthetic items go to the storage ottoman.",
-      "Wet, cut, spoiled, damaged, dirty, or otherwise degraded items go to the storage ottoman.",
       "The coffee table is also used for items such as glass vase, cold bottled water, fresh floral arrangement.",
-      "The bookshelf is also used for items such as clean hardcover book, non-powered reading light, new magazine.",
-      "The side table is also used for items such as working remote, batter-powered lamp, functional gaming controller.",
-      "The TV stand is also used for items such as room temperature soda, warm tea can."
+      "The bookshelf is also used for items such as clean hardcover book, non-powered reading light.",
+      "The side table is also used for items such as working remote, batter-powered lamp.",
+      "The storage ottoman is also used for items such as stained paperback, broken remote, wilted floral arrangement.",
+      "The TV stand is also used for items such as room temperature soda."
     ],
     "receptacles": [
       "coffee table",
@@ -9315,10 +9411,10 @@
     "annotator_notes": [
       "Battery-powered items and powered electronic devices go to the side drawer.",
       "The coffee table is also used for items such as manual remote, fresh indoor plant, glossy magazine.",
-      "The locked cabinet is also used for items such as damaged hardcover book, tattered magazine, spine-damaged paperback.",
-      "The storage bin is also used for items such as wilted indoor plant, worn fleece blanket, brown succulent.",
-      "The ottoman is also used for items such as plush knit blanket, wired headphones, fluffy throw pillow.",
-      "The bookshelf is also used for items such as new hardcover book, new paperback book."
+      "The bookshelf is also used for items such as new hardcover book.",
+      "The ottoman is also used for items such as plush knit blanket, wired headphones.",
+      "The storage bin is also used for items such as wilted indoor plant, worn fleece blanket.",
+      "The locked cabinet is also used for items such as damaged hardcover book, tattered magazine."
     ],
     "receptacles": [
       "coffee table",
@@ -9467,11 +9563,11 @@
   {
     "annotator_notes": [
       "Wired or plug-in items go to the entertainment unit.",
-      "Wet, cut, spoiled, damaged, dirty, or otherwise degraded items go to the coffee table.",
       "Large, heavy, or bulky items go to the floor.",
+      "The coffee table is also used for items such as open hardcover novel, open magazine.",
       "The bookshelf is also used for items such as closed hardcover novel, closed magazine, leather-bound journal.",
-      "The side table is also used for items such as ceramic vase, cordless lamp, sturdy ceramic bowl.",
-      "The storage ottoman is also used for items such as glass figurine, delicate porcelain bowl."
+      "The side table is also used for items such as ceramic vase, cordless lamp.",
+      "The storage ottoman is also used for items such as glass figurine."
     ],
     "receptacles": [
       "coffee table",
@@ -9623,7 +9719,8 @@
       "Soft textile or plush items go to the entertainment center.",
       "The coffee table is also used for items such as coffee mug, remote control, photo frame.",
       "The bookshelf is also used for items such as ceramic vase, glass figurine, wooden sculpture.",
-      "The storage ottoman is also used for items such as hardcover art book, board game, paperback novel."
+      "The storage ottoman is also used for items such as hardcover art book, board game, paperback novel.",
+      "The side table is also used for items such as rechargeable lamp."
     ],
     "receptacles": [
       "coffee table",
@@ -9833,9 +9930,11 @@
       "Battery-powered items and powered electronic devices go to the side table.",
       "Manual or wind-up items go to the storage basket.",
       "Soft textile or plush items go to the sofa.",
-      "Wet, cut, spoiled, damaged, dirty, or otherwise degraded items go to the storage basket.",
-      "The bookshelf is also used for items such as hardcover novel, paperback book, hardcover textbook.",
-      "The coffee table is also used for items such as coasters, magazines, candle holders."
+      "The coffee table is also used for items such as coasters, magazines.",
+      "The bookshelf is also used for items such as hardcover novel, paperback book.",
+      "The storage basket is also used for items such as damaged hardcover novel, used paperback book, uncharged tablet.",
+      "The side table is also used for items such as charged tablet, remote control.",
+      "The TV stand is also used for items such as photo frame."
     ],
     "receptacles": [
       "coffee table",
@@ -10002,8 +10101,11 @@
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Fragile items such as glass, ceramic, porcelain, crystal, or other delicate pieces go to the storage ottoman.",
       "Soft textile or plush items go to the coffee table.",
-      "The media console is also used for items such as dead remote control, large framed photo, vintage record player.",
-      "The storage ottoman is also used for items such as paperback novel, travel-sized blanket, ceramic decorative bowl."
+      "The bookshelf is also used for items such as oversized art book, woven wall hanging.",
+      "The coffee table is also used for items such as charged remote control, plastic decorative bowl.",
+      "The storage ottoman is also used for items such as paperback novel, travel-sized blanket.",
+      "The side table is also used for items such as small framed photo, compact art book.",
+      "The media console is also used for items such as dead remote control, large framed photo, vintage record player."
     ],
     "receptacles": [
       "bookshelf",
@@ -10111,7 +10213,7 @@
       "resin plant stand",
       "thick hardcover cookbook",
       "thin picture book",
-      "macramé wall hanging",
+      "macram\u00e9 wall hanging",
       "memory foam pillow",
       "turntable with cables"
     ],
@@ -10165,7 +10267,7 @@
         "storage ottoman"
       ],
       [
-        "macramé wall hanging",
+        "macram\u00e9 wall hanging",
         "bookshelf"
       ],
       [
@@ -10184,8 +10286,11 @@
       "Wired or plug-in items go to the TV stand.",
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Fragile items such as glass, ceramic, porcelain, crystal, or other delicate pieces go to the cabinet.",
+      "The coffee table is also used for items such as plastic coaster, clean blanket, plastic mug.",
+      "The side table is also used for items such as remote with batteries.",
+      "The bookshelf is also used for items such as leather cushion.",
       "The storage ottoman is also used for items such as paperback book, used blanket, wilted flowers.",
-      "The coffee table is also used for items such as plastic coaster, clean blanket, plastic mug."
+      "The TV stand is also used for items such as remote without batteries, board game."
     ],
     "receptacles": [
       "coffee table",
@@ -10415,10 +10520,11 @@
     "annotator_notes": [
       "Plastic, foam, rubber, or similar durable synthetic items go to the storage ottoman.",
       "The coffee table is also used for items such as glass vase, plug-in lamp, compact throw pillow.",
-      "The floor is also used for items such as heavy wooden cushion, oversized throw blanket, metal sculpture.",
-      "The bookshelf is also used for items such as large hardcover book, short potted plant, thick art book.",
-      "The entertainment stand is also used for items such as ceramic vase, tall potted plant, tall floor lamp.",
-      "The storage ottoman is also used for items such as small paperback book, light foam cushion, fluffy bolster."
+      "The side table is also used for items such as battery-powered lamp.",
+      "The bookshelf is also used for items such as large hardcover book, short potted plant.",
+      "The storage ottoman is also used for items such as small paperback book.",
+      "The entertainment stand is also used for items such as ceramic vase, tall potted plant.",
+      "The floor is also used for items such as heavy wooden cushion, oversized throw blanket."
     ],
     "receptacles": [
       "coffee table",
@@ -10570,8 +10676,11 @@
       "Paperback or soft-cover reading materials go to the storage ottoman.",
       "Fragile items such as glass, ceramic, porcelain, crystal, or other delicate pieces go to the storage ottoman.",
       "Plastic, foam, rubber, or similar durable synthetic items go to the coffee table.",
-      "The coffee table is also used for items such as wooden block, plastic toy, manual toy car.",
-      "The side table is also used for items such as remote control, handheld fan, remote-controlled car."
+      "The coffee table is also used for items such as wooden block, manual toy car, jigsaw puzzle.",
+      "The bookshelf is also used for items such as hardcover book, framed photo.",
+      "The storage ottoman is also used for items such as unframed photo.",
+      "The side table is also used for items such as remote control, handheld fan.",
+      "The sofa is also used for items such as plush teddy bear."
     ],
     "receptacles": [
       "coffee table",
@@ -10730,10 +10839,10 @@
     "annotator_notes": [
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Fragile items such as glass, ceramic, porcelain, crystal, or other delicate pieces go to the coffee table.",
+      "The coffee table is also used for items such as cotton throw pillow, dry cleaning wipes.",
       "The ottoman is also used for items such as paperback novel, wired remote, velvet throw pillow.",
-      "The storage basket is also used for items such as plastic decorative plate, wet cleaning wipes, metal coasters.",
-      "The coffee table is also used for items such as ceramic decorative plate, cotton throw pillow, dry cleaning wipes.",
-      "The side table is also used for items such as battery-powered remote, solar-powered lamp."
+      "The side table is also used for items such as battery-powered remote.",
+      "The storage basket is also used for items such as plastic decorative plate, wet cleaning wipes."
     ],
     "receptacles": [
       "coffee table",
@@ -10864,8 +10973,11 @@
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Plastic, foam, rubber, or similar durable synthetic items go to the coffee table.",
       "The coffee table is also used for items such as iced tea, ceramic vase, remote control without batteries.",
+      "The bookshelf is also used for items such as crystal vase, aluminum-framed photo.",
       "The storage basket is also used for items such as paperback novel, manual puzzle, plush toy.",
-      "The sofa is also used for items such as wooden-framed photo, stuffed animal, canvas print."
+      "The side drawer is also used for items such as remote control with batteries.",
+      "The end table is also used for items such as hot cocoa, cable organizer.",
+      "The sofa is also used for items such as wooden-framed photo, stuffed animal."
     ],
     "receptacles": [
       "coffee table",
@@ -11056,9 +11168,10 @@
       "Battery-powered items and powered electronic devices go to the side table.",
       "Hardcover or rigid-cover books go to the bookshelf.",
       "The coffee table is also used for items such as paperback novel, ceramic vase, intact wool throw.",
-      "The storage basket is also used for items such as non-working universal remote, cracked photo frame, spilled batteries.",
-      "The ottoman is also used for items such as worn wool throw, plush chair cushion, faded velvet pillow.",
-      "The bookshelf is also used for items such as hardcover art book, glass sculpture, crystal bowl."
+      "The ottoman is also used for items such as worn wool throw, plush chair cushion.",
+      "The bookshelf is also used for items such as glass sculpture.",
+      "The side table is also used for items such as batteries.",
+      "The storage basket is also used for items such as non-working universal remote, cracked photo frame, spilled batteries."
     ],
     "receptacles": [
       "coffee table",
@@ -11249,8 +11362,9 @@
       "Manual or wind-up items go to the storage ottoman.",
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Soft textile or plush items go to the coffee table.",
-      "The storage ottoman is also used for items such as small puzzle, wind-up robot, paperback novel.",
-      "The coffee table is also used for items such as plush dog, large puzzle, stuffed dinosaur."
+      "The coffee table is also used for items such as large puzzle, stuffed dinosaur, ceramic vase.",
+      "The side table is also used for items such as glass vase.",
+      "The storage ottoman is also used for items such as small puzzle, paperback novel."
     ],
     "receptacles": [
       "coffee table",
@@ -11402,7 +11516,9 @@
       "Fragile items such as glass, ceramic, porcelain, crystal, or other delicate pieces go to the bookshelf.",
       "Soft textile or plush items go to the side table.",
       "The coffee table is also used for items such as open paperback, spilled drink can, vintage photo frame.",
-      "The recycling bin is also used for items such as damaged magazine, torn newspaper."
+      "The storage ottoman is also used for items such as remote control with batteries, broken board game piece.",
+      "The side table is also used for items such as wooden puzzle.",
+      "The recycling bin is also used for items such as damaged magazine."
     ],
     "receptacles": [
       "coffee table",
@@ -11533,8 +11649,12 @@
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Soft textile or plush items go to the ottoman.",
       "Plastic, foam, rubber, or similar durable synthetic items go to the coffee table.",
-      "The coffee table is also used for items such as paperback book, plastic action figure, wooden coaster.",
-      "The storage cabinet is also used for items such as battery-powered remote, ceramic mug, battery-powered lamp."
+      "The coffee table is also used for items such as paperback book, wooden coaster, marble paperweight.",
+      "The TV stand is also used for items such as wireless speaker, cable box, USB hub.",
+      "The bookshelf is also used for items such as glass ornament.",
+      "The side table is also used for items such as rechargeable remote, LED nightlight.",
+      "The storage cabinet is also used for items such as battery-powered remote, ceramic mug.",
+      "The sofa is also used for items such as velvet throw."
     ],
     "receptacles": [
       "coffee table",
@@ -11766,9 +11886,11 @@
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Soft textile or plush items go to the sofa.",
       "The coffee table is also used for items such as potted fern, wooden sculpture, paperback book.",
+      "The bookshelf is also used for items such as thick book, ceramic vase.",
       "The side table is also used for items such as glass vase, tall candle, thin book.",
-      "The storage ottoman is also used for items such as batter-powered speaker, LED nightlight, solar-powered remote.",
-      "The media stand is also used for items such as wireless remote, manual speaker, wireless keyboard."
+      "The sofa is also used for items such as plastic toy, hanging ivy.",
+      "The storage ottoman is also used for items such as batter-powered speaker.",
+      "The media stand is also used for items such as wireless remote, manual speaker."
     ],
     "receptacles": [
       "coffee table",
@@ -11959,9 +12081,11 @@
       "Battery-powered items and powered electronic devices go to the coffee table.",
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Soft textile or plush items go to the coffee table.",
+      "The coffee table is also used for items such as paperback novel, stuffed animal.",
+      "The side table is also used for items such as ceramic mug, remote control.",
+      "The bookshelf is also used for items such as framed photo.",
       "The storage ottoman is also used for items such as wind-up car, wooden puzzle, delicate glass ornament.",
-      "The side table is also used for items such as ceramic mug, remote control, travel mug.",
-      "The media stand is also used for items such as disposable cup, board game box, party cups."
+      "The media stand is also used for items such as disposable cup, board game box."
     ],
     "receptacles": [
       "coffee table",
@@ -12112,8 +12236,11 @@
       "Manual or wind-up items go to the storage ottoman.",
       "Soft textile or plush items go to the sofa.",
       "Fresh, clean, sealed, intact, new, or otherwise ready-to-use items go to the coffee table.",
-      "The bookshelf is also used for items such as hardcover novel, delicate glassware, leather-bound book.",
-      "The side table is also used for items such as ceramic mug, paperback novel, comic book."
+      "The coffee table is also used for items such as travel mug, stackable cups.",
+      "The side table is also used for items such as ceramic mug, paperback novel.",
+      "The bookshelf is also used for items such as hardcover novel, delicate glassware.",
+      "The storage ottoman is also used for items such as bruised apple.",
+      "The sofa is also used for items such as stuffed snake."
     ],
     "receptacles": [
       "coffee table",
@@ -12264,9 +12391,11 @@
       "Battery-powered items and powered electronic devices go to the lidded basket.",
       "Small or lightweight items go to the coffee table.",
       "The coffee table is also used for items such as dry bath towel, manual booklight, fresh flowers (in vase).",
+      "The storage ottoman is also used for items such as wet bath towel, wooden puzzle.",
       "The bookshelf is also used for items such as glass vase, dried flowers (in jar), heavy book.",
       "The side table is also used for items such as ceramic mug, canned soda (non-leaking), wired speaker.",
-      "The storage ottoman is also used for items such as wet bath towel, wooden puzzle, wet hand towel."
+      "The lidded basket is also used for items such as canned soda (leaking).",
+      "The sofa is also used for items such as plush cushion, fuzzy blanket."
     ],
     "receptacles": [
       "coffee table",
@@ -12486,10 +12615,11 @@
     "annotator_notes": [
       "Battery-powered items and powered electronic devices go to the side table.",
       "Fresh, clean, sealed, intact, new, or otherwise ready-to-use items go to the coffee table.",
-      "The lidded bin is also used for items such as stale popcorn, overripe fruit, stale trail mix.",
-      "The storage ottoman is also used for items such as dead remote control, dead portable speaker, dead bluetooth headphones.",
-      "The bookshelf is also used for items such as hardcover novel, hardcover cookbook.",
-      "The floor basket is also used for items such as paperback novel, paperback cookbook."
+      "The lidded bin is also used for items such as stale popcorn, overripe fruit.",
+      "The side table is also used for items such as charged remote control, charged portable speaker.",
+      "The storage ottoman is also used for items such as dead remote control, dead portable speaker.",
+      "The bookshelf is also used for items such as hardcover novel.",
+      "The floor basket is also used for items such as paperback novel."
     ],
     "receptacles": [
       "coffee table",
@@ -12620,9 +12750,10 @@
       "Battery-powered items and powered electronic devices go to the side cabinet.",
       "Soft textile or plush items go to the sofa.",
       "Small or lightweight items go to the storage ottoman.",
-      "The TV stand is also used for items such as manual remote, durable plastic bowl, large ceramic planter.",
-      "The storage ottoman is also used for items such as hard plastic action figure, dried cereal box, wooden puzzle with small pieces.",
-      "The top shelf is also used for items such as fragile glass vase, metal music box, porcelain figurine."
+      "The coffee table is also used for items such as fresh fruit basket.",
+      "The top shelf is also used for items such as fragile glass vase, metal music box.",
+      "The storage ottoman is also used for items such as hard plastic action figure, dried cereal box.",
+      "The TV stand is also used for items such as manual remote, durable plastic bowl, large ceramic planter."
     ],
     "receptacles": [
       "coffee table",
@@ -12773,9 +12904,10 @@
       "Battery-powered items and powered electronic devices go to the side drawer.",
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Paperback or soft-cover reading materials go to the coffee table.",
+      "The coffee table is also used for items such as room temperature soda can, durable mug, incandescent nightlight.",
+      "The bookshelf is also used for items such as fragile vase, lightweight cotton blanket.",
       "The storage ottoman is also used for items such as cold water bottle, plastic board game, thick wool blanket.",
-      "The coffee table is also used for items such as paperback book, room temperature soda can, durable mug.",
-      "The TV stand is also used for items such as manual blinds, wooden board game, pull-string lamp."
+      "The TV stand is also used for items such as manual blinds, wooden board game."
     ],
     "receptacles": [
       "coffee table",
@@ -12964,10 +13096,12 @@
     "annotator_notes": [
       "Plastic, foam, rubber, or similar durable synthetic items go to the TV stand.",
       "Fresh, clean, sealed, intact, new, or otherwise ready-to-use items go to the side table.",
-      "The storage basket is also used for items such as paperback novel, glass sculpture, worn wool throw.",
       "The coffee table is also used for items such as used ceramic mug, wireless remote, metal candle holder.",
-      "The bookshelf is also used for items such as hardcover novel, manual radio, hardcover cookbook.",
-      "The sofa is also used for items such as velvet throw, silk cushion."
+      "The bookshelf is also used for items such as hardcover novel, manual radio.",
+      "The storage basket is also used for items such as paperback novel, glass sculpture, worn wool throw.",
+      "The side table is also used for items such as wired remote.",
+      "The TV stand is also used for items such as batter-powered speaker.",
+      "The sofa is also used for items such as velvet throw."
     ],
     "receptacles": [
       "coffee table",
@@ -13138,9 +13272,10 @@
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Wooden, woven, leather, or similar natural-material items go to the bookshelf.",
       "The coffee table is also used for items such as paperback book, frequently used remote, fresh floral arrangement.",
+      "The side table is also used for items such as ceramic vase, small potted plant.",
+      "The bookshelf is also used for items such as dried floral arrangement.",
       "The storage ottoman is also used for items such as rarely used remote, large potted plant, tablet in charging dock.",
-      "The entertainment stand is also used for items such as glass vase, metal photo frame, modern abstract art.",
-      "The side table is also used for items such as ceramic vase, small potted plant, paper coasters."
+      "The entertainment stand is also used for items such as glass vase, metal photo frame."
     ],
     "receptacles": [
       "coffee table",
@@ -13302,6 +13437,8 @@
       "Plastic, foam, rubber, or similar durable synthetic items go to the side table.",
       "Wooden, woven, leather, or similar natural-material items go to the bookshelf.",
       "The coffee table is also used for items such as Large hardcover book, Thick book, Large cushion.",
+      "The side table is also used for items such as Metal frame.",
+      "The bookshelf is also used for items such as Glass vase.",
       "The storage ottoman is also used for items such as Small paperback book, Thin book, Small cushion."
     ],
     "receptacles": [
@@ -13452,9 +13589,11 @@
       "Battery-powered items and powered electronic devices go to the side table.",
       "Wired or plug-in items go to the media console.",
       "Manual or wind-up items go to the storage ottoman.",
-      "The storage ottoman is also used for items such as stuffed snake, wind-up robot, wooden puzzle.",
-      "The bookshelf is also used for items such as glass ornament, glass frame photo, ceramic vase.",
-      "The media console is also used for items such as plastic ornament, wired controller, framed photo."
+      "The sofa is also used for items such as plush bear.",
+      "The bookshelf is also used for items such as glass ornament, glass frame photo.",
+      "The storage ottoman is also used for items such as stuffed snake, wooden puzzle.",
+      "The media console is also used for items such as plastic ornament, framed photo.",
+      "The wicker basket is also used for items such as plastic puzzle."
     ],
     "receptacles": [
       "sofa",
@@ -13606,8 +13745,12 @@
       "Manual or wind-up items go to the coffee table.",
       "Plastic, foam, rubber, or similar durable synthetic items go to the coffee table.",
       "Wooden, woven, leather, or similar natural-material items go to the storage basket.",
-      "The storage basket is also used for items such as large hardcover book, seldom used remote, wooden coasters.",
-      "The side table is also used for items such as small paperback book, frequently used remote, thin poetry book."
+      "The coffee table is also used for items such as sturdy ceramic vase.",
+      "The bookshelf is also used for items such as delicate glass vase.",
+      "The side table is also used for items such as small paperback book, frequently used remote.",
+      "The ottoman is also used for items such as velvet throw pillow.",
+      "The storage basket is also used for items such as large hardcover book, seldom used remote.",
+      "The sofa is also used for items such as cotton throw pillow."
     ],
     "receptacles": [
       "coffee table",
@@ -13759,8 +13902,8 @@
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Large, heavy, or bulky items go to the floor basket.",
       "The coffee table is also used for items such as plastic vased flowers, corded lamp, small ceramic figurine.",
-      "The side table is also used for items such as glass vased flowers, compact succulent arrangement, ceramic bowl.",
-      "The storage ottoman is also used for items such as paperback novel, battery-powered lamp, spiral-bound notebook."
+      "The storage ottoman is also used for items such as paperback novel.",
+      "The side table is also used for items such as glass vased flowers, compact succulent arrangement."
     ],
     "receptacles": [
       "coffee table",
@@ -13888,11 +14031,11 @@
   {
     "annotator_notes": [
       "Hardcover or rigid-cover books go to the bookshelf.",
+      "The coffee table is also used for items such as paperback novel, ceramic bowl.",
       "The side table is also used for items such as wine bottle, alcoholic cocktail, charged smartphone.",
-      "The coffee table is also used for items such as paperback novel, ceramic bowl, magazine.",
-      "The TV stand is also used for items such as soda can, non-alcoholic mocktail, sparkling water.",
-      "The storage ottoman is also used for items such as uncharged tablet, wooden puzzle, dead remote control.",
-      "The bookshelf is also used for items such as hardcover novel, glass vase, crystal figurine."
+      "The bookshelf is also used for items such as glass vase.",
+      "The storage ottoman is also used for items such as uncharged tablet, wooden puzzle.",
+      "The TV stand is also used for items such as soda can, non-alcoholic mocktail."
     ],
     "receptacles": [
       "coffee table",
@@ -14043,8 +14186,9 @@
       "Hardcover or rigid-cover books go to the TV stand.",
       "Soft textile or plush items go to the ottoman.",
       "The coffee table is also used for items such as plug-in lamp, ceramic mug, plastic water bottle.",
-      "The bookshelf is also used for items such as paperback novel, glass ornament, magazine.",
-      "The storage basket is also used for items such as plastic action figure, rubber stress ball."
+      "The bookshelf is also used for items such as paperback novel, glass ornament.",
+      "The TV stand is also used for items such as wooden bookend, metal bookend.",
+      "The storage basket is also used for items such as plastic action figure."
     ],
     "receptacles": [
       "coffee table",
@@ -14216,8 +14360,10 @@
       "Manual or wind-up items go to the ottoman.",
       "Soft textile or plush items go to the ottoman.",
       "Plastic, foam, rubber, or similar durable synthetic items go to the coffee table.",
-      "The coffee table is also used for items such as paperback novel, plastic water bottle, fresh apple.",
-      "The bookshelf is also used for items such as hardbound novel, glass water tumbler, hardcover cookbook."
+      "The coffee table is also used for items such as paperback novel, fresh apple.",
+      "The bookshelf is also used for items such as hardbound novel, glass water tumbler.",
+      "The side table is also used for items such as aluminum soda can.",
+      "The ottoman is also used for items such as bruised apple, stuffed dinosaur."
     ],
     "receptacles": [
       "coffee table",
@@ -14368,8 +14514,12 @@
       "Manual or wind-up items go to the storage cabinet.",
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Wooden, woven, leather, or similar natural-material items go to the storage cabinet.",
-      "The side drawer is also used for items such as battery-powered toy car, small paperback book, thin book.",
-      "The bookshelf is also used for items such as large hardcover book, thick book, board game box."
+      "The coffee table is also used for items such as magazine, remote control.",
+      "The side drawer is also used for items such as small paperback book, thin book, metal music box.",
+      "The bookshelf is also used for items such as thick book, board game box.",
+      "The storage cabinet is also used for items such as hard plastic action figure.",
+      "The sofa is also used for items such as plush teddy bear.",
+      "The TV stand is also used for items such as photo frame."
     ],
     "receptacles": [
       "coffee table",
@@ -14531,8 +14681,9 @@
       "Wired or plug-in items go to the coffee table.",
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Soft textile or plush items go to the storage ottoman.",
-      "The bookshelf is also used for items such as hardcover book, glass vase, fragile ceramic figurine.",
-      "The coffee table is also used for items such as wired remote, ceramic mug, wired lamp."
+      "The bookshelf is also used for items such as glass vase.",
+      "The storage ottoman is also used for items such as stuffed dinosaur with loose parts.",
+      "The coffee table is also used for items such as ceramic mug."
     ],
     "receptacles": [
       "side table drawer",
@@ -14682,9 +14833,11 @@
       "Battery-powered items and powered electronic devices go to the side table.",
       "Fragile items such as glass, ceramic, porcelain, crystal, or other delicate pieces go to the bookshelf.",
       "Soft textile or plush items go to the coffee table.",
-      "The storage ottoman is also used for items such as wooden puzzle, lego set, jigsaw puzzle.",
-      "The bookshelf is also used for items such as ceramic vase, glass photo frame, plastic figurine.",
-      "The TV stand is also used for items such as DVD player, streaming box."
+      "The coffee table is also used for items such as paperback novel.",
+      "The bookshelf is also used for items such as plastic figurine, leather-bound book.",
+      "The storage ottoman is also used for items such as wooden puzzle, lego set.",
+      "The side table is also used for items such as Bluetooth keyboard.",
+      "The TV stand is also used for items such as DVD player."
     ],
     "receptacles": [
       "coffee table",
@@ -14835,8 +14988,9 @@
       "Wired or plug-in items go to the coffee table.",
       "Plastic, foam, rubber, or similar durable synthetic items go to the coffee table.",
       "Wooden, woven, leather, or similar natural-material items go to the bookshelf.",
-      "The sofa is also used for items such as plush bear, ceramic mug, plush dog.",
-      "The storage basket is also used for items such as plush rabbit, glass mug, plush fox."
+      "The storage basket is also used for items such as plush rabbit, glass mug.",
+      "The side table is also used for items such as metal book.",
+      "The sofa is also used for items such as plush bear, ceramic mug, plush dog."
     ],
     "receptacles": [
       "coffee table",
@@ -14969,7 +15123,9 @@
       "Soft textile or plush items go to the coffee table.",
       "Wooden, woven, leather, or similar natural-material items go to the storage ottoman.",
       "The coffee table is also used for items such as paperback magazine, room temperature juice, small potted plant.",
-      "The storage ottoman is also used for items such as wooden puzzle, wilted cut flowers, plastic building blocks."
+      "The TV stand is also used for items such as cold soda.",
+      "The storage ottoman is also used for items such as wilted cut flowers, plastic building blocks.",
+      "The side drawer is also used for items such as remote control car."
     ],
     "receptacles": [
       "coffee table",
@@ -15119,9 +15275,11 @@
       "Battery-powered items and powered electronic devices go to the side table.",
       "Fragile items such as glass, ceramic, porcelain, crystal, or other delicate pieces go to the bookshelf.",
       "Large, heavy, or bulky items go to the floor.",
-      "The storage ottoman is also used for items such as small photo frame, jigsaw puzzle, miniature figurine.",
       "The coffee table is also used for items such as plastic cup, wired remote, wired lamp.",
-      "The sofa is also used for items such as stuffed animal."
+      "The bookshelf is also used for items such as compact book.",
+      "The storage ottoman is also used for items such as small photo frame, jigsaw puzzle.",
+      "The sofa is also used for items such as stuffed animal.",
+      "The floor is also used for items such as big plant pot."
     ],
     "receptacles": [
       "coffee table",
@@ -15271,10 +15429,11 @@
     "annotator_notes": [
       "Battery-powered items and powered electronic devices go to the side drawer.",
       "Plastic, foam, rubber, or similar durable synthetic items go to the storage box.",
-      "Wet, cut, spoiled, damaged, dirty, or otherwise degraded items go to the lidded bin.",
       "The coffee table is also used for items such as fresh banana, non-battery remote, ceramic mug.",
-      "The bookshelf is also used for items such as glass vase, wooden bookshelf decor, metal bookshelf decor.",
-      "The storage box is also used for items such as dry lego set, hard plastic robot, dry puzzle pieces."
+      "The lidded bin is also used for items such as overripe banana, wet lego set, wet paper towel.",
+      "The storage box is also used for items such as dry lego set.",
+      "The sofa is also used for items such as plush teddy bear.",
+      "The bookshelf is also used for items such as glass vase, wooden bookshelf decor, metal bookshelf decor."
     ],
     "receptacles": [
       "coffee table",
@@ -15446,8 +15605,10 @@
       "Wired or plug-in items go to the storage ottoman.",
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Paperback or soft-cover reading materials go to the coffee table.",
-      "The coffee table is also used for items such as Paperback book, Dull scissors, Plastic vase.",
-      "The storage ottoman is also used for items such as Corded desk lamp, Sharp scissors, Dirty drinking glass."
+      "The coffee table is also used for items such as Dull scissors, Plastic vase, Notebook.",
+      "The storage ottoman is also used for items such as Sharp scissors, Dirty drinking glass.",
+      "The bookshelf is also used for items such as Ceramic vase.",
+      "The console table is also used for items such as Framed art."
     ],
     "receptacles": [
       "coffee table",
@@ -15598,8 +15759,12 @@
       "Manual or wind-up items go to the storage ottoman.",
       "Hardcover or rigid-cover books go to the bookshelf.",
       "Fragile items such as glass, ceramic, porcelain, crystal, or other delicate pieces go to the storage ottoman.",
-      "The bookshelf is also used for items such as hardcover book, dried rose arrangement, large wall art.",
-      "The media console is also used for items such as wooden tray, LED lamp, corded desk lamp."
+      "The coffee table is also used for items such as fresh rose arrangement.",
+      "The storage ottoman is also used for items such as plastic figurine.",
+      "The bookshelf is also used for items such as dried rose arrangement, large wall art, small picture frame.",
+      "The side table is also used for items such as battery-powered robot.",
+      "The media console is also used for items such as wooden tray, LED lamp, electronic speaker.",
+      "The sofa is also used for items such as softcover book, stuffed animal."
     ],
     "receptacles": [
       "coffee table",

@@ -11,7 +11,7 @@ except ModuleNotFoundError:
 
 
 Strategy = Literal["direct", "preference_first", "parallel_exploration"]
-QuestionPattern = Literal["action_oriented", "preference_eliciting", "preference_summary"]
+QuestionPattern = Literal["action_oriented", "preference_eliciting", "preference_induction"]
 PreferenceSource = Literal["elicited", "induced", "confirmed"]
 
 
@@ -55,19 +55,19 @@ class ActionIntent(BaseModel):
     question: str = Field(description="A direct action-oriented question for this object.")
 
 
-class PreferenceSummaryIntent(BaseModel):
-    question_pattern: Literal["preference_summary"] = "preference_summary"
-    hypothesis: str = Field(description="A short rule hypothesis to summarize and confirm.")
+class PreferenceInductionIntent(BaseModel):
+    question_pattern: Literal["preference_induction"] = "preference_induction"
+    hypothesis: str = Field(description="A short inferred preference hypothesis to confirm.")
     covered_objects: List[str] = Field(
-        description="Seen objects plausibly covered by this summary hypothesis."
+        description="Seen objects plausibly affected by this induced preference."
     )
     priority: float = Field(description="Importance score from 0.0 to 1.0.")
-    question: str = Field(description="A direct preference-summary question for this hypothesis.")
+    question: str = Field(description="A direct preference-induction question for this hypothesis.")
 
 
-class PreferenceSummaryIntentBatch(BaseModel):
-    intents: List[PreferenceSummaryIntent] = Field(
-        description="A small conservative list of preference-summary intents."
+class PreferenceInductionIntentBatch(BaseModel):
+    intents: List[PreferenceInductionIntent] = Field(
+        description="A small conservative list of preference-induction intents."
     )
 
 class AgentState(TypedDict):
@@ -97,7 +97,7 @@ class AgentState(TypedDict):
     # Preference hypotheses still worth asking directly.
     open_preference_hypotheses: List[str]
 
-    # Summary hypotheses that have been explicitly rejected.
+    # Induced preference hypotheses that have been explicitly rejected.
     rejected_hypotheses: List[str]
 
     # Induced but not yet confirmed preference rules.
@@ -119,8 +119,8 @@ __all__ = [
     "PreferenceElicitingIntent",
     "PreferenceElicitingIntentBatch",
     "PreferenceSource",
-    "PreferenceSummaryIntent",
-    "PreferenceSummaryIntentBatch",
+    "PreferenceInductionIntent",
+    "PreferenceInductionIntentBatch",
     "QAItem",
     "QuestionPattern",
     "Strategy",

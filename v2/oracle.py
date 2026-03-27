@@ -83,7 +83,7 @@ How to answer:
 - when giving a placement, use exact receptacle names from the provided receptacles
 - for preference_eliciting questions, answer the hypothesis directly and avoid expanding to multiple unrelated organizing rules
 - for action_oriented questions, give one primary placement recommendation for the target object and avoid hedging between multiple receptacles
-- for preference_summary questions, confirm, reject, or refine only the proposed summary
+- for preference_induction questions, confirm, reject, or refine only the proposed induced preference
 - use gt_seen_placements only as supporting context for the objects relevant to the current question
 - set referenced_receptacle only when the answer clearly supports one primary positive receptacle
 - if there is no single clear positive receptacle reference, set referenced_receptacle to null
@@ -149,9 +149,9 @@ def main() -> None:
         qa_history=[],
     )
 
-    summary_question = "It sounds like you want drinkware grouped in the upper cabinet. Is that right?"
-    summary_response = oracle.answer(
-        question=summary_question,
+    induction_question = "It sounds like you want drinkware grouped in the upper cabinet. Is that right?"
+    induction_response = oracle.answer(
+        question=induction_question,
         room=episode.room,
         receptacles=episode.receptacles,
         seen_objects=episode.seen_objects,
@@ -166,7 +166,7 @@ def main() -> None:
             {
                 "action": action_response.model_dump(),
                 "eliciting": eliciting_response.model_dump(),
-                "summary": summary_response.model_dump(),
+                "induction": induction_response.model_dump(),
             },
             indent=2,
             ensure_ascii=False,

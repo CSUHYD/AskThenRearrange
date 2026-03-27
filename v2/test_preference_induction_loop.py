@@ -11,7 +11,7 @@ try:
     from v2.data import DEFAULT_DATA_PATH, Episode, get_episode
     from v2.evaluation import FinalPlacementPlanner, evaluate_episode_state, plot_accuracy_curve
     from v2.oracle import NaturalUserOracle
-    from v2.proposers import PreferenceSummaryProposer, propose_preference_summary_intents
+    from v2.proposers import PreferenceInductionProposer, propose_preference_induction_intents
     from v2.state_init import build_initial_state
     from v2.state_update import StateUpdate
 except ModuleNotFoundError:
@@ -19,7 +19,7 @@ except ModuleNotFoundError:
     from data import DEFAULT_DATA_PATH, Episode, get_episode
     from evaluation import FinalPlacementPlanner, evaluate_episode_state, plot_accuracy_curve
     from oracle import NaturalUserOracle
-    from proposers import PreferenceSummaryProposer, propose_preference_summary_intents
+    from proposers import PreferenceInductionProposer, propose_preference_induction_intents
     from state_init import build_initial_state
     from state_update import StateUpdate
 
@@ -57,7 +57,7 @@ def _parse_budget_list(value: str) -> List[int]:
     return budgets
 
 
-def _seed_summary_state(state: AgentState) -> AgentState:
+def _seed_induction_state(state: AgentState) -> AgentState:
     seen = state["seen_objects"]
     receptacles = state["receptacles"]
     if len(seen) >= 2 and receptacles:
@@ -69,11 +69,11 @@ def _seed_summary_state(state: AgentState) -> AgentState:
     return state
 
 
-def run_preference_summary_loop(
+def run_preference_induction_loop(
     *,
     episode: Episode,
     state: AgentState,
-    proposer: PreferenceSummaryProposer,
+    proposer: PreferenceInductionProposer,
     oracle: NaturalUserOracle,
     updater: StateUpdate,
 ) -> AgentState:
@@ -81,13 +81,13 @@ def run_preference_summary_loop(
     while state["budget_used"] < state["budget_total"]:
         step_idx += 1
 
-        intents = propose_preference_summary_intents(
+        intents = propose_preference_induction_intents(
             state=state,
             proposer=proposer,
             max_intents=3,
         )
         if not intents:
-            print(f"[step {step_idx}] no preference-summary intent available")
+            print(f"[step {step_idx}] no preference-induction intent available")
             break
 
         intent = intents[0]
@@ -101,7 +101,7 @@ def run_preference_summary_loop(
             qa_history=state["qa_history"],
         )
 
-        state = updater.update_state_from_preference_summary_answer(
+        state = updater.update_state_from_preference_induction_answer(
             state=state,
             hypothesis=intent.hypothesis,
             covered_objects=list(intent.covered_objects),
@@ -126,7 +126,7 @@ def run_preference_summary_loop(
     return state
 
 
-def run_preference_summary_episode(
+def run_preference_induction_episode(
     *,
     episode: Episode,
     budget: int,
@@ -142,8 +142,8 @@ def run_preference_summary_episode(
         strategy="parallel_exploration",
         budget_total=budget,
     )
-    state = _seed_summary_state(state)
-    proposer = PreferenceSummaryProposer(
+    state = _seed_induction_state(state)
+    proposer = PreferenceInductionProposer(
         model=proposer_model,
         base_url=base_url,
         temperature=0.0,
@@ -168,7 +168,7 @@ def run_preference_summary_episode(
         print(json.dumps(_state_snapshot(state), indent=2, ensure_ascii=False))
         print()
 
-    final_state = run_preference_summary_loop(
+    final_state = run_preference_induction_loop(
         episode=episode,
         state=state,
         proposer=proposer,
@@ -185,7 +185,7 @@ def run_preference_summary_episode(
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Smoke test for PreferenceSummaryProposer + Oracle + StateUpdate."
+        description="Smoke test for PreferenceInductionProposer + Oracle + StateUpdate."
     )
     parser.add_argument("--data", type=str, default=str(DEFAULT_DATA_PATH))
     parser.add_argument("--index", type=int, default=0)
@@ -204,7 +204,7 @@ def main() -> None:
     if args.plot_curve:
         curve_points: List[Dict[str, Any]] = []
         for budget in budgets:
-            _, evaluation = run_preference_summary_episode(
+            _, evaluation = run_preference_induction_episode(
                 episode=episode,
                 budget=budget,
                 proposer_model=args.proposer_model,
@@ -222,17 +222,17 @@ def main() -> None:
                 }
             )
 
-        output_path = args.curve_output or "v2/plots/preference_summary_loop_accuracy_curve.png"
+        output_path = args.curve_output or "v2/plots/preference_induction_loop_accuracy_curve.png"
         saved_path = plot_accuracy_curve(
             curve_points,
             output_path=output_path,
-            title=f"Preference-Summary Loop Accuracy vs Budget ({episode.episode_id})",
+            title=f"Preference-Induction Loop Accuracy vs Budget ({episode.episode_id})",
         )
         print(json.dumps({"curve_points": curve_points, "saved_plot": saved_path}, indent=2, ensure_ascii=False))
         return
 
     for budget in budgets:
-        final_state, evaluation = run_preference_summary_episode(
+        final_state, evaluation = run_preference_induction_episode(
             episode=episode,
             budget=budget,
             proposer_model=args.proposer_model,

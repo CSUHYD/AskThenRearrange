@@ -15,8 +15,8 @@ try:
         PreferenceRecord,
         PreferenceElicitingIntent,
         PreferenceElicitingIntentBatch,
-        PreferenceSummaryIntent,
-        PreferenceSummaryIntentBatch,
+        PreferenceInductionIntent,
+        PreferenceInductionIntentBatch,
     )
     from v2.data import get_episode
     from v2.state_init import build_initial_state
@@ -28,8 +28,8 @@ except ModuleNotFoundError:
         PreferenceRecord,
         PreferenceElicitingIntent,
         PreferenceElicitingIntentBatch,
-        PreferenceSummaryIntent,
-        PreferenceSummaryIntentBatch,
+        PreferenceInductionIntent,
+        PreferenceInductionIntentBatch,
     )
     from data import get_episode
     from state_init import build_initial_state
@@ -159,7 +159,7 @@ Avoid questions that:
 Rules:
 - This pattern is always "preference_eliciting".
 - Do not output action-oriented questions.
-- Do not output preference-summary questions.
+- Do not output preference-induction questions.
 - Return at most {max_intents} intents.
 - Each intent must already include a natural user-facing question.
 - Use only exact seen object names in covered_objects.
@@ -321,7 +321,7 @@ Rules:
 - Do not ask about purchasing, planning, unrelated tasks, or any object other than the chosen object.
 - Be conservative and stable.
 - Prefer boundary_probe only when there is a plausible confirmed preference whose boundary can be tested with the object.
-- Use the guidance as a soft instruction for whether this turn should probe a boundary, clean up a concrete placement, or collect evidence that could support a future summary.
+- Use the guidance as a soft instruction for whether this turn should probe a boundary, clean up a concrete placement, or collect evidence that could support a future induced preference.
 """.strip()
 
         recent_qa_history = state["qa_history"][-3:]
@@ -394,14 +394,14 @@ def _normalize_action_intent(
 
 
 # =========================================================
-# Preference-summary proposer
+# Preference-induction proposer
 # =========================================================
 
-class PreferenceSummaryProposer:
+class PreferenceInductionProposer:
     """
-    Proposer for Preference-summary questions.
+    Proposer for Preference-induction questions.
 
-    These questions summarize a candidate rule inferred from existing evidence
+    These questions induce a candidate preference from existing evidence
     and ask the user to confirm or refine it.
     """
 
@@ -418,7 +418,7 @@ class PreferenceSummaryProposer:
             reasoning=False,
         )
         self.structured_model = self.model.with_structured_output(
-            PreferenceSummaryIntentBatch
+            PreferenceInductionIntentBatch
         )
 
     def propose(
@@ -427,32 +427,53 @@ class PreferenceSummaryProposer:
         state: AgentState,
         max_intents: int = 3,
         guidance: str = "",
-    ) -> List[PreferenceSummaryIntent]:
+    ) -> List[PreferenceInductionIntent]:
 
         system_prompt = f"""
-You are a proposer for preference-summary questions in a household rearrangement task.
+You are a proposer for preference-induction questions in a household rearrangement task.
 
 Your job:
-Propose a small number of high-value summary questions that are worth spending budget on.
+Propose a small number of high-value questions that induce an inferred user preference and ask the user to confirm, reject, or refine it.
 
-Choose summaries whose confirmation is most likely to:
-- explain multiple confirmed_actions or unresolved objects
-- compress existing object-level evidence into a useful placement rule
-- reduce uncertainty not already resolved by confirmed_preferences
+Important:
+- Asking a preference-induction question is already the chosen next move.
+- Do not decide whether induction is appropriate.
+- Your only job is to propose the best preference-induction question now.
 
-Avoid summaries that:
+The inferred preference may be based on:
+- one informative confirmed action
+- multiple confirmed actions
+- recent QA history
+- alignment between observed placements and open preference hypotheses
+
+Choose inductions whose confirmation is most likely to:
+- improve placement decisions for unresolved objects
+- turn current evidence into a reusable user preference
+- clarify whether an observed object-level placement reflects a broader rule
+
+Avoid inductions that:
 - restate an already confirmed preference
-- are too weak or too narrow to affect future placement decisions
-- only describe one object unless no broader summary remains
+- merely repeat one object's placement without proposing a broader preference
+- are so vague that they would not guide future placements
+- collapse back into an action-oriented or preference-eliciting question
+- group together objects that do not share a clear placement-relevant property
+- expand covered_objects beyond what the current evidence can realistically support
 
 Rules:
-- This pattern is always "preference_summary".
+- This pattern is always "preference_induction".
 - Do not output action-oriented questions.
 - Do not output preference-eliciting questions.
 - Return at most {max_intents} intents.
-- Each intent must already include a natural user-facing summary question.
+- Each intent must already include a natural user-facing induction question.
 - Use only exact seen object names in covered_objects.
-- Use the guidance as a soft instruction about what kind of summary is most useful to confirm next.
+- covered_objects must be conservative and tightly grounded in the current evidence.
+- Include an object in covered_objects only if the inferred preference plausibly applies to it for a concrete placement-related reason.
+- Do not include objects merely because they are also unresolved or happen to share a receptacle in one example.
+- If the evidence mainly supports one object category, keep covered_objects focused on that category.
+- If you cannot justify a broader generalization, use a narrower induced preference.
+- When evidence is limited, phrase the induction conservatively as a plausible general preference to confirm.
+- The induction should still express a generalized preference, not just a single-object placement.
+- Use the guidance as a soft instruction about what kind of induced preference is most useful to confirm next.
 """.strip()
 
         user_prompt = f"""
@@ -465,6 +486,9 @@ Seen objects:
 Unresolved objects:
 {state["unresolved_objects"]}
 
+Open preference hypotheses:
+{state["open_preference_hypotheses"]}
+
 Existing preference candidates:
 {state["preference_candidates"]}
 
@@ -474,18 +498,25 @@ Confirmed preferences:
 Rejected hypotheses:
 {state["rejected_hypotheses"]}
 
+Recent QA history:
+{state["qa_history"][-3:]}
+
 Guidance:
 {guidance}
 
-Choose the most useful summary question, not just a plausible one.
-Use confirmed_actions as the main evidence source, and prefer a summary whose confirmation would improve future placement decisions.
+Choose the most useful induction question, not just a plausible one.
+A good induction may generalize from a single informative action if that generalization would help with other unresolved objects.
+Do not require multiple confirmed actions.
+Prefer an induced preference whose confirmation would improve future placement decisions beyond the one object that originally provided the evidence.
+Prefer hypotheses grounded in a clear shared property such as material, fragility, power source, display vs storage, reading material, or drinkware.
+Be especially careful not to mix unrelated objects into one induced preference unless the state provides strong evidence for that grouping.
 
 Each intent must include:
-- question_pattern = "preference_summary"
-- hypothesis = a concise summary rule to confirm
-- covered_objects = exact seen objects plausibly covered by the summary
+- question_pattern = "preference_induction"
+- hypothesis = a concise induced preference rule to confirm
+- covered_objects = exact seen objects plausibly covered by the induced preference
 - priority = 0.0 to 1.0
-- question = one concise natural summary question
+- question = one concise natural induction question that asks the user to confirm, reject, or refine that inferred preference
 """.strip()
 
         result = self.structured_model.invoke(
@@ -494,24 +525,24 @@ Each intent must include:
                 {"role": "user", "content": user_prompt},
             ]
         )
-        return _normalize_preference_summary_intents(
+        return _normalize_preference_induction_intents(
             intents=result.intents,
             state=state,
             max_intents=max_intents,
         )
 
 
-def _normalize_preference_summary_intents(
+def _normalize_preference_induction_intents(
     *,
-    intents: List[PreferenceSummaryIntent],
+    intents: List[PreferenceInductionIntent],
     state: AgentState,
     max_intents: int,
-) -> List[PreferenceSummaryIntent]:
+) -> List[PreferenceInductionIntent]:
     allowed_objects = set(state["seen_objects"])
     existing_hypotheses = _existing_preference_texts(state)
     rejected_hypotheses = {item.strip().lower() for item in state["rejected_hypotheses"] if item.strip()}
 
-    normalized: List[PreferenceSummaryIntent] = []
+    normalized: List[PreferenceInductionIntent] = []
     seen_signatures = set()
 
     for item in intents:
@@ -529,7 +560,7 @@ def _normalize_preference_summary_intents(
             obj for obj in _dedupe_keep_order(list(item.covered_objects))
             if obj in allowed_objects
         ]
-        if len(covered_objects) < 2:
+        if not covered_objects:
             continue
 
         signature = (
@@ -541,8 +572,8 @@ def _normalize_preference_summary_intents(
         seen_signatures.add(signature)
 
         normalized.append(
-            PreferenceSummaryIntent(
-                question_pattern="preference_summary",
+            PreferenceInductionIntent(
+                question_pattern="preference_induction",
                 hypothesis=hypothesis,
                 covered_objects=covered_objects,
                 priority=_clip_priority(item.priority),
@@ -575,12 +606,12 @@ def propose_action_intent(
     return proposer.propose(state=state)
 
 
-def propose_preference_summary_intents(
+def propose_preference_induction_intents(
     *,
     state: AgentState,
-    proposer: PreferenceSummaryProposer,
+    proposer: PreferenceInductionProposer,
     max_intents: int = 3,
-) -> List[PreferenceSummaryIntent]:
+) -> List[PreferenceInductionIntent]:
     intents = proposer.propose(state=state, max_intents=max_intents)
     for intent in intents:
         _upsert_preference_candidate(
@@ -624,7 +655,7 @@ def main() -> None:
         "--mode",
         type=str,
         default="all",
-        choices=["eliciting", "action", "summary", "all"],
+        choices=["eliciting", "action", "induction", "all"],
         help="Which proposer(s) to test.",
     )
     parser.add_argument(
@@ -662,7 +693,7 @@ def main() -> None:
         base_url=args.base_url,
         temperature=0.0,
     )
-    summary_proposer = PreferenceSummaryProposer(
+    induction_proposer = PreferenceInductionProposer(
         model=args.model,
         base_url=args.base_url,
         temperature=0.0,
@@ -688,19 +719,19 @@ def main() -> None:
         print(intent.model_dump() if intent is not None else None)
         print()
 
-    if args.mode in ("summary", "all"):
-        print("=== Preference-summary proposer ===")
-        # Mock a little evidence so summary proposer has something to infer from
+    if args.mode in ("induction", "all"):
+        print("=== Preference-induction proposer ===")
+        # Mock a little evidence so induction proposer has something to infer from
         state["confirmed_actions"] = {
             state["seen_objects"][0]: state["receptacles"][0],
             state["seen_objects"][1]: state["receptacles"][0],
         }
-        print("=== Current State For Preference-summary ===")
+        print("=== Current State For Preference-induction ===")
         print(json.dumps(state, indent=2, ensure_ascii=False))
         print()
-        intents = propose_preference_summary_intents(
+        intents = propose_preference_induction_intents(
             state=state,
-            proposer=summary_proposer,
+            proposer=induction_proposer,
             max_intents=3,
         )
         for intent in intents:

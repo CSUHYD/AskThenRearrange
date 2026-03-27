@@ -123,7 +123,7 @@ class QuestionPolicyController:
     ) -> List[QuestionPattern]:
         can_eliciting = bool(state["open_preference_hypotheses"])
         can_action = bool(state["unresolved_objects"])
-        can_summary = self._summary_is_available(state=state)
+        can_induction = self._induction_is_available(state=state)
 
         if mode == "direct_querying":
             return ["action_oriented"] if can_action else []
@@ -140,14 +140,14 @@ class QuestionPolicyController:
             allowed: List[QuestionPattern] = []
             if can_action:
                 allowed.append("action_oriented")
-            if can_summary:
-                allowed.append("preference_summary")
+            if can_induction:
+                allowed.append("preference_induction")
             return allowed
 
         if mode == "hybrid_all":
             allowed: List[QuestionPattern] = []
-            if can_summary:
-                allowed.append("preference_summary")
+            if can_induction:
+                allowed.append("preference_induction")
             if can_eliciting:
                 allowed.append("preference_eliciting")
             if can_action:
@@ -156,17 +156,8 @@ class QuestionPolicyController:
 
         raise ValueError(f"Unsupported policy mode: {mode}")
 
-    def _summary_is_available(self, *, state: AgentState) -> bool:
-        summarized_objects = set()
-        for item in state["confirmed_preferences"]:
-            summarized_objects.update(item.get("covered_objects", []))
-
-        unsummarized_action_count = sum(
-            1 for obj in state["confirmed_actions"] if obj not in summarized_objects
-        )
-        return bool(state["preference_candidates"]) or (
-            len(state["confirmed_actions"]) >= 2 and unsummarized_action_count >= 2
-        )
+    def _induction_is_available(self, *, state: AgentState) -> bool:
+        return bool(state["preference_candidates"]) or bool(state["confirmed_actions"])
 
     def _system_prompt(self, *, mode: PolicyMode) -> str:
         if mode == "direct_querying":
@@ -174,7 +165,7 @@ class QuestionPolicyController:
 Strategy: Direct Querying.
 - Choose action_oriented to directly resolve one unresolved object's placement.
 - Prefer the next question that is most likely to yield a concrete object-level placement.
-- Do not choose preference_eliciting or preference_summary.
+- Do not choose preference_eliciting or preference_induction.
 """.strip()
         elif mode == "user_preference_first":
             strategy_block = """
@@ -182,25 +173,28 @@ Strategy: User-Preference-First.
 - Choose preference_eliciting when an open preference hypothesis could clarify placements for multiple unresolved objects.
 - Choose action_oriented when unresolved objects are ambiguous under the current confirmed_preferences and an object-level question would better test a boundary or resolve a concrete uncertainty.
 - If an open preference hypothesis is too narrow to affect only one unresolved object, prefer action_oriented instead.
-- Do not choose preference_summary in this strategy.
+- Do not choose preference_induction in this strategy.
 """.strip()
         elif mode == "parallel_exploration":
             strategy_block = """
 Strategy: parallel-exploration.
-- Choose action_oriented when the next object-level answer would most usefully extend current evidence, test a partial pattern, or create support for a future summary.
+- Choose action_oriented when the next object-level answer would most usefully gather new grounding evidence, test the boundary of an emerging pattern, or reduce uncertainty for a specific unresolved object.
 - Prefer action questions that build on current confirmed_actions or confirmed_preferences rather than isolated one-off placements.
-- Choose preference_summary when existing confirmed_actions already support a stable multi-object rule that is worth confirming.
-- Do not choose preference_summary too early when the current evidence is still sparse, weak, or fragmented.
+- Choose preference_induction when the current evidence already supports a plausible user preference that is worth explicitly confirming now.
+- A plausible preference may be supported by one highly informative action answer, by multiple confirmed actions, or by a combination of recent QA history and observed placements.
+- Do not require multiple confirmed actions before choosing preference_induction.
+- Prefer preference_induction when confirming the inferred preference would improve decisions for other unresolved objects beyond the currently discussed object.
+- Prefer action_oriented when the current evidence is still too object-specific, too weak, or too ambiguous to support a useful generalized preference.
 - Do not choose preference_eliciting in this strategy.
 """.strip()
         else:
             strategy_block = """
 Strategy: Hybrid-All.
-- You may choose among preference_eliciting, action_oriented, and preference_summary.
+- You may choose among preference_eliciting, action_oriented, and preference_induction.
 - Choose preference_eliciting when a missing high-level preference could clarify placements for multiple unresolved objects.
 - Choose action_oriented when uncertainty is concentrated on specific unresolved objects and would be better reduced by grounding a concrete placement or testing the boundary of an existing preference.
-- Choose preference_summary when existing confirmed_actions already support a stable multi-object rule that is worth confirming.
-- Do not choose preference_summary too early when the current action evidence is still sparse or weak.
+- Choose preference_induction when current evidence supports a plausible preference that is worth explicitly confirming.
+- Do not choose preference_induction too early when the current evidence is still sparse, weak, or overly object-specific.
 - Do not default to any pattern solely because it is available.
 - Choose the pattern that would reduce the most uncertainty in the current AgentState.
 """.strip()
@@ -216,16 +210,16 @@ The guidance should:
 - be one sentence
 - explain what the proposer should focus on next
 - not be a full user-facing question
-- help the proposer choose a good object, hypothesis, or summary
+- help the proposer choose a good object, hypothesis, or induction
 
 General rules:
 - Use only the allowed question patterns.
 - Respect the strategy instructions.
 - Be conservative and state-driven.
 - Base the decision only on the provided AgentState summary.
-- If action_oriented is chosen, the guidance may suggest probing a boundary or collecting evidence for a future summary, but do not mention internal code concepts.
+- If action_oriented is chosen, the guidance may suggest probing a boundary or collecting evidence for a future induction, but do not mention internal code concepts.
 - If preference_eliciting is chosen, the guidance should emphasize unresolved high-level preferences.
-- If preference_summary is chosen, the guidance should emphasize confirming or refining a summary that is already supported by evidence.
+- If preference_induction is chosen, the guidance should emphasize confirming or refining an inferred preference that is already supported by current evidence.
 
 {strategy_block}
 
@@ -289,11 +283,11 @@ Current state:
             if mode == "user_preference_first":
                 return "Ask an action question that checks the boundary of an already known preference or cleans up a remaining concrete placement."
             if mode == "parallel_exploration":
-                return "Ask an action question that collects object-level evidence likely to support a future summary rule."
+                return "Ask an action question that collects object-level evidence likely to support a future induced preference."
             return "Ask an action question that resolves one unresolved object's placement clearly."
         if question_pattern == "preference_eliciting":
             return "Ask about the most useful unresolved high-level preference that can affect multiple visible objects."
-        return "Ask a summary question that confirms or refines a rule already supported by accumulated evidence."
+        return "Ask an induction question that confirms or refines an inferred preference already supported by accumulated evidence."
 
 
 __all__ = [

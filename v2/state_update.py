@@ -53,8 +53,8 @@ class PreferenceElicitingInterpretation(BaseModel):
     rejected_hypotheses: List[str] = Field(default_factory=list)
 
 
-class PreferenceSummaryInterpretation(BaseModel):
-    update_type: Literal["confirmed_rule", "reject_summary", "rule_with_exception"]
+class PreferenceInductionInterpretation(BaseModel):
+    update_type: Literal["confirmed_rule", "reject_induction", "rule_with_exception"]
     confirmed_preference: Optional[PreferenceRecordModel] = None
     exception_actions: List[ObjectPlacementModel] = Field(default_factory=list)
     rejected_hypotheses: List[str] = Field(default_factory=list)
@@ -79,7 +79,7 @@ class StateUpdate:
         )
         self.action_model = self.model.with_structured_output(ActionAnswerInterpretation)
         self.preference_eliciting_model = self.model.with_structured_output(PreferenceElicitingInterpretation)
-        self.preference_summary_model = self.model.with_structured_output(PreferenceSummaryInterpretation)
+        self.preference_induction_model = self.model.with_structured_output(PreferenceInductionInterpretation)
         self.open_dimensions_update_model = self.model.with_structured_output(OpenPreferenceDimensionsUpdate)
 
     def interpret_action_answer(
@@ -185,14 +185,13 @@ Interpretation priority:
 Rules:
 - use only exact receptacle names from the provided receptacles
 - use only exact seen object names in confirmed_preference.covered_objects and exception_actions
-- if the answer supports a stable rule, put it in confirmed_preference with source = "elicited"
-- confirmed_preference.covered_objects must be a subset of the current intent_covered_objects that is explicitly supported by the answer
-- only use the full current intent_covered_objects when the answer clearly supports the whole set
-- make the confirmed_preference concrete enough to guide future placements
-- if the answer clearly gives one shared receptacle that applies to the supported covered_objects, prefer setting confirmed_preference.target_receptacle to that receptacle
+- if the answer supports a stable rule, return it in confirmed_preference with source = "elicited"
+- confirmed_preference must be concrete enough to guide future placements
+- confirmed_preference.covered_objects must be a subset of the current intent_covered_objects and should include only objects explicitly supported by the answer
+- use the full current intent_covered_objects only when the answer clearly supports the whole set
+- if one shared receptacle clearly applies to the supported covered_objects, prefer setting confirmed_preference.target_receptacle to that receptacle
 - if the hypothesis is rejected, add the target hypothesis or a short equivalent text to rejected_hypotheses
-- rejected_hypotheses should normally be non-empty when update_type = "reject_hypothesis"
-- if the answer gives explicit object-level placements, include them in exception_actions even when update_type = "reject_hypothesis"
+- if the answer gives explicit object-level placements, preserve them in exception_actions even when the hypothesis is rejected
 - use exception_actions only for clearly stated object -> receptacle facts; do not invent missing objects or receptacles
 - be conservative
 """.strip()
@@ -243,7 +242,7 @@ Current rejected_hypotheses:
             ]
         )
 
-    def interpret_preference_summary_answer(
+    def interpret_preference_induction_answer(
         self,
         *,
         state: AgentState,
@@ -251,35 +250,34 @@ Current rejected_hypotheses:
         covered_objects: List[str],
         answer: str,
         question: Optional[str] = None,
-    ) -> PreferenceSummaryInterpretation:
+    ) -> PreferenceInductionInterpretation:
         system_prompt = """
-You interpret a preference-summary answer for a household rearrangement agent.
+You interpret a preference-induction answer for a household rearrangement agent.
 
 Return exactly one update type:
 - confirmed_rule:
-  the answer confirms or refines a summary rule that is useful for future placement decisions
-- reject_summary:
-  the answer rejects the current summary hypothesis
+  the answer confirms or refines an induced preference that is useful for future placement decisions
+- reject_induction:
+  the answer rejects the current induced preference hypothesis
 - rule_with_exception:
   the answer confirms a useful rule and also gives one or more object-level exceptions
 
 Rules:
 - use only exact receptacle names from the provided receptacles
 - use only exact seen object names in covered_objects and exception_actions
-- if the answer confirms or refines a stable rule, put it in confirmed_preference with source = "confirmed"
-- confirmed_preference.covered_objects must be a subset of the current intent_covered_objects that is explicitly supported by the answer
-- only use the full current intent_covered_objects when the answer clearly supports the whole set
-- make the confirmed_preference concrete enough to guide future placements, not just restate the summary vaguely
-- if the summary is rejected, add the target hypothesis or a short equivalent text to rejected_hypotheses
-- rejected_hypotheses should normally be non-empty when update_type = "reject_summary"
-- if the user rejects the current summary but provides a better stable rule, prefer returning confirmed_rule or rule_with_exception instead of reject_summary
+- if the answer confirms or refines a stable rule, return it in confirmed_preference with source = "confirmed"
+- confirmed_preference must be concrete enough to guide future placements, not just restate the induction vaguely
+- confirmed_preference.covered_objects must be a subset of the current intent_covered_objects and should include all objects clearly supported by the answer
+- use the full current intent_covered_objects when the answer affirms the induction without narrowing it
+- if the induction is rejected, add the target hypothesis or a short equivalent text to rejected_hypotheses
+- if the user rejects the current induction but provides a better stable rule, prefer confirmed_rule or rule_with_exception over reject_induction
 - if there is an exception object with a clear placement, add it to exception_actions
 - be conservative
 """.strip()
 
         user_prompt = f"""
 Question pattern:
-preference_summary
+preference_induction
 
 Target hypothesis:
 {hypothesis}
@@ -315,33 +313,33 @@ Current rejected_hypotheses:
 {state["rejected_hypotheses"]}
 """.strip()
 
-        return self.preference_summary_model.invoke(
+        return self.preference_induction_model.invoke(
             [
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt},
             ]
         )
 
-    def apply_preference_summary_interpretation(
+    def apply_preference_induction_interpretation(
         self,
         *,
         state: AgentState,
         hypothesis: str,
         covered_objects: List[str],
         answer: str,
-        interpretation: PreferenceSummaryInterpretation,
+        interpretation: PreferenceInductionInterpretation,
         question: Optional[str] = None,
     ) -> AgentState:
         _append_qa_history(
             state=state,
-            question_pattern="preference_summary",
+            question_pattern="preference_induction",
             target=hypothesis,
             answer=answer,
             question=question,
         )
         _remove_preference_candidate(state, hypothesis)
 
-        if interpretation.update_type == "reject_summary":
+        if interpretation.update_type == "reject_induction":
             rejected = interpretation.rejected_hypotheses or [hypothesis]
             state["rejected_hypotheses"] = _dedupe_keep_order([*state["rejected_hypotheses"], *rejected])
             return recompute_online_placements(state)
@@ -373,7 +371,7 @@ Current rejected_hypotheses:
             _apply_confirmed_actions(state=state, placements=interpretation.exception_actions)
             return recompute_online_placements(state)
 
-        raise ValueError(f"Unsupported preference summary update_type: {interpretation.update_type}")
+        raise ValueError(f"Unsupported preference induction update_type: {interpretation.update_type}")
 
     def apply_action_interpretation(
         self,
@@ -529,7 +527,7 @@ Current rejected_hypotheses:
         self.update_open_preference_hypotheses(state=state)
         return state
 
-    def update_state_from_preference_summary_answer(
+    def update_state_from_preference_induction_answer(
         self,
         *,
         state: AgentState,
@@ -538,14 +536,14 @@ Current rejected_hypotheses:
         answer: str,
         question: Optional[str] = None,
     ) -> AgentState:
-        interpretation = self.interpret_preference_summary_answer(
+        interpretation = self.interpret_preference_induction_answer(
             state=state,
             hypothesis=hypothesis,
             covered_objects=covered_objects or [],
             answer=answer,
             question=question,
         )
-        return self.apply_preference_summary_interpretation(
+        return self.apply_preference_induction_interpretation(
             state=state,
             hypothesis=hypothesis,
             covered_objects=covered_objects or [],
