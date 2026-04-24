@@ -31,19 +31,16 @@ export default function SceneIntro({ trial }: Props) {
         </div>
 
         <div className="scene-section">
-          <h4>可见物品（共 {trial.seen_objects.length} 件）</h4>
+          <h4>
+            物品（可见 {trial.seen_objects.length} 件 / 隐藏{' '}
+            {trial.unseen_objects.length} 件）
+          </h4>
           <div className="tag-list">
             {trial.seen_objects.map((o) => (
               <span key={o} className="tag">
                 {zh(o)}
               </span>
             ))}
-          </div>
-        </div>
-
-        <div className="scene-section">
-          <h4>隐藏物品（共 {trial.unseen_objects.length} 件）</h4>
-          <div className="tag-list">
             {trial.unseen_objects.map((o) => (
               <span key={o} className="tag unseen">
                 {zh(o)}

@@ -14,21 +14,6 @@
 
 ---
 
-## 论文当前状态
-
-| 章节 | 状态 |
-|---|---|
-| Abstract / Introduction / Related Work | ✅ 已按 IJHCS 规范重写 |
-| §3 Human–Human Study | ✅ 正文完成，κ 值 / Fisher p 值待填（TODO 标注） |
-| §4 System Design (PrefQuest) | ✅ 完成 |
-| §5 Simulation Study (Study 1) | ✅ 完成，GPT-5-Chat 全量数据 |
-| §6.1–6.6 User Study 方法部分 | ⏳ 设计方案讨论中 |
-| §6.7–6.9 User Study 结果部分 | ⏳ 待 Study 2 数据收集后填写 |
-| §7 Discussion §5.4 / Conclusion | ⏳ 待 Study 2 后补充 |
-| Appendix D–F（场景材料/拉丁方/访谈提纲）| ⏳ 待 Study 2 设计定稿后填写 |
-
----
-
 ## 写作任务规范（必须执行）
 
 **每次润色、扩写、新写 main.tex 任何部分之前**，必须按顺序读取：
@@ -42,15 +27,39 @@
 
 ## 术语红线（不查文件也必须记住）
 
+### 编码层级：模式 vs 策略
+
+两个层级必须严格区分，不得混用：
+
+| 层级 | 内容 | 正确英文术语 | 正确中文 |
+|---|---|---|---|
+| 意图级（二级）| AO / PE / PI | **questioning modes** | 问题模式 |
+| 策略级（三级）| TO / UL / LL / HYB | **questioning strategies** | 提问策略 |
+
+### 问题模式（questioning modes）
+
+| 模式 | 全称 | 认识论角色 | 禁止写法 |
+|---|---|---|---|
+| **AO** | Action-Oriented | Executor（执行者）| — |
+| **PE** | Preference-Eliciting | Receiver（接收者）| ~~PE strategy~~（PE 是模式不是策略）|
+| **PI** | Preference-Induction | Active Constructor（主动建构者）| ~~PS~~（旧术语，已废弃）|
+
+### 提问策略（questioning strategies）
+
+| 策略 | 全称 | 模式组合 | 认识论角色 | 旧名（禁止）|
+|---|---|---|---|---|
+| **TO** | Task-Only | AO only | Executor | ~~DQ~~ |
+| **UL** | User-Led | PE → AO | Receiver | ~~UPF~~ |
+| **LL** | Learner-Led | AO ↔ PI | Active Constructor | ~~PAR~~ |
+| **HYB** | Hybrid-All | 自适应组合 | — | ~~HA~~ |
+
+### 其他术语
+
 | 概念 | 正确写法 | 禁止写法 |
 |---|---|---|
-| Parallel Exploration 策略 | **PAR** | ~~PE~~（PE 已被 Preference-Eliciting 占用） |
-| Hybrid-All 策略 | **HYB** | ~~HA~~ |
-| Preference-Eliciting 问题元素 | **PE** | ~~PE strategy~~ |
-| Preference-Induction 问题元素 | **PI** | ~~PS~~（PS 是 HHI 编码中的旧术语） |
-| 主指标 | **unseen PSR**（Preference Satisfaction Rate） | ~~unseen accuracy~~（已统一为 PSR） |
-| 预算 | **$B$**（数学模式） | ~~budget B~~（非数学模式） |
-| p 值格式 | **p = .001**（无前导零） | ~~p = 0.001~~ |
+| 主指标 | **unseen PSR**（Preference Satisfaction Rate）| ~~unseen accuracy~~ |
+| 预算 | **$B$**（数学模式）| ~~budget B~~（非数学模式）|
+| p 值格式 | **p = .001**（无前导零）| ~~p = 0.001~~ |
 
 ---
 
@@ -58,13 +67,33 @@
 
 以下数字来自 GPT-5-Chat 全量实验（n = 102 episodes），是论文 Abstract 和 Results 的权威数字：
 
-- UPF unseen PSR @ B=5：**85.2%** ± 1.6 SE
-- DQ unseen PSR @ B=5：**72.7%** ± 2.1 SE
+- UL unseen PSR @ B=5：**85.2%** ± 1.6 SE
+- TO unseen PSR @ B=5：**72.7%** ± 2.1 SE
 - 差值：**+12.5 pp**，Wilcoxon W = 94，p < .001
-- HYB vs UPF @ B=5：p = .085（不显著）
-- HYB vs UPF @ B=10：p = .796（不显著）
+- HYB vs UL @ B=5：p = .085（不显著）
+- HYB vs UL @ B=10：p = .796（不显著）
 
-Qwen3-8B 的数字（UPF 69.8% / DQ 58.7%）仅用于 Appendix C，不得出现在主文。
+Qwen3-8B 的数字（UL 69.8% / TO 58.7%）仅用于 Appendix C，不得出现在主文。
+
+---
+
+## §3.3 编码框架核心决策（已定稿）
+
+以下决策已通过充分讨论确认，不得在写作中回退：
+
+**框架结构（Route B）**
+- 三级层次编码：先验分析维度（§3.3.1）→ 意图级编码（§3.3.2）→ 策略识别（§3.3.3）
+- 两个分析维度从迭代编码中归纳涌现，理论框架（Levinson 1983；Fürnkranz & Hüllermeier 2010）作为事后验证，而非推导来源
+- K-type（Shin et al., 2023）作为编码辅助工具提一句，不构成框架的推导来源
+- Wilson（1999）已完全删除，不得引回
+
+**IRR 数据**（四编码者，N = 139 问题）
+- 意图级：Cohen's κ₁ = .870（HCI 编码者 A×B，差异最大配对），Krippendorff's α₁ = .927（四编码者联合）
+- 策略级：Cohen's κ₂ = 1.000（完美一致）
+- 7 处分歧分布于三条维度边界（AO↔PE 3处，AO↔PI 3处，PE↔PI 1处），作为维度数据来源的独立佐证
+- HHI 策略分布：TO = 4（28.6%），UL = 7（50.0%），LL = 3（21.4%），HYB-HHI = 0（未观察到）
+
+**中文草稿**：`docs/section_3_3_draft_zh.md`（v3，当前权威版本）
 
 ---
 
@@ -81,7 +110,8 @@ AskThenRearrange/
 │   ├── writing_logic_guide.md         ← 论证结构与叙事逻辑规范
 │   ├── system_overview.md             ← PrefQuest 技术架构说明
 │   ├── study2_frontend_PRD.md         ← Study 2 前端系统需求文档（给开发者）
-│   └── study2_session_sop.md          ← Study 2 实验员操作 SOP（给实验员，含问卷题目）
+│   ├── study2_session_sop.md          ← Study 2 实验员操作 SOP（给实验员，含问卷题目）
+│   └── section_3_3_draft_zh.md        ← §3.3 中文草稿 v3（当前权威，待翻译入 main.tex）
 ├── logs/
 │   └── ablation_full_qwen3.jsonl      ← Qwen3 全量实验日志
 └── plots/
