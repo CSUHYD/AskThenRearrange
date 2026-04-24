@@ -1,0 +1,260 @@
+{
+  "metadata": {
+    "study": "E1",
+    "task": "Refrigerator organisation (result-oriented)",
+    "total_dyads": 14,
+    "description": "All learner questions from 14 E1 HHI dyads. Raw KCQ codes included; intent labels (AO/PE/PI) and pattern labels (DQ/UPF/PAR) are intentionally OMITTED for independent coding.",
+    "phase_legend": {
+      "pre-task": "Green text in original PDF — pre-arrangement thinking phase",
+      "during-task": "Black text in original PDF — during arrangement execution phase"
+    },
+    "k_legend": {
+      "K1": "Identity",
+      "K2": "Class",
+      "K3": "Attributes",
+      "K5": "Spatial Layout",
+      "K6": "Temporal Relation",
+      "K7": "Contents",
+      "K10": "Internal State (contents/function)",
+      "K11": "Internal State (preference/habit)"
+    },
+    "c_legend": {
+      "C1": "Knowledge (recall/recognition)",
+      "C2": "Comprehension",
+      "C3": "Operation (procedural/action)",
+      "C4": "Evaluation"
+    },
+    "q_legend": {
+      "Q1": "Verification",
+      "Q2": "Case Specification",
+      "Q6": "Definition",
+      "Q12": "Method Explication",
+      "Q14": "Judging"
+    }
+  },
+  "dyads": [
+    {
+      "dyad_id": "GH010044",
+      "n_questions": 11,
+      "questions": [
+        {"id": "GH010044_Q01", "text": "请问你一般把牛奶放在那", "phase": "during-task", "k": "K5", "referent": "object", "c": "C1", "q": "Q2"},
+        {"id": "GH010044_Q02", "text": "左边右边，还是都可以", "phase": "during-task", "k": "K5", "referent": "spatial", "c": "C4", "q": "Q2"},
+        {"id": "GH010044_Q03", "text": "其他的，比如说水果之类的，一般会放在哪呢", "phase": "during-task", "k": "K5", "referent": "object", "c": "C3", "q": "Q2"},
+        {"id": "GH010044_Q04", "text": "就这里吗（用手指）", "phase": "during-task", "k": "K5", "referent": "spatial", "c": "C4", "q": "Q1"},
+        {"id": "GH010044_Q05", "text": "那一些其他的吃的，比如零食、面等会放在哪", "phase": "during-task", "k": "K5", "referent": "object", "c": "C3", "q": "Q2"},
+        {"id": "GH010044_Q06", "text": "你觉得我这样摆得可以吗（指右侧门边）", "phase": "during-task", "k": "K5", "referent": "spatial", "c": "C4", "q": "Q1"},
+        {"id": "GH010044_Q07", "text": "你不太喝可乐是吗", "phase": "during-task", "k": "K11", "referent": "user", "c": "C1", "q": "Q2"},
+        {"id": "GH010044_Q08", "text": "其他的呢，像这些呢（指其他饮料）", "phase": "during-task", "k": "K5", "referent": "object", "c": "C3", "q": "Q2"},
+        {"id": "GH010044_Q09", "text": "那我收拾成这样，你觉得满意吗", "phase": "during-task", "k": "K11", "referent": "user", "c": "C4", "q": "Q1"},
+        {"id": "GH010044_Q10", "text": "这个药在里边藏着，刚刚没发现，你觉得这个药需要放在哪里", "phase": "during-task", "k": "K5", "referent": "spatial", "c": "C3", "q": "Q2"},
+        {"id": "GH010044_Q11", "text": "这个抽屉里还有东西", "phase": "during-task", "k": "K5", "referent": "spatial", "c": "C3", "q": "Q1"}
+      ]
+    },
+    {
+      "dyad_id": "GH010044!!",
+      "n_questions": 10,
+      "notes": "Q01 coded K11/user/C1/Q2 in original but semantically asks about organising preference — possible coding inconsistency vs C4/Q14. Include in IRR.",
+      "questions": [
+        {"id": "GH010044!!_Q01", "text": "你一般习惯怎么整理冰箱，是按照饮料偏好吗，还是盒子类型来整理", "phase": "pre-task", "k": "K11", "referent": "user", "c": "C1", "q": "Q2"},
+        {"id": "GH010044!!_Q02", "text": "一层放酒，一层放饮料是吗？", "phase": "during-task", "k": "K5", "referent": "other", "c": "C3", "q": "Q2"},
+        {"id": "GH010044!!_Q03", "text": "物品优先放在哪个区域", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q2"},
+        {"id": "GH010044!!_Q04", "text": "水果的话放在上面还是下面呢", "phase": "during-task", "k": "K5", "referent": "other", "c": "C3", "q": "Q2"},
+        {"id": "GH010044!!_Q05", "text": "牛奶是放在饮料的下面还是上面", "phase": "during-task", "k": "K5", "referent": "other", "c": "C3", "q": "Q2"},
+        {"id": "GH010044!!_Q06", "text": "那已经开封的食品放在哪里呢", "phase": "during-task", "k": "K5", "referent": "other", "c": "C3", "q": "Q2"},
+        {"id": "GH010044!!_Q07", "text": "那这层我放没有开封的，这层放已经开封的可以吗", "phase": "during-task", "k": "K5", "referent": "other", "c": "C3", "q": "Q1"},
+        {"id": "GH010044!!_Q08", "text": "冰箱两侧放酒跟饮料，下面的话我尽量给你码得整齐一点", "phase": "during-task", "k": "K5", "referent": "other", "c": "C3", "q": "Q2"},
+        {"id": "GH010044!!_Q09", "text": "只要开封了我就放第一层，可以吧", "phase": "during-task", "k": "K5", "referent": "user", "c": "C4", "q": "Q1"},
+        {"id": "GH010044!!_Q10", "text": "这样可以吗", "phase": "during-task", "k": "K11", "referent": "user", "c": "C4", "q": "Q1"}
+      ]
+    },
+    {
+      "dyad_id": "GH010046",
+      "n_questions": 5,
+      "questions": [
+        {"id": "GH010046_Q01", "text": "牛奶放不下了，放这里是不是好一些", "phase": "during-task", "k": "K5", "referent": "other", "c": "C4", "q": "Q1"},
+        {"id": "GH010046_Q02", "text": "小杯的酸奶放在哪里", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q2"},
+        {"id": "GH010046_Q03", "text": "两瓶饮料能放这边吗", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q1"},
+        {"id": "GH010046_Q04", "text": "放不下怎么办", "phase": "during-task", "k": "K5", "referent": "other", "c": "C3", "q": "Q12"},
+        {"id": "GH010046_Q05", "text": "食物放这里可以吗", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q1"}
+      ]
+    },
+    {
+      "dyad_id": "GH010048",
+      "n_questions": 13,
+      "notes": "User had proactive self-correction behaviour during task.",
+      "questions": [
+        {"id": "GH010048_Q01", "text": "你一般喜欢怎么整理冰箱，按照饮料偏好还是按照比如盒子的形状整理", "phase": "pre-task", "k": "K11", "referent": "user", "c": "C4", "q": "Q14"},
+        {"id": "GH010048_Q02", "text": "这个区域优先放在这里还是放在这两边呢", "phase": "during-task", "k": "K5", "referent": "spatial", "c": "C1", "q": "Q1"},
+        {"id": "GH010048_Q03", "text": "水果你希望放在下面还是上面", "phase": "during-task", "k": "K5", "referent": "spatial", "c": "C1", "q": "Q1"},
+        {"id": "GH010048_Q04", "text": "牛奶希望放在饮料的上面还是下面呢", "phase": "during-task", "k": "K5", "referent": "spatial", "c": "C1", "q": "Q1"},
+        {"id": "GH010048_Q05", "text": "那些已经开封的食品放在哪里", "phase": "during-task", "k": "K5", "referent": "spatial", "c": "C3", "q": "Q12"},
+        {"id": "GH010048_Q06", "text": "是放在这里还是统一的放在这", "phase": "during-task", "k": "K5", "referent": "spatial", "c": "C1", "q": "Q1"},
+        {"id": "GH010048_Q07", "text": "那这一层放开封的，这一层放没有开封的可以吗", "phase": "during-task", "k": "K5", "referent": "spatial", "c": "C1", "q": "Q1"},
+        {"id": "GH010048_Q08", "text": "这两边放酒和饮料，下面我也尽量给你摆放的整齐一些", "phase": "during-task", "k": "K5", "referent": "spatial", "c": "C3", "q": "Q12"},
+        {"id": "GH010048_Q09", "text": "已经开封的，没有开封的，左边放酒右边放饮料，可以吗（用手指，总结整理规则）", "phase": "during-task", "k": "K5", "referent": "spatial", "c": "C1", "q": "Q1"},
+        {"id": "GH010048_Q10", "text": "那么这些东西呢？只要没开封的都放这一层", "phase": "during-task", "k": "K5", "referent": "spatial", "c": "C1", "q": "Q1"},
+        {"id": "GH010048_Q11", "text": "水果那怕这一层我也拿下来", "phase": "during-task", "k": "K5", "referent": "spatial", "c": "C3", "q": "Q12"},
+        {"id": "GH010048_Q12", "text": "酒放在这一层可以嘛", "phase": "during-task", "k": "K5", "referent": "spatial", "c": "C1", "q": "Q1"},
+        {"id": "GH010048_Q13", "text": "牛奶放不下，怎么办", "phase": "during-task", "k": "K5", "referent": "spatial", "c": "C3", "q": "Q12"}
+      ]
+    },
+    {
+      "dyad_id": "GH010050",
+      "n_questions": 9,
+      "questions": [
+        {"id": "GH010050_Q01", "text": "你希望这个冰箱怎么整理排列", "phase": "pre-task", "k": "K10", "referent": "user", "c": "C4", "q": "Q14"},
+        {"id": "GH010050_Q02", "text": "你希望不同的东西怎么定义呢", "phase": "pre-task", "k": "K2", "referent": "user", "c": "C1", "q": "Q6"},
+        {"id": "GH010050_Q03", "text": "你希望把不同东西隔离起来吗", "phase": "pre-task", "k": "K10", "referent": "user", "c": "C1", "q": "Q1"},
+        {"id": "GH010050_Q04", "text": "这放饮料可以吗", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q1"},
+        {"id": "GH010050_Q05", "text": "那么我把牛奶放完，然后摆放其他饮料？", "phase": "during-task", "k": "K6", "referent": "other", "c": "C1", "q": "Q1"},
+        {"id": "GH010050_Q06", "text": "摆放在这两个地方，好拿一点？", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q1"},
+        {"id": "GH010050_Q07", "text": "你希望面条应该放在哪里？", "phase": "during-task", "k": "K5", "referent": "user", "c": "C1", "q": "Q2"},
+        {"id": "GH010050_Q08", "text": "我把这些蘸料等食材有关的东西放在这里可以吗", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q1"},
+        {"id": "GH010050_Q09", "text": "这放其他食物可以吗", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q1"}
+      ]
+    },
+    {
+      "dyad_id": "GH010052",
+      "n_questions": 21,
+      "notes": "3 pre-task (green) + 18 during-task (black). Highest question count in dataset.",
+      "questions": [
+        {"id": "GH010052_Q01", "text": "你希望我怎么整理冰箱？", "phase": "pre-task", "k": "K11", "referent": "user", "c": "C4", "q": "Q14"},
+        {"id": "GH010052_Q02", "text": "瓶子大小顺序有要求吗", "phase": "pre-task", "k": "K5", "referent": "user", "c": "C1", "q": "Q1"},
+        {"id": "GH010052_Q03", "text": "下面的盒子是用来放水果的吗？", "phase": "pre-task", "k": "K5", "referent": "user", "c": "C1", "q": "Q1"},
+        {"id": "GH010052_Q04", "text": "塑料瓶和纸盒需要分开吗", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q1"},
+        {"id": "GH010052_Q05", "text": "椰奶也算奶吗", "phase": "during-task", "k": "K3", "referent": "other", "c": "C1", "q": "Q1"},
+        {"id": "GH010052_Q06", "text": "你觉得这个瓶子算纸盒还是塑料", "phase": "during-task", "k": "K3", "referent": "other", "c": "C2", "q": "Q6"},
+        {"id": "GH010052_Q07", "text": "你希望牛奶横着摆放还是竖着", "phase": "during-task", "k": "K5", "referent": "user", "c": "C1", "q": "Q1"},
+        {"id": "GH010052_Q08", "text": "这是茶叶吗", "phase": "during-task", "k": "K2", "referent": "other", "c": "C1", "q": "Q1"},
+        {"id": "GH010052_Q09", "text": "你觉得可乐放在哪里", "phase": "during-task", "k": "K5", "referent": "user", "c": "C1", "q": "Q2"},
+        {"id": "GH010052_Q10", "text": "你觉得奶油算牛奶吗", "phase": "during-task", "k": "K3", "referent": "other", "c": "C1", "q": "Q1"},
+        {"id": "GH010052_Q11", "text": "醋该放在哪里呢", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q2"},
+        {"id": "GH010052_Q12", "text": "这是什么东西", "phase": "during-task", "k": "K1", "referent": "other", "c": "C1", "q": "Q6"},
+        {"id": "GH010052_Q13", "text": "火锅调料放在这可以吗", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q1"},
+        {"id": "GH010052_Q14", "text": "水果你希望按什么分类", "phase": "during-task", "k": "K5", "referent": "user", "c": "C3", "q": "Q12"},
+        {"id": "GH010052_Q15", "text": "橙子放边上好还是蓝莓放边上", "phase": "during-task", "k": "K5", "referent": "user", "c": "C1", "q": "Q1"},
+        {"id": "GH010052_Q16", "text": "西红柿放哪里", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q2"},
+        {"id": "GH010052_Q17", "text": "水果应该放在哪里", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q2"},
+        {"id": "GH010052_Q18", "text": "这还有咖啡，放在哪里", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q2"},
+        {"id": "GH010052_Q19", "text": "调料之类的放在哪里", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q2"},
+        {"id": "GH010052_Q20", "text": "那我把调料放这里可以吗", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q1"},
+        {"id": "GH010052_Q21", "text": "发泥放在哪", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q2"}
+      ]
+    },
+    {
+      "dyad_id": "GH010054",
+      "n_questions": 1,
+      "notes": "Robot was very passive; user proactively guided the entire arrangement after this single question.",
+      "questions": [
+        {"id": "GH010054_Q01", "text": "你希望我怎么整理冰箱？", "phase": "pre-task", "k": "K11", "referent": "user", "c": "C4", "q": "Q14"}
+      ]
+    },
+    {
+      "dyad_id": "GH010056",
+      "n_questions": 3,
+      "notes": "Robot has low initiative; user very proactive and self-directed.",
+      "questions": [
+        {"id": "GH010056_Q01", "text": "按形状排还是按食物类型排", "phase": "pre-task", "k": "K11", "referent": "user", "c": "C4", "q": "Q14"},
+        {"id": "GH010056_Q02", "text": "哪些是常用的？", "phase": "pre-task", "k": "K7", "referent": "other", "c": "C1", "q": "Q2"},
+        {"id": "GH010056_Q03", "text": "调料都放这边吧？", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q1"}
+      ]
+    },
+    {
+      "dyad_id": "GH010058",
+      "n_questions": 10,
+      "notes": "Strongest preference-eliciting pattern in dataset; nearly all questions are K11/user/C4.",
+      "questions": [
+        {"id": "GH010058_Q01", "text": "你一般喜欢所有东西按照种类放吗", "phase": "pre-task", "k": "K11", "referent": "user", "c": "C4", "q": "Q14"},
+        {"id": "GH010058_Q02", "text": "你更喜欢横着摆放还是竖着？还是根据空间大小决定？", "phase": "pre-task", "k": "K11", "referent": "user", "c": "C4", "q": "Q14"},
+        {"id": "GH010058_Q03", "text": "现在的冰箱有什么你感觉不舒服的么", "phase": "pre-task", "k": "K11", "referent": "user", "c": "C4", "q": "Q14"},
+        {"id": "GH010058_Q04", "text": "基本规则是上面摆放的浅下面深吗？还是你更希望按照个人习惯", "phase": "pre-task", "k": "K5", "referent": "user", "c": "C1", "q": "Q1"},
+        {"id": "GH010058_Q05", "text": "这个冰箱比较高，你会把上面的空间也利用上吗，还是根据身高合适摆放", "phase": "pre-task", "k": "K5", "referent": "other", "c": "C4", "q": "Q14"},
+        {"id": "GH010058_Q06", "text": "在这个冰箱里，你使用频率最高的是什么东西？", "phase": "pre-task", "k": "K7", "referent": "other", "c": "C4", "q": "Q14"},
+        {"id": "GH010058_Q07", "text": "你会经常用到食物嘛", "phase": "pre-task", "k": "K7", "referent": "other", "c": "C4", "q": "Q14"},
+        {"id": "GH010058_Q08", "text": "零食吃的多吗？", "phase": "pre-task", "k": "K7", "referent": "other", "c": "C4", "q": "Q14"},
+        {"id": "GH010058_Q09", "text": "总结一下：按照功能区摆放，不常用的放在不容易够到的地方，饮料放在旁边，尽量从大到小摆放。这是这样吗", "phase": "pre-task", "k": "K10", "referent": "user", "c": "C1", "q": "Q1"},
+        {"id": "GH010058_Q10", "text": "对于冰箱深度，你会喜欢放在触手可及的地方，还是考虑摆放物体的稳定，比如放在外面会倒下来？", "phase": "pre-task", "k": "K11", "referent": "user", "c": "C4", "q": "Q14"}
+      ]
+    },
+    {
+      "dyad_id": "GH010060",
+      "n_questions": 14,
+      "notes": "Highly procedural robot — starts by clarifying sequence, then works through items by category.",
+      "questions": [
+        {"id": "GH010060_Q01", "text": "请问你先让我整理侧面还是中间", "phase": "during-task", "k": "K6", "referent": "spatial", "c": "C1", "q": "Q1"},
+        {"id": "GH010060_Q02", "text": "请问从左面开始还是右边", "phase": "during-task", "k": "K5", "referent": "spatial", "c": "C1", "q": "Q1"},
+        {"id": "GH010060_Q03", "text": "请问先规划液体是嘛", "phase": "during-task", "k": "K6", "referent": "spatial", "c": "C1", "q": "Q1"},
+        {"id": "GH010060_Q04", "text": "请问冰箱有三栏，液体放哪一栏", "phase": "during-task", "k": "K5", "referent": "spatial", "c": "C1", "q": "Q2"},
+        {"id": "GH010060_Q05", "text": "请问酸奶算液体吗", "phase": "during-task", "k": "K2", "referent": "other", "c": "C1", "q": "Q1"},
+        {"id": "GH010060_Q06", "text": "请问奶油算液体还是？", "phase": "during-task", "k": "K2", "referent": "other", "c": "C1", "q": "Q1"},
+        {"id": "GH010060_Q07", "text": "请问发泥算液体吗", "phase": "during-task", "k": "K2", "referent": "other", "c": "C1", "q": "Q1"},
+        {"id": "GH010060_Q08", "text": "现在我已经整理完所有液体，请问怎么摆放", "phase": "during-task", "k": "K5", "referent": "spatial", "c": "C3", "q": "Q12"},
+        {"id": "GH010060_Q09", "text": "花生酱用袋子装的，算液体吗", "phase": "during-task", "k": "K2", "referent": "other", "c": "C1", "q": "Q1"},
+        {"id": "GH010060_Q10", "text": "请问右侧面摆放完成了，可以开始放左侧面吗？", "phase": "during-task", "k": "K5", "referent": "spatial", "c": "C1", "q": "Q1"},
+        {"id": "GH010060_Q11", "text": "现在液体整理完成了，下一步整理什么", "phase": "during-task", "k": "K7", "referent": "other", "c": "C1", "q": "Q2"},
+        {"id": "GH010060_Q12", "text": "请问鱿鱼丝算生鲜吗", "phase": "during-task", "k": "K2", "referent": "other", "c": "C1", "q": "Q1"},
+        {"id": "GH010060_Q13", "text": "请问这是什么（拿着问）", "phase": "during-task", "k": "K1", "referent": "other", "c": "C1", "q": "Q6"},
+        {"id": "GH010060_Q14", "text": "请问剩下的东西怎么整理", "phase": "during-task", "k": "K5", "referent": "spatial", "c": "C3", "q": "Q12"}
+      ]
+    },
+    {
+      "dyad_id": "GH010062",
+      "n_questions": 13,
+      "notes": "Q01 is preference-seeking about overall food/drink separation principle. Q11 presents a bundled placement proposal (put this below, this above).",
+      "questions": [
+        {"id": "GH010062_Q01", "text": "你会把食品和饮料摆放在一起吗", "phase": "pre-task", "k": "K11", "referent": "user", "c": "C4", "q": "Q14"},
+        {"id": "GH010062_Q02", "text": "首先，饮料和水要摆放在侧面吗", "phase": "during-task", "k": "K5", "referent": "user", "c": "C1", "q": "Q1"},
+        {"id": "GH010062_Q03", "text": "每种饮料的不同类型会摆放在一起吗", "phase": "during-task", "k": "K5", "referent": "user", "c": "C1", "q": "Q1"},
+        {"id": "GH010062_Q04", "text": "配料放哪里", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q2"},
+        {"id": "GH010062_Q05", "text": "醋放在哪里", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q2"},
+        {"id": "GH010062_Q06", "text": "蘸料都放一起是吗？", "phase": "during-task", "k": "K5", "referent": "user", "c": "C1", "q": "Q1"},
+        {"id": "GH010062_Q07", "text": "可乐放哪里", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q2"},
+        {"id": "GH010062_Q08", "text": "酸奶放侧面可以么", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q1"},
+        {"id": "GH010062_Q09", "text": "发泥先放这边可以吗", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q1"},
+        {"id": "GH010062_Q10", "text": "要把水果放这一层吗？", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q1"},
+        {"id": "GH010062_Q11", "text": "把这个放下面，这个放上面，怎么样", "phase": "during-task", "k": "K5", "referent": "other", "c": "C4", "q": "Q14"},
+        {"id": "GH010062_Q12", "text": "这是茶、酒、牛奶，怎么放？都放在上面吗？", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q2"},
+        {"id": "GH010062_Q13", "text": "面横着放还是竖着", "phase": "during-task", "k": "K3", "referent": "other", "c": "C1", "q": "Q1"}
+      ]
+    },
+    {
+      "dyad_id": "GH010064",
+      "n_questions": 8,
+      "notes": "User very forthcoming after single PE question; proactively guided placement.",
+      "questions": [
+        {"id": "GH010064_Q01", "text": "你希望按品类整理吗？比如这里放牛奶，这里放酸奶（手指）", "phase": "pre-task", "k": "K11", "referent": "user", "c": "C4", "q": "Q14"},
+        {"id": "GH010064_Q02", "text": "这里放全部水果是吧", "phase": "pre-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q1"},
+        {"id": "GH010064_Q03", "text": "调味料吗？放侧面吗", "phase": "pre-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q1"},
+        {"id": "GH010064_Q04", "text": "巧克力放这里吗？", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q1"},
+        {"id": "GH010064_Q05", "text": "茶包放这里吧？", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q1"},
+        {"id": "GH010064_Q06", "text": "鱿鱼片呢？", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q1"},
+        {"id": "GH010064_Q07", "text": "鲜奶呢放哪里", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q2"},
+        {"id": "GH010064_Q08", "text": "火锅蘸料放哪里", "phase": "during-task", "k": "K5", "referent": "other", "c": "C1", "q": "Q2"}
+      ]
+    },
+    {
+      "dyad_id": "GH010067",
+      "n_questions": 7,
+      "notes": "Robot opens with a full proposed layout plan asking for evaluation — the defining PAR-type opening.",
+      "questions": [
+        {"id": "GH010067_Q01", "text": "我整理的话，会把牛奶放这里，饮料放这里，水果放这里……你觉得怎么样？", "phase": "pre-task", "k": "K11", "referent": "user", "c": "C4", "q": "Q14"},
+        {"id": "GH010067_Q02", "text": "这一层比较隔离，适合放水果对么？", "phase": "during-task", "k": "K5", "referent": "spatial", "c": "C1", "q": "Q1"},
+        {"id": "GH010067_Q03", "text": "蘑菇酱放上面吗？", "phase": "during-task", "k": "K5", "referent": "spatial", "c": "C1", "q": "Q1"},
+        {"id": "GH010067_Q04", "text": "火锅蘸料放不下了，怎么办", "phase": "during-task", "k": "K5", "referent": "spatial", "c": "C3", "q": "Q12"},
+        {"id": "GH010067_Q05", "text": "巧克力要冷藏吗？", "phase": "during-task", "k": "K7", "referent": "other", "c": "C1", "q": "Q1"},
+        {"id": "GH010067_Q06", "text": "这是什么？", "phase": "during-task", "k": "K1", "referent": "other", "c": "C1", "q": "Q6"},
+        {"id": "GH010067_Q07", "text": "还有一瓶水怎么办？", "phase": "during-task", "k": "K5", "referent": "spatial", "c": "C3", "q": "Q12"}
+      ]
+    },
+    {
+      "dyad_id": "GH010069",
+      "n_questions": 4,
+      "questions": [
+        {"id": "GH010069_Q01", "text": "你希望用什么方式优先整理这个冰箱", "phase": "pre-task", "k": "K11", "referent": "user", "c": "C4", "q": "Q14"},
+        {"id": "GH010069_Q02", "text": "总结一下，首先按照类型放，然后按照保质期放？", "phase": "pre-task", "k": "K6", "referent": "user", "c": "C1", "q": "Q1"},
+        {"id": "GH010069_Q03", "text": "你对物品位置有要求吗？", "phase": "pre-task", "k": "K11", "referent": "user", "c": "C4", "q": "Q14"},
+        {"id": "GH010069_Q04", "text": "椰汁要竖起来吗？", "phase": "during-task", "k": "K5", "referent": "spatial", "c": "C1", "q": "Q1"}
+      ]
+    }
+  ]
+}

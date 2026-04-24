@@ -1,0 +1,233 @@
+{
+  "coder": "A",
+  "role": "HCI researcher",
+  "dyads": [
+    {
+      "dyad_id": "GH010044",
+      "pattern_label": "DQ",
+      "pattern_rationale": "No PE or PI questions. All questions resolve concrete placement or operational decisions for specific items.",
+      "questions": [
+        {"id": "GH010044_Q01", "intent_label": "AO", "note": "Single item (milk) placement query."},
+        {"id": "GH010044_Q02", "intent_label": "AO", "note": "Follow-up spatial clarification for milk (left/right). Resolves one placement."},
+        {"id": "GH010044_Q03", "intent_label": "AO?", "note": "Asks where fruit/others generally go ('一般会放在哪'). The '一般' implies habit, but the answer resolves the placement of a specific named category rather than eliciting a broader organising principle. Coded AO with uncertainty flag."},
+        {"id": "GH010044_Q04", "intent_label": "AO", "note": "Gestural verification of a specific location. Resolves one placement."},
+        {"id": "GH010044_Q05", "intent_label": "AO", "note": "Multi-item AO: asks where snacks and noodles go. No generalizable rule proposed or elicited."},
+        {"id": "GH010044_Q06", "intent_label": "AO", "note": "Arrangement confirmation for a specific zone (right door panel)."},
+        {"id": "GH010044_Q07", "intent_label": "AO", "note": "Factual query about user's cola consumption habits (K11), supporting a placement decision. No organising principle elicited."},
+        {"id": "GH010044_Q08", "intent_label": "AO", "note": "Placement query for other drinks (gestural, specific items). AO."},
+        {"id": "GH010044_Q09", "intent_label": "AO", "note": "Overall satisfaction check with the completed arrangement. Does not propose or elicit a generalizable rule; resolves acceptance of one outcome."},
+        {"id": "GH010044_Q10", "intent_label": "AO", "note": "Single item (medicine) placement query."},
+        {"id": "GH010044_Q11", "intent_label": "AO", "note": "Functionally a statement/alert about items in a drawer, serving as an operational action prompt. Coded AO."}
+      ]
+    },
+    {
+      "dyad_id": "GH010044!!",
+      "pattern_label": "UPF",
+      "pattern_rationale": "First preference question (Q01) is PE — Learner invites User to articulate general organising habit before execution begins. Subsequent PI questions (Q02, Q07, Q09) appear after the PE opener. Rule 2 applies.",
+      "questions": [
+        {"id": "GH010044!!_Q01", "intent_label": "PE", "note": "Pre-task. Asks how user generally organises the fridge (by drink preference or container type). User generates the preference content. PE despite raw code C1/Q2 — semantically elicits a general organising principle (per coding manual note on K11/C1 vs C4 inconsistency)."},
+        {"id": "GH010044!!_Q02", "intent_label": "PI", "note": "Learner proposes a generalizable layer-assignment rule (one layer for wine, one for drinks) and asks User to confirm. The hypothesis covers a zone/category and would apply to all items in those categories."},
+        {"id": "GH010044!!_Q03", "intent_label": "AO", "note": "Asks which zone items should go in first. Operational priority query — resolves one procedural decision."},
+        {"id": "GH010044!!_Q04", "intent_label": "AO", "note": "Single category (fruit) placement: top or bottom? AO."},
+        {"id": "GH010044!!_Q05", "intent_label": "AO", "note": "Single item (milk) placement relative to drinks. AO."},
+        {"id": "GH010044!!_Q06", "intent_label": "AO", "note": "Category placement query: where do opened food items go? Resolves a concrete zone assignment for a named category."},
+        {"id": "GH010044!!_Q07", "intent_label": "PI", "note": "Learner proposes a generalizable rule: one layer for unopened items, one layer for opened items. Hypothesis covers all items of each type — generalizable if confirmed."},
+        {"id": "GH010044!!_Q08", "intent_label": "AO?", "note": "Declarative statement of arrangement plan (sides = wine and drinks; bottom = stacked neatly) rather than an explicit question. Functionally seeks implicit approval. Coded AO because no explicit generalizable rule is being validated; the question mark reflects the ambiguous interrogative status of this utterance."},
+        {"id": "GH010044!!_Q09", "intent_label": "PI", "note": "Per the coding manual example: '只要开封了我就放第一层，可以吧' is a PI candidate. Learner proposes a rule: any opened item → first layer. The rule is generalizable (covers all opened items, not only named ones)."},
+        {"id": "GH010044!!_Q10", "intent_label": "AO", "note": "General 'Is this OK?' satisfaction check. Resolves acceptance of the overall arrangement outcome. No generalizable rule proposed."}
+      ]
+    },
+    {
+      "dyad_id": "GH010046",
+      "pattern_label": "DQ",
+      "pattern_rationale": "All five questions are AO. Learner works through specific items and operational problems without eliciting or proposing any organising principle.",
+      "questions": [
+        {"id": "GH010046_Q01", "intent_label": "AO", "note": "Single item (milk) placement proposal when space is tight. Per coding manual example: '牛奶放不下了，放这里是不是好一些 → AO'."},
+        {"id": "GH010046_Q02", "intent_label": "AO", "note": "Single item (small yogurt cups) placement query."},
+        {"id": "GH010046_Q03", "intent_label": "AO", "note": "Multi-item AO: two specific drink bottles, one placement proposal."},
+        {"id": "GH010046_Q04", "intent_label": "AO", "note": "Operational problem: what to do when items don't fit. Per coding manual example: '放不下怎么办 → AO'."},
+        {"id": "GH010046_Q05", "intent_label": "AO", "note": "Slot confirmation: food placed here? AO."}
+      ]
+    },
+    {
+      "dyad_id": "GH010048",
+      "pattern_label": "UPF",
+      "pattern_rationale": "First preference question (Q01) is PE — Learner asks how User generally likes to organise before execution. Rule 2 applies.",
+      "questions": [
+        {"id": "GH010048_Q01", "intent_label": "PE", "note": "Pre-task, K11/C4/Q14. Asks how User generally likes to organise (by drink preference or container shape). User generates the preference content. PE."},
+        {"id": "GH010048_Q02", "intent_label": "AO", "note": "Asks where a specific zone/item should go (middle vs. sides). Specific placement decision."},
+        {"id": "GH010048_Q03", "intent_label": "AO", "note": "Single item category (fruit): top or bottom? Despite '你希望' language, concerns a single item's position — AO per borderline case note in coding manual."},
+        {"id": "GH010048_Q04", "intent_label": "AO", "note": "Single item (milk) position relative to drinks. AO despite '希望' language — same reasoning as Q03."},
+        {"id": "GH010048_Q05", "intent_label": "AO", "note": "Category placement query: where do opened food items go? Resolves one concrete zone decision."},
+        {"id": "GH010048_Q06", "intent_label": "AO", "note": "Clarification of specific placement (here vs. there). AO."},
+        {"id": "GH010048_Q07", "intent_label": "PI", "note": "Learner proposes a rule: one layer for opened items, one layer for unopened items. Generalizable rule covering all items by opened/unopened status."},
+        {"id": "GH010048_Q08", "intent_label": "AO?", "note": "Declarative statement of plan (sides = wine and drinks; bottom = neat) rather than a clear question. Functionally seeks implicit approval. Coded AO because no explicit generalizable rule is submitted for validation; uncertainty flag for the ambiguous interrogative status."},
+        {"id": "GH010048_Q09", "intent_label": "PI", "note": "Explicitly labeled 'summary of organising rules' in the JSON. Learner synthesises inferred rules (opened/unopened distinction + left=wine, right=drinks) and asks for validation. Classic PI per coding manual pattern: 'Summary check of inferred rules → PI'."},
+        {"id": "GH010048_Q10", "intent_label": "PI", "note": "Proposes a generalizable rule: all unopened items → this layer. The scope is all future unopened items, not just the ones currently in hand."},
+        {"id": "GH010048_Q11", "intent_label": "AO?", "note": "Statement about fruit placement ('I'll bring fruit down to this layer'). Functionally declarative/operational rather than a clear question. Coded AO with uncertainty flag."},
+        {"id": "GH010048_Q12", "intent_label": "AO", "note": "Single item (wine) placement confirmation. AO."},
+        {"id": "GH010048_Q13", "intent_label": "AO", "note": "Operational problem: milk doesn't fit. AO."}
+      ]
+    },
+    {
+      "dyad_id": "GH010050",
+      "pattern_label": "UPF",
+      "pattern_rationale": "First preference question (Q01) is PE — Learner opens with a broad open question about how User wants the fridge organised. Rule 2 applies.",
+      "questions": [
+        {"id": "GH010050_Q01", "intent_label": "PE", "note": "Pre-task. '你希望这个冰箱怎么整理排列' — broad open question inviting User to express their desired organisation method. User generates the preference content. PE (per coding manual example)."},
+        {"id": "GH010050_Q02", "intent_label": "PE", "note": "Pre-task. '你希望不同的东西怎么定义呢' — asks User how they want to categorise/classify different items. Elicits a classification principle; User generates the answer. PE."},
+        {"id": "GH010050_Q03", "intent_label": "PE", "note": "Pre-task. '你希望把不同东西隔离起来吗' — asks about User's general separation preference. The answer applies across categories. PE."},
+        {"id": "GH010050_Q04", "intent_label": "AO", "note": "Slot confirmation: drinks placed here? AO."},
+        {"id": "GH010050_Q05", "intent_label": "AO", "note": "Operational sequence confirmation: milk first, then other drinks? AO (procedural, not preference-seeking)."},
+        {"id": "GH010050_Q06", "intent_label": "AO", "note": "Single placement decision (two spots for easier access). AO."},
+        {"id": "GH010050_Q07", "intent_label": "AO", "note": "Single item (noodles) placement despite '你希望' language. AO (single item = AO per coding manual)."},
+        {"id": "GH010050_Q08", "intent_label": "AO", "note": "Slot confirmation for condiments and related items. AO."},
+        {"id": "GH010050_Q09", "intent_label": "AO", "note": "Slot confirmation for other food. AO."}
+      ]
+    },
+    {
+      "dyad_id": "GH010052",
+      "pattern_label": "UPF",
+      "pattern_rationale": "First preference question (Q01) is PE — Learner opens with a broad PE question. Rule 2 applies.",
+      "questions": [
+        {"id": "GH010052_Q01", "intent_label": "PE", "note": "Pre-task. '你希望我怎么整理冰箱？' — broad open question inviting User to express their general organising preference. PE."},
+        {"id": "GH010052_Q02", "intent_label": "PE", "note": "Pre-task. '瓶子大小顺序有要求吗' — asks if User has requirements for size ordering of bottles. Invites User to articulate a sorting preference that would apply across multiple items. PE."},
+        {"id": "GH010052_Q03", "intent_label": "AO", "note": "Pre-task. Asks if the bottom box is for fruit — factual/zone identity check. AO."},
+        {"id": "GH010052_Q04", "intent_label": "PE", "note": "During-task. '塑料瓶和纸盒需要分开吗' — asks about a general separation principle (plastic bottles vs. cartons). The answer would apply across all items of these types. PE."},
+        {"id": "GH010052_Q05", "intent_label": "AO", "note": "Classification check: does coconut milk count as milk? AO (identity/classification to support one placement decision)."},
+        {"id": "GH010052_Q06", "intent_label": "AO", "note": "Classification check: is this bottle a carton or plastic? AO."},
+        {"id": "GH010052_Q07", "intent_label": "AO", "note": "Single item (milk) orientation despite '你希望' language. AO per coding manual borderline case note."},
+        {"id": "GH010052_Q08", "intent_label": "AO", "note": "Identity check: is this tea? AO per coding manual example ('这是茶叶吗 → AO')."},
+        {"id": "GH010052_Q09", "intent_label": "AO", "note": "Single item (cola) placement. AO."},
+        {"id": "GH010052_Q10", "intent_label": "AO", "note": "Classification: does cream count as milk? AO."},
+        {"id": "GH010052_Q11", "intent_label": "AO", "note": "Single item (vinegar) placement. AO."},
+        {"id": "GH010052_Q12", "intent_label": "AO", "note": "Identity question. AO per coding manual example ('这是什么 → AO')."},
+        {"id": "GH010052_Q13", "intent_label": "AO", "note": "Slot confirmation for hot pot seasoning. AO."},
+        {"id": "GH010052_Q14", "intent_label": "PE", "note": "'水果你希望按什么分类' — asks User to articulate their preferred classification principle for fruit. User generates the content. PE."},
+        {"id": "GH010052_Q15", "intent_label": "AO", "note": "Two specific items (orange vs. blueberry), one concrete placement decision. AO."},
+        {"id": "GH010052_Q16", "intent_label": "AO", "note": "Single item (tomato) placement. AO."},
+        {"id": "GH010052_Q17", "intent_label": "AO", "note": "Category placement query: where does fruit go? AO (resolves placement for one category)."},
+        {"id": "GH010052_Q18", "intent_label": "AO", "note": "Single item (coffee) placement. AO."},
+        {"id": "GH010052_Q19", "intent_label": "AO", "note": "Category placement query: where do condiments go? AO."},
+        {"id": "GH010052_Q20", "intent_label": "AO", "note": "Slot confirmation for condiments. AO."},
+        {"id": "GH010052_Q21", "intent_label": "AO", "note": "Single item (hair mud/发泥) placement. AO."}
+      ]
+    },
+    {
+      "dyad_id": "GH010054",
+      "pattern_label": "UPF",
+      "pattern_rationale": "Single question is PE. Rule 2 applies.",
+      "questions": [
+        {"id": "GH010054_Q01", "intent_label": "PE", "note": "'你希望我怎么整理冰箱？' — broad open question inviting User to express general organising preference. User was so forthcoming that this single question was sufficient. PE."}
+      ]
+    },
+    {
+      "dyad_id": "GH010056",
+      "pattern_label": "UPF",
+      "pattern_rationale": "First preference question (Q01) is PE — Learner asks about general organising method (by shape or by food type). Rule 2 applies.",
+      "questions": [
+        {"id": "GH010056_Q01", "intent_label": "PE", "note": "Pre-task. '按形状排还是按食物类型排' — asks User to choose between two organising principles. Answer would generalize across all items. PE."},
+        {"id": "GH010056_Q02", "intent_label": "AO", "note": "'哪些是常用的？' — factual query about which items are frequently used. Supports subsequent placement decisions (frequent items → accessible spots) but does not elicit an organising principle. AO."},
+        {"id": "GH010056_Q03", "intent_label": "AO", "note": "Slot confirmation: condiments all go on this side? AO (specific category, single placement decision)."}
+      ]
+    },
+    {
+      "dyad_id": "GH010058",
+      "pattern_label": "UPF",
+      "pattern_rationale": "First preference question (Q01) is PE — Learner opens with a general preference question about organising by type. Rule 2 applies. (Q09 is PI but appears after multiple PE questions; per coding manual Rule 1, pattern is determined by the first preference question.)",
+      "questions": [
+        {"id": "GH010058_Q01", "intent_label": "PE", "note": "Pre-task. '你一般喜欢所有东西按照种类放吗' — per coding manual example: 'PE'. Asks about general organising preference (by category). User generates the answer."},
+        {"id": "GH010058_Q02", "intent_label": "PE", "note": "Pre-task. '你更喜欢横着摆放还是竖着？还是根据空间大小决定？' — asks about general orientation preference (horizontal vs. vertical or by space). Applies across multiple items. PE."},
+        {"id": "GH010058_Q03", "intent_label": "PE", "note": "Pre-task. '现在的冰箱有什么你感觉不舒服的么' — elicits User's pain points with the current arrangement (implicit preference elicitation). User articulates what they dislike; the answer informs general organising goals. PE."},
+        {"id": "GH010058_Q04", "intent_label": "PE", "note": "Pre-task. '基本规则是上面摆放的浅下面深吗？还是你更希望按照个人习惯' — asks User to choose between a general depth-placement rule or personal habit. Invites User to articulate a general depth-management preference. PE."},
+        {"id": "GH010058_Q05", "intent_label": "PE", "note": "Pre-task. '这个冰箱比较高，你会把上面的空间也利用上吗，还是根据身高合适摆放' — asks about User's preference for vertical space utilisation. General preference question; User generates the answer. PE."},
+        {"id": "GH010058_Q06", "intent_label": "AO", "note": "Pre-task. '在这个冰箱里，你使用频率最高的是什么东西？' — factual query about most frequently used items (K7). Supports placement decisions but does not elicit an organising principle — User states facts, not preferences. AO."},
+        {"id": "GH010058_Q07", "intent_label": "AO", "note": "Pre-task. '你会经常用到食物嘛' — factual follow-up about food usage frequency. AO."},
+        {"id": "GH010058_Q08", "intent_label": "AO", "note": "Pre-task. '零食吃的多吗？' — factual query about snack consumption frequency. AO."},
+        {"id": "GH010058_Q09", "intent_label": "PI", "note": "Pre-task. Learner synthesises a full set of inferred organising rules (function-zone arrangement, infrequent items out of reach, drinks on the side, large-to-small) and asks User to validate: '这是这样吗'. Classic PI: Learner builds the preference model; User validates. Per coding manual: 'Summary check of inferred rules → PI'."},
+        {"id": "GH010058_Q10", "intent_label": "PE", "note": "Pre-task. '对于冰箱深度，你会喜欢放在触手可及的地方，还是考虑摆放物体的稳定，比如放在外面会倒下来？' — asks User's preference on depth-placement strategy (accessibility vs. stability). User generates the answer. PE."}
+      ]
+    },
+    {
+      "dyad_id": "GH010060",
+      "pattern_label": "DQ",
+      "pattern_rationale": "No PE or PI questions. All questions are AO — classification checks, operational sequence queries, and specific placement requests. Learner is highly procedural, working item-by-item through a user-defined categorisation scheme.",
+      "questions": [
+        {"id": "GH010060_Q01", "intent_label": "AO", "note": "Operational sequence: which zone first (sides or middle)? AO."},
+        {"id": "GH010060_Q02", "intent_label": "AO", "note": "Operational sequence: left side or right side first? AO."},
+        {"id": "GH010060_Q03", "intent_label": "AO", "note": "Confirms that liquids are the first category to organise. AO."},
+        {"id": "GH010060_Q04", "intent_label": "AO", "note": "Category placement: which column for liquids? AO (specific zone for specific named category)."},
+        {"id": "GH010060_Q05", "intent_label": "AO", "note": "Classification check: does yogurt count as liquid? AO."},
+        {"id": "GH010060_Q06", "intent_label": "AO", "note": "Classification check: does cream count as liquid? AO."},
+        {"id": "GH010060_Q07", "intent_label": "AO", "note": "Classification check: does hair clay count as liquid? AO."},
+        {"id": "GH010060_Q08", "intent_label": "AO", "note": "Operational query: now that all liquids are sorted, how should they be placed? AO (specific group, one placement decision)."},
+        {"id": "GH010060_Q09", "intent_label": "AO", "note": "Classification check: does peanut butter (in a bag) count as liquid? AO."},
+        {"id": "GH010060_Q10", "intent_label": "AO", "note": "Operational confirmation to move to next zone (right side done, start left side). AO."},
+        {"id": "GH010060_Q11", "intent_label": "AO", "note": "Operational sequence: liquids done, what to sort next? AO."},
+        {"id": "GH010060_Q12", "intent_label": "AO", "note": "Classification check: does dried squid count as fresh produce? AO."},
+        {"id": "GH010060_Q13", "intent_label": "AO", "note": "Identity question (holding item). AO per coding manual example."},
+        {"id": "GH010060_Q14", "intent_label": "AO", "note": "Operational: how to arrange remaining items? AO."}
+      ]
+    },
+    {
+      "dyad_id": "GH010062",
+      "pattern_label": "UPF",
+      "pattern_rationale": "First preference question (Q01) is PE — per coding manual example, '你会把食品和饮料摆放在一起吗 → PE'. Rule 2 applies.",
+      "questions": [
+        {"id": "GH010062_Q01", "intent_label": "PE", "note": "Pre-task. '你会把食品和饮料摆放在一起吗' — per coding manual example: 'PE (asks about the user's general separation principle)'. User generates the preference content."},
+        {"id": "GH010062_Q02", "intent_label": "AO", "note": "Confirms that drinks and water go on the sides. Follows up on user's stated preference; resolves a specific zone assignment. AO."},
+        {"id": "GH010062_Q03", "intent_label": "PE?", "note": "'每种饮料的不同类型会摆放在一起吗' — asks if different types of the same drink will be grouped together. This invites a general grouping principle within drink categories, which could apply across multiple drink sub-types. Coded PE with uncertainty flag: it could be read as either a general grouping principle (PE) or a specific confirmation about the drinks zone (AO)."},
+        {"id": "GH010062_Q04", "intent_label": "AO", "note": "Category placement: where do condiments go? AO."},
+        {"id": "GH010062_Q05", "intent_label": "AO", "note": "Single item (vinegar) placement. AO."},
+        {"id": "GH010062_Q06", "intent_label": "AO", "note": "Confirmation that dipping sauces go together. AO (specific grouping of named items)."},
+        {"id": "GH010062_Q07", "intent_label": "AO", "note": "Single item (cola) placement. AO."},
+        {"id": "GH010062_Q08", "intent_label": "AO", "note": "Slot confirmation: yogurt on the side? AO."},
+        {"id": "GH010062_Q09", "intent_label": "AO", "note": "Slot confirmation: hair mud placed here? AO."},
+        {"id": "GH010062_Q10", "intent_label": "AO", "note": "Slot confirmation: fruit on this layer? AO."},
+        {"id": "GH010062_Q11", "intent_label": "AO", "note": "Per coding manual example: '把这个放下面，这个放上面，怎么样 → AO (two specific items, no generalizable rule)'. AO."},
+        {"id": "GH010062_Q12", "intent_label": "AO", "note": "Three specific named items (tea, wine, milk), asking where to put them and proposing they all go on top. Multi-item AO — no generalizable rule, just placement of named items."},
+        {"id": "GH010062_Q13", "intent_label": "AO", "note": "Single item (noodles) orientation. AO."}
+      ]
+    },
+    {
+      "dyad_id": "GH010064",
+      "pattern_label": "UPF",
+      "pattern_rationale": "First preference question (Q01) is PE — per coding manual example, '你希望按品类整理吗？比如这里放牛奶，这里放酸奶 → PE (examples are illustrations, not proposals)'. Rule 2 applies.",
+      "questions": [
+        {"id": "GH010064_Q01", "intent_label": "PE", "note": "Pre-task. Per coding manual example: '你希望按品类整理吗？比如这里放牛奶，这里放酸奶 → PE'. The specific items mentioned (milk, yogurt) are illustrative examples of a category-based principle, not a Learner-proposed hypothesis. User generates the preference content."},
+        {"id": "GH010064_Q02", "intent_label": "AO", "note": "Confirms all fruit goes here. AO (specific zone for specific category, following user's answer)."},
+        {"id": "GH010064_Q03", "intent_label": "AO", "note": "Confirms condiments go on the side. AO."},
+        {"id": "GH010064_Q04", "intent_label": "AO", "note": "Single item (chocolate) placement. AO."},
+        {"id": "GH010064_Q05", "intent_label": "AO", "note": "Single item (tea bags) placement. AO."},
+        {"id": "GH010064_Q06", "intent_label": "AO", "note": "Single item (squid strips) placement. AO."},
+        {"id": "GH010064_Q07", "intent_label": "AO", "note": "Single item (fresh milk) placement. AO."},
+        {"id": "GH010064_Q08", "intent_label": "AO", "note": "Single item/category (hot pot dipping sauce) placement. AO."}
+      ]
+    },
+    {
+      "dyad_id": "GH010067",
+      "pattern_label": "PAR",
+      "pattern_rationale": "First preference question (Q01) is PI — per coding manual example, '我整理的话，会把牛奶放这里，饮料放这里，水果放这里……你觉得怎么样？ → PI (Learner proposes full layout)'. Rule 1 applies.",
+      "questions": [
+        {"id": "GH010067_Q01", "intent_label": "PI", "note": "Pre-task. Per coding manual example: 'PI (Learner proposes full layout)'. Learner opens with a complete proposed arrangement covering multiple item categories and asks User to evaluate it. Classic PAR-defining opening."},
+        {"id": "GH010067_Q02", "intent_label": "AO", "note": "'这一层比较隔离，适合放水果对么？' — confirms fruit placement on a specific layer. Despite the implicit reasoning about isolation, this resolves one concrete placement for one category. AO."},
+        {"id": "GH010067_Q03", "intent_label": "AO", "note": "Single item (mushroom sauce) placement. AO."},
+        {"id": "GH010067_Q04", "intent_label": "AO", "note": "Operational problem: hot pot dipping sauce doesn't fit. AO."},
+        {"id": "GH010067_Q05", "intent_label": "AO", "note": "Factual query: does chocolate need refrigeration? AO (resolves a single storage decision)."},
+        {"id": "GH010067_Q06", "intent_label": "AO", "note": "Identity question. AO per coding manual example."},
+        {"id": "GH010067_Q07", "intent_label": "AO", "note": "Operational problem: one more water bottle doesn't fit. AO."}
+      ]
+    },
+    {
+      "dyad_id": "GH010069",
+      "pattern_label": "UPF",
+      "pattern_rationale": "First preference question (Q01) is PE — Learner asks User what method they prefer for organising. Rule 2 applies.",
+      "questions": [
+        {"id": "GH010069_Q01", "intent_label": "PE", "note": "Pre-task. '你希望用什么方式优先整理这个冰箱' — broad open question inviting User to express their preferred organising method. User generates the preference content. PE."},
+        {"id": "GH010069_Q02", "intent_label": "PI", "note": "'总结一下，首先按照类型放，然后按照保质期放？' — Learner synthesises an inferred two-step organising rule (by type first, then by expiration date) and asks User to validate. Generalizable rule covering all items. PI."},
+        {"id": "GH010069_Q03", "intent_label": "PE", "note": "'你对物品位置有要求吗？' — invites User to express any positional preferences or requirements. User generates the content. PE."},
+        {"id": "GH010069_Q04", "intent_label": "AO", "note": "Single item (coconut juice) orientation: stand upright? AO."}
+      ]
+    }
+  ]
+}
