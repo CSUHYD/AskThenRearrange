@@ -973,8 +973,8 @@ def main() -> None:
     parser.add_argument(
         "--strategy",
         type=str,
-        default="parallel_exploration",
-        choices=["direct", "preference_first", "parallel_exploration"],
+        default="learner_led",
+        choices=["task_only", "user_led", "learner_led"],
     )
     parser.add_argument(
         "--budget",

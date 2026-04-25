@@ -24,10 +24,10 @@ OLLAMA_BASE_URL = DEFAULT_BASE_URL
 
 
 POLICY_LABELS = {
-    "direct_querying": "Direct Querying",
-    "user_preference_first": "User-Preference-First",
-    "parallel_exploration": "Parallel Exploration",
-    "hybrid_all": "Hybrid-All",
+    "task_only": "Task-Only (TO)",
+    "user_led": "User-Led (UL)",
+    "learner_led": "Learner-Led (LL)",
+    "hybrid": "Hybrid (HYB)",
 }
 
 
@@ -271,7 +271,7 @@ def run_policy_episode(
     max_budget = max(eval_budgets) if eval_budgets else budget
     state = build_initial_state(
         episode=episode,
-        strategy="parallel_exploration",
+        strategy="learner_led",
         budget_total=max_budget,
     )
     controller = QuestionPolicyController(
@@ -431,10 +431,10 @@ def run_ablation_experiment(
 ) -> Dict[str, List[Dict[str, Any]]]:
     if modes is None:
         modes = [
-            "direct_querying",
-            "user_preference_first",
-            "parallel_exploration",
-            "hybrid_all",
+            "task_only",
+            "user_led",
+            "learner_led",
+            "hybrid",
         ]
     curves_by_mode: Dict[str, List[Dict[str, Any]]] = {}
 
@@ -564,8 +564,8 @@ def main() -> None:
     parser.add_argument(
         "--mode",
         type=str,
-        default="user_preference_first",
-        choices=["direct_querying", "user_preference_first", "parallel_exploration", "hybrid_all"],
+        default="user_led",
+        choices=["task_only", "user_led", "learner_led", "hybrid"],
     )
     parser.add_argument("--proposer-model", type=str, default=QUESTION_MODEL)
     parser.add_argument("--oracle-model", type=str, default=QUESTION_MODEL)
@@ -578,7 +578,7 @@ def main() -> None:
     parser.add_argument("--ablation-log", type=str, default="")
     parser.add_argument("--budget-list", type=str, default="1,3,5")
     parser.add_argument("--modes", type=str, default="",
-                        help="Comma-separated modes for --plot-ablation, e.g. 'direct_querying,user_preference_first'. Default: all 4.")
+                        help="Comma-separated modes for --plot-ablation, e.g. 'task_only,user_led'. Default: all 4 (task_only,user_led,learner_led,hybrid).")
     parser.add_argument("--start-index", type=int, default=0,
                         help="Starting episode index (default 0). Use with --num-samples to select a contiguous range.")
     parser.add_argument("--sample-indices", type=str, default="",

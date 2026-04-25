@@ -113,7 +113,7 @@ class Study2PreferenceElicitingProposer(PreferenceElicitingProposer):
         guidance: str = "",
         max_candidates: int = 5,
     ) -> Optional[PreferenceQuestionIntent]:
-        # Turn-0 fixed general-preference probe (UPF): skip all candidate
+        # Turn-0 fixed general-preference probe (UL): skip all candidate
         # selection and ask a room-level open question. All seen_objects are
         # marked as covered so state_update can extract whatever specific
         # placements the user mentions in their free-form answer.

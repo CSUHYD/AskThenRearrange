@@ -80,9 +80,14 @@ export interface ScoreResponse {
 }
 
 export const STRATEGY_LABELS: Record<string, string> = {
-  DQ: '直接提问（DQ）',
-  UPF: '用户偏好优先（UPF）',
-  PAR: '并行探索（PAR）',
+  TO: '任务专注（TO）',
+  UL: '用户主导（UL）',
+  LL: '学习者主导（LL）',
+  HYB: '混合（HYB）',
+  // Legacy aliases — historical sessions logged short codes DQ/UPF/PAR.
+  DQ: '任务专注（TO，旧名 DQ）',
+  UPF: '用户主导（UL，旧名 UPF）',
+  PAR: '学习者主导（LL，旧名 PAR）',
 }
 
 export const PATTERN_LABELS: Record<string, string> = {

@@ -3,7 +3,7 @@ import { useSession } from '../App'
 import * as api from '../api'
 import { STRATEGY_LABELS, ROOM_LABELS } from '../types'
 
-const STRATEGIES = ['DQ', 'UPF', 'PAR']
+const STRATEGIES = ['TO', 'UL', 'LL']
 
 export default function FinalRanking() {
   const { session, setSession, setLoading, setError, loading } = useSession()

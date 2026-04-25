@@ -322,10 +322,10 @@ def plot_ablation_comparison(
     )
 
     palette = {
-        "direct_querying": "#2f2f2f",
-        "user_preference_first": "#1f77b4",
-        "parallel_exploration": "#d55e00",
-        "hybrid_all": "#2a9d8f",
+        "task_only": "#2f2f2f",
+        "user_led": "#1f77b4",
+        "learner_led": "#d55e00",
+        "hybrid": "#2a9d8f",
         # pattern ablation modes
         "raw_llm": "#aaaaaa",
         "action_oriented": "#2f2f2f",
@@ -334,10 +334,10 @@ def plot_ablation_comparison(
         "preference_induction_seeded": "#2a9d8f",
     }
     markers = {
-        "direct_querying": "o",
-        "user_preference_first": "s",
-        "parallel_exploration": "^",
-        "hybrid_all": "D",
+        "task_only": "o",
+        "user_led": "s",
+        "learner_led": "^",
+        "hybrid": "D",
         "raw_llm": "x",
         "action_oriented": "o",
         "preference_eliciting": "s",
@@ -345,10 +345,10 @@ def plot_ablation_comparison(
         "preference_induction_seeded": "D",
     }
     linestyles = {
-        "direct_querying": "-",
-        "user_preference_first": "-",
-        "parallel_exploration": "-",
-        "hybrid_all": "--",
+        "task_only": "-",
+        "user_led": "-",
+        "learner_led": "-",
+        "hybrid": "--",
         "raw_llm": ":",
         "action_oriented": "-",
         "preference_eliciting": "-",

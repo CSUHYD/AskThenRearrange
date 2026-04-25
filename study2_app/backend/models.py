@@ -26,7 +26,7 @@ class PreferenceFormInput(BaseModel):
 
 
 class FinalInput(BaseModel):
-    strategy_ranking: List[str]   # e.g. ["UPF", "DQ", "PAR"]
+    strategy_ranking: List[str]   # e.g. ["UL", "TO", "LL"]
     comment: str = ""
 
 
@@ -43,7 +43,7 @@ class QATurn(BaseModel):
 
 class TrialSnapshot(BaseModel):
     trial_index: int
-    strategy: str            # display name: DQ | UPF | PAR
+    strategy: str            # display name: TO | UL | LL  (legacy: DQ | UPF | PAR)
     room_type: str
     episode_index: int
     receptacles: List[str]

@@ -5,7 +5,7 @@ from typing import List, Literal, Optional, TypedDict
 from data import Episode
 
 
-Strategy = Literal["direct", "preference_first", "parallel_exploration"]
+Strategy = Literal["task_only", "user_led", "learner_led"]
 QuestionPattern = Literal["action_oriented", "preference_eliciting", "preference_induction"]
 
 

@@ -14,10 +14,10 @@ from belief_estimator import BeliefEstimator, max_entropy, shannon_entropy
 # Base URL config now in llm_factory.py
 
 PolicyMode = Literal[
-    "direct_querying",
-    "user_preference_first",
-    "parallel_exploration",
-    "hybrid_all",
+    "task_only",
+    "user_led",
+    "learner_led",
+    "hybrid",
 ]
 
 SelectionMethod = Literal["rule", "entropy", "llm"]
@@ -86,16 +86,16 @@ class QuestionPolicyController:
 
         # ── Rule-based selection ──
         if self.selection_method == "rule":
-            if mode == "direct_querying":
-                return self._rule_direct_querying()
-            if mode == "user_preference_first":
-                return self._rule_user_preference_first(state=state, allowed_patterns=allowed_patterns)
-            if mode == "parallel_exploration":
-                return self._rule_parallel_exploration(state=state, allowed_patterns=allowed_patterns)
-            if mode == "hybrid_all":
-                return self._rule_hybrid_all(state=state, allowed_patterns=allowed_patterns)
+            if mode == "task_only":
+                return self._rule_task_only()
+            if mode == "user_led":
+                return self._rule_user_led(state=state, allowed_patterns=allowed_patterns)
+            if mode == "learner_led":
+                return self._rule_learner_led(state=state, allowed_patterns=allowed_patterns)
+            if mode == "hybrid":
+                return self._rule_hybrid(state=state, allowed_patterns=allowed_patterns)
 
-        # ── LLM-based selection (original hybrid_all controller) ──
+        # ── LLM-based selection (original Hybrid controller) ──
         return self._llm_select(
             state=state, allowed_patterns=allowed_patterns, mode=mode,
         )
@@ -104,15 +104,15 @@ class QuestionPolicyController:
     # Rule-based policy decisions (no LLM call)
     # ------------------------------------------------------------------
 
-    def _rule_direct_querying(self) -> QuestionDecision:
+    def _rule_task_only(self) -> QuestionDecision:
         return QuestionDecision(
             question_pattern="action_oriented",
             guidance=self._default_guidance(
-                question_pattern="action_oriented", mode="direct_querying"
+                question_pattern="action_oriented", mode="task_only"
             ),
         )
 
-    def _rule_user_preference_first(
+    def _rule_user_led(
         self,
         *,
         state: AgentState,
@@ -165,17 +165,17 @@ class QuestionPolicyController:
         return QuestionDecision(
             question_pattern=pattern,
             guidance=self._default_guidance(
-                question_pattern=pattern, mode="user_preference_first"
+                question_pattern=pattern, mode="user_led"
             ),
         )
 
-    def _rule_parallel_exploration(
+    def _rule_learner_led(
         self,
         *,
         state: AgentState,
         allowed_patterns: List[QuestionPattern],
     ) -> QuestionDecision:
-        # PAR = AO + PI only (no PE). AO collects evidence, PI induces rules.
+        # LL = AO + PI only (no PE). AO collects evidence, PI induces rules.
         CONSOLIDATE_AFTER = 2
 
         # Receptacle coverage analysis
@@ -254,7 +254,7 @@ class QuestionPolicyController:
             guidance=ao_guidance,
         )
 
-    def _rule_hybrid_all(
+    def _rule_hybrid(
         self,
         *,
         state: AgentState,
@@ -332,7 +332,7 @@ class QuestionPolicyController:
             return QuestionDecision(
                 question_pattern="preference_eliciting",
                 guidance=self._default_guidance(
-                    question_pattern="preference_eliciting", mode="hybrid_all"
+                    question_pattern="preference_eliciting", mode="hybrid"
                 ),
             )
 
@@ -340,7 +340,7 @@ class QuestionPolicyController:
         return QuestionDecision(
             question_pattern="action_oriented",
             guidance=self._default_guidance(
-                question_pattern="action_oriented", mode="hybrid_all"
+                question_pattern="action_oriented", mode="hybrid"
             ),
         )
 
@@ -573,10 +573,10 @@ class QuestionPolicyController:
         can_action = True
         can_induction = self._induction_is_available(state=state)
 
-        if mode == "direct_querying":
+        if mode == "task_only":
             return ["action_oriented"] if can_action else []
 
-        if mode == "user_preference_first":
+        if mode == "user_led":
             allowed: List[QuestionPattern] = []
             if can_eliciting:
                 allowed.append("preference_eliciting")
@@ -584,8 +584,8 @@ class QuestionPolicyController:
                 allowed.append("action_oriented")
             return allowed
 
-        if mode == "parallel_exploration":
-            # PAR = AO + PI only (no PE)
+        if mode == "learner_led":
+            # LL = AO + PI only (no PE)
             allowed: List[QuestionPattern] = []
             if can_action:
                 allowed.append("action_oriented")
@@ -593,7 +593,7 @@ class QuestionPolicyController:
                 allowed.append("preference_induction")
             return allowed
 
-        if mode == "hybrid_all":
+        if mode == "hybrid":
             allowed: List[QuestionPattern] = []
             if can_induction:
                 allowed.append("preference_induction")
@@ -616,24 +616,24 @@ class QuestionPolicyController:
         return len(state["confirmed_actions"]) >= 2 and unsummarized_action_count >= 2
 
     def _system_prompt(self, *, mode: PolicyMode) -> str:
-        if mode == "direct_querying":
+        if mode == "task_only":
             strategy_block = """
-Strategy: Direct Querying.
+Strategy: Task-Only (TO).
 - Choose action_oriented to directly resolve one unresolved object's placement.
 - Prefer the next question that is most likely to yield a concrete object-level placement.
 - Do not choose preference_eliciting or preference_induction.
 """.strip()
-        elif mode == "user_preference_first":
+        elif mode == "user_led":
             strategy_block = """
-Strategy: User-Preference-First.
+Strategy: User-Led (UL).
 - Choose preference_eliciting when an open preference hypothesis could clarify placements for multiple unresolved objects.
 - Choose action_oriented when unresolved objects are ambiguous under the current confirmed_preferences and an object-level question would better test a boundary or resolve a concrete uncertainty.
 - If an open preference hypothesis is too narrow to affect only one unresolved object, prefer action_oriented instead.
 - Do not choose preference_induction in this strategy.
 """.strip()
-        elif mode == "parallel_exploration":
+        elif mode == "learner_led":
             strategy_block = """
-Strategy: parallel-exploration.
+Strategy: Learner-Led (LL).
 - Choose action_oriented when the next object-level answer would most usefully extend current evidence, test a partial pattern, or create support for a future summary.
 - Prefer action questions that build on current confirmed_actions or confirmed_preferences rather than isolated one-off placements.
 - Choose preference_induction when existing confirmed_actions already support a stable multi-object rule that is worth confirming.
@@ -642,7 +642,7 @@ Strategy: parallel-exploration.
 """.strip()
         else:
             strategy_block = """
-Strategy: Hybrid-All.
+Strategy: Hybrid (HYB).
 - You may choose among preference_eliciting, action_oriented, and preference_induction.
 - Choose preference_eliciting when a missing high-level preference could clarify placements for multiple unresolved objects.
 - Choose action_oriented when uncertainty is concentrated on specific unresolved objects and would be better reduced by grounding a concrete placement or testing the boundary of an existing preference.
@@ -728,9 +728,9 @@ Current state:
 
     def _default_guidance(self, *, question_pattern: QuestionPattern, mode: PolicyMode) -> str:
         if question_pattern == "action_oriented":
-            if mode == "user_preference_first":
+            if mode == "user_led":
                 return "Ask an action question that checks the boundary of an already known preference or cleans up a remaining concrete placement."
-            if mode == "parallel_exploration":
+            if mode == "learner_led":
                 return "Ask an action question to collect one more concrete placement — building toward the evidence needed for the next induction step."
             return "Ask an action question that resolves one unresolved object's placement clearly."
         if question_pattern == "preference_eliciting":

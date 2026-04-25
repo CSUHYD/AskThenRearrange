@@ -123,7 +123,7 @@ preference_form   ← 参与者已提交，等实验员"开始评分预测"
 completed
 ```
 
-一个会话走 3 轮试验（DQ / UPF / PAR，拉丁方顺序），共享同一 `session_id`。`current_trial_index` 指向当前轮。
+一个会话走 3 轮试验（TO / UL / LL，拉丁方顺序；旧名 DQ / UPF / PAR 仍兼容历史会话），共享同一 `session_id`。`current_trial_index` 指向当前轮。
 
 ---
 

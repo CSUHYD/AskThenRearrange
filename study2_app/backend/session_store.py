@@ -21,21 +21,26 @@ LOGS_DIR.mkdir(parents=True, exist_ok=True)
 DATA_PATH = PROJECT_ROOT / "data" / "scenarios_three_rooms_102.json"
 
 # Strategy display name → policy mode
+# Legacy short names (DQ/UPF/PAR) kept as aliases so old session logs still load.
 STRATEGY_TO_MODE: Dict[str, str] = {
-    "DQ": "direct_querying",
-    "UPF": "user_preference_first",
-    "PAR": "parallel_exploration",
+    "TO": "task_only",
+    "UL": "user_led",
+    "LL": "learner_led",
+    # Legacy aliases — do not use for new sessions.
+    "DQ": "task_only",
+    "UPF": "user_led",
+    "PAR": "learner_led",
 }
 
 # 6-row Latin square: each row is 3 trials of (strategy, room_type)
 # Each strategy and each room appears exactly once per row.
 LATIN_SQUARE: List[List[tuple]] = [
-    [("DQ", "living room"),   ("UPF", "bedroom"),    ("PAR", "kitchen")],
-    [("UPF", "kitchen"),      ("PAR", "living room"), ("DQ", "bedroom")],
-    [("PAR", "bedroom"),      ("DQ", "kitchen"),      ("UPF", "living room")],
-    [("DQ", "kitchen"),       ("UPF", "living room"), ("PAR", "bedroom")],
-    [("UPF", "bedroom"),      ("PAR", "kitchen"),     ("DQ", "living room")],
-    [("PAR", "living room"),  ("DQ", "bedroom"),      ("UPF", "kitchen")],
+    [("TO", "living room"),   ("UL", "bedroom"),     ("LL", "kitchen")],
+    [("UL", "kitchen"),       ("LL", "living room"), ("TO", "bedroom")],
+    [("LL", "bedroom"),       ("TO", "kitchen"),     ("UL", "living room")],
+    [("TO", "kitchen"),       ("UL", "living room"), ("LL", "bedroom")],
+    [("UL", "bedroom"),       ("LL", "kitchen"),     ("TO", "living room")],
+    [("LL", "living room"),   ("TO", "bedroom"),     ("UL", "kitchen")],
 ]
 
 UNLIMITED_BUDGET = 9999
@@ -163,7 +168,7 @@ class SessionState:
 
         self.agent_state = build_initial_state(
             episode,
-            strategy="direct",  # not used — we drive via policy mode; field is ignored
+            strategy="task_only",  # not used — we drive via policy mode; field is ignored
             budget_total=self.budget_total,
         )
 
