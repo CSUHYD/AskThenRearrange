@@ -1,4 +1,45 @@
-// STT helpers — browser-side recording + upload to /voice/stt (Dashscope paraformer).
+// Voice helpers — STT (browser recording → /voice/stt, Dashscope paraformer)
+// and TTS (text → /voice/tts MP3 → playback, Dashscope cosyvoice).
+
+let currentTtsAudio: HTMLAudioElement | null = null
+
+// Empty MP3 used to "prime" the browser audio output during a user gesture so
+// later auto-played TTS isn't blocked by autoplay policy.
+const SILENT_MP3 =
+  'data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4LjQ1LjEwMAAAAAAAAAAAAAAA//tQwAAAAAAAAAAAAAAAAAAAAAAASW5mbwAAAA8AAAACAAACzAA='
+
+export async function primeAudio(): Promise<void> {
+  try {
+    const a = new Audio(SILENT_MP3)
+    a.muted = true
+    await a.play()
+    a.pause()
+  } catch {
+    // ignore — autoplay still allowed once user has clicked something
+  }
+}
+
+export async function speak(text: string, voice = 'Cherry'): Promise<void> {
+  if (!text.trim()) return
+  // Stop any in-flight playback so back-to-back questions don't overlap.
+  if (currentTtsAudio) {
+    currentTtsAudio.pause()
+    currentTtsAudio = null
+  }
+  const r = await fetch('/voice/tts', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ text, voice }),
+  })
+  if (!r.ok) throw new Error(`TTS HTTP ${r.status}: ${(await r.text()).slice(0, 200)}`)
+  const blob = await r.blob()
+  const url = URL.createObjectURL(blob)
+  const audio = new Audio(url)
+  currentTtsAudio = audio
+  await audio.play()
+  audio.addEventListener('ended', () => URL.revokeObjectURL(url), { once: true })
+}
+
 
 export class Recorder {
   private ctx?: AudioContext

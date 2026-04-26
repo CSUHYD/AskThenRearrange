@@ -113,21 +113,15 @@ class Study2PreferenceElicitingProposer(PreferenceElicitingProposer):
         guidance: str = "",
         max_candidates: int = 5,
     ) -> Optional[PreferenceQuestionIntent]:
-        # Turn-0 fixed general-preference probe (UL): skip all candidate
-        # selection and ask a room-level open question. All seen_objects are
-        # marked as covered so state_update can extract whatever specific
-        # placements the user mentions in their free-form answer.
-        n_turns = len(state.get("qa_history", []))
-        if n_turns == 0:
-            room = state.get("room") or "home"
-            return PreferenceQuestionIntent(
-                question_pattern="preference_eliciting",
-                hypothesis=f"general organization of the {room}",
-                covered_objects=list(state.get("seen_objects", [])),
-                receptacle=None,
-                priority=1.0,
-                question=f"How do you usually like to organize your {room}?",
-            )
+        # NOTE: A previous version had a turn-0 hardcoded probe asking
+        # "How do you usually like to organize your {room}?" This produced
+        # a single-shot "info dump" answer covering every receptacle, which
+        # state_update parsed as ~12 confirmed_actions in one turn — letting
+        # the planner achieve >90% unseen PSR at B=1. That was a methodological
+        # artefact (oracle gave a complete-sentence summary in response to an
+        # open room-level question). Removed so turn 1 goes through the same
+        # candidate-selection path as later turns and asks a category- or
+        # receptacle-level question, not a whole-room one.
 
         category_candidates = self._build_preference_candidates(
             state=state,

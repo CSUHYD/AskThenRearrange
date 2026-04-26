@@ -18,7 +18,7 @@ from data import Episode, load_episodes  # noqa: E402
 LOGS_DIR = Path(__file__).resolve().parent.parent / "logs"
 LOGS_DIR.mkdir(parents=True, exist_ok=True)
 
-DATA_PATH = PROJECT_ROOT / "data" / "scenarios_three_rooms_102.json"
+DATA_PATH = PROJECT_ROOT / "data" / "scenarios_study2_sop.json"
 
 # Strategy display name → policy mode
 # Legacy short names (DQ/UPF/PAR) kept as aliases so old session logs still load.
@@ -32,15 +32,16 @@ STRATEGY_TO_MODE: Dict[str, str] = {
     "PAR": "learner_led",
 }
 
-# 6-row Latin square: each row is 3 trials of (strategy, room_type)
-# Each strategy and each room appears exactly once per row.
+# 6-row Latin square per Study 2 SOP v2.5 §Appendix A.
+# Scenes: 书桌 (study_desk) / 厨房 (bar_kitchen) / 冰箱 (fridge).
+# Practice scene 卧室 (bedroom_practice) is fixed TO and not in the Latin square.
 LATIN_SQUARE: List[List[tuple]] = [
-    [("TO", "living room"),   ("UL", "bedroom"),     ("LL", "kitchen")],
-    [("UL", "kitchen"),       ("LL", "living room"), ("TO", "bedroom")],
-    [("LL", "bedroom"),       ("TO", "kitchen"),     ("UL", "living room")],
-    [("TO", "kitchen"),       ("UL", "living room"), ("LL", "bedroom")],
-    [("UL", "bedroom"),       ("LL", "kitchen"),     ("TO", "living room")],
-    [("LL", "living room"),   ("TO", "bedroom"),     ("UL", "kitchen")],
+    [("TO", "study_desk"),  ("UL", "bar_kitchen"), ("LL", "fridge")],
+    [("UL", "fridge"),      ("LL", "study_desk"),  ("TO", "bar_kitchen")],
+    [("LL", "bar_kitchen"), ("TO", "fridge"),      ("UL", "study_desk")],
+    [("TO", "fridge"),      ("UL", "study_desk"),  ("LL", "bar_kitchen")],
+    [("UL", "bar_kitchen"), ("LL", "fridge"),      ("TO", "study_desk")],
+    [("LL", "study_desk"),  ("TO", "bar_kitchen"), ("UL", "fridge")],
 ]
 
 UNLIMITED_BUDGET = 9999
@@ -108,7 +109,7 @@ class SessionState:
         participant_id: str,
         latin_square_row: int,
         notes: str,
-        budget_total: int = 6,
+        budget_total: int = 999,
     ):
         self.session_id = session_id
         self.participant_id = participant_id
@@ -251,12 +252,10 @@ def create_session(
     participant_id: str,
     latin_square_row: int,
     notes: str,
-    budget_total: int = 6,
+    budget_total: int = 999,
 ) -> SessionState:
     if not 1 <= latin_square_row <= 6:
         raise ValueError(f"latin_square_row must be 1–6, got {latin_square_row}")
-    if not 1 <= budget_total <= 100:
-        raise ValueError(f"budget_total must be 1–100, got {budget_total}")
     session_id = uuid.uuid4().hex[:8]
     session = SessionState(session_id, participant_id, latin_square_row, notes, budget_total)
     _sessions[session_id] = session

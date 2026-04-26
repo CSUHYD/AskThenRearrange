@@ -10,11 +10,11 @@
 
 ## 1. Overview
 
-This document specifies the frontend system for **Study 2** of the PrefQuest project. The system enables a human experimenter to run within-subjects user study sessions in which participants teach a simulated household-arrangement agent their preferences through spoken dialogue. The agent uses one of three questioning strategies (DQ / UPF / PAR) per trial; the system records full behavioural, objective, and subjective data for later analysis.
+This document specifies the frontend system for **Study 2** of the PrefQuest project. The system enables a human experimenter to run within-subjects user study sessions in which participants teach a simulated household-arrangement agent their preferences through spoken dialogue. The agent uses one of three questioning strategies (TO / UL / LL) per trial; the system records full behavioural, objective, and subjective data for later analysis.
 
 ### 1.1 Study Context
 
-- **Design**: Within-subjects, 3 strategy conditions (DQ, UPF, PAR)
+- **Design**: Within-subjects, 3 strategy conditions (TO, UL, LL)
 - **Budget**: open-ended; participant self-terminates by verbal signal (no fixed turn cap; system enforces a soft maximum of 20 turns as a safety backstop)
 - **Participants**: N = 24
 - **Scenes**: 4 household scenes (study / bedroom / kitchen / living room), each with 16 items (8 seen + 8 unseen) and 5 receptacles
@@ -119,12 +119,12 @@ The experimenter creates a new session before the participant arrives.
 
 | Row | Trial 1 | Trial 2 | Trial 3 |
 |---|---|---|---|
-| 1 | DQ / study | UPF / bedroom | PAR / kitchen |
-| 2 | DQ / bedroom | PAR / study | UPF / living |
-| 3 | UPF / kitchen | DQ / living | PAR / study |
-| 4 | UPF / living | PAR / bedroom | DQ / kitchen |
-| 5 | PAR / study | DQ / kitchen | UPF / bedroom |
-| 6 | PAR / kitchen | UPF / study | DQ / living |
+| 1 | TO / study | UL / bedroom | LL / kitchen |
+| 2 | TO / bedroom | LL / study | UL / living |
+| 3 | UL / kitchen | TO / living | LL / study |
+| 4 | UL / living | LL / bedroom | TO / kitchen |
+| 5 | LL / study | TO / kitchen | UL / bedroom |
+| 6 | LL / kitchen | UL / study | TO / living |
 
 The default table above is a starting point; the experimenter can override per-trial strategy/scene assignment via the dashboard.
 
@@ -328,7 +328,7 @@ Each line is a JSON object with a `type` field. Compatible with the existing `lo
   "type": "trial_start",
   "session_id": "P07_20260417",
   "trial_index": 0,
-  "strategy": "UPF",
+  "strategy": "UL",
   "scene_label": "bedroom",
   "budget": 6,
   "receptacles": ["dresser","nightstand","closet","shelf","under-bed"],
@@ -387,7 +387,7 @@ Each line is a JSON object with a `type` field. Compatible with the existing `lo
 {
   "type": "session_end",
   "session_id": "P07_20260417",
-  "strategy_ranking": ["UPF", "DQ", "PAR"],
+  "strategy_ranking": ["UL", "TO", "LL"],
   "final_comment": "The second style felt more natural.",
   "demographics": { "age": 28, "gender": "female", "education": "graduate", ... },
   "timestamp": "..."
@@ -520,12 +520,12 @@ study:
     - label: living_room
       ...
   latin_square:
-    - [DQ/bedroom, UPF/kitchen, PAR/study]
-    - [DQ/kitchen, PAR/bedroom, UPF/living]
-    - [UPF/study, DQ/living, PAR/bedroom]
-    - [UPF/living, PAR/kitchen, DQ/study]
-    - [PAR/bedroom, DQ/study, UPF/kitchen]
-    - [PAR/study, UPF/bedroom, DQ/living]
+    - [TO/bedroom, UL/kitchen, LL/study]
+    - [TO/kitchen, LL/bedroom, UL/living]
+    - [UL/study, TO/living, LL/bedroom]
+    - [UL/living, LL/kitchen, TO/study]
+    - [LL/bedroom, TO/study, UL/kitchen]
+    - [LL/study, UL/bedroom, TO/living]
 
 logging:
   output_dir: logs/

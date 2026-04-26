@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSession } from '../App'
 import * as api from '../api'
+import { primeAudio } from '../voice'
 import { ROOM_LABELS, STRATEGY_LABELS, PHASE_LABELS } from '../types'
 import SessionCreate from './SessionCreate'
 import AgentStatePanel from './AgentStatePanel'
@@ -8,7 +9,6 @@ import AgentStatePanel from './AgentStatePanel'
 export default function ExperimenterPanel() {
   const { session, setSession, setCurrentQuestion, setLastScore, setLoading, setError, loading, error } =
     useSession()
-  const [episodeIndex, setEpisodeIndex] = useState(0)
 
   if (!session) {
     return (
@@ -28,7 +28,9 @@ export default function ExperimenterPanel() {
     setLoading(true)
     setError(null)
     try {
-      const s = await api.startTrial(session!.session_id, trialConfig.room_type, episodeIndex)
+      // SOP v2.5 §A — room is determined by Latin square; each scene has a
+      // single canonical episode (index 0). No manual selection.
+      const s = await api.startTrial(session!.session_id, trialConfig.room_type, 0)
       setSession(s)
       setCurrentQuestion(null)
       setLastScore(null)
@@ -42,6 +44,9 @@ export default function ExperimenterPanel() {
   async function handleStartDialogue() {
     setLoading(true)
     setError(null)
+    // Prime browser audio output during this user gesture so the auto-played
+    // TTS for the first question isn't blocked by autoplay policy.
+    primeAudio()
     try {
       const q = await api.startDialogue(session!.session_id)
       setCurrentQuestion(q)
@@ -124,16 +129,11 @@ export default function ExperimenterPanel() {
       {phase === 'created' && trialIdx < 3 && trialConfig && (
         <div className="exp-section">
           <div className="exp-label">
-            选择场景（{ROOM_LABELS[trialConfig.room_type] ?? trialConfig.room_type}，0–33）
+            场景（拉丁方自动分配）
           </div>
-          <input
-            type="number"
-            min={0}
-            max={33}
-            value={episodeIndex}
-            onChange={(e) => setEpisodeIndex(Number(e.target.value))}
-            className="form-input"
-          />
+          <div className="exp-value">
+            {ROOM_LABELS[trialConfig.room_type] ?? trialConfig.room_type}
+          </div>
           <button className="btn btn-primary mt-8" onClick={handleStartTrial} disabled={loading}>
             {loading ? '加载中…' : '载入场景'}
           </button>

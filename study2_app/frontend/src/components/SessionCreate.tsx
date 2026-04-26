@@ -7,21 +7,16 @@ export default function SessionCreate() {
   const [participantId, setParticipantId] = useState('')
   const [row, setRow] = useState(1)
   const [notes, setNotes] = useState('')
-  const [budget, setBudget] = useState(6)
 
   async function handleCreate() {
     if (!participantId.trim()) {
       setError('请输入参与者 ID')
       return
     }
-    if (!Number.isInteger(budget) || budget < 1 || budget > 100) {
-      setError('Budget 必须是 1–100 的整数')
-      return
-    }
     setLoading(true)
     setError(null)
     try {
-      const s = await api.createSession(participantId.trim(), row, notes.trim(), budget)
+      const s = await api.createSession(participantId.trim(), row, notes.trim())
       setSession(s)
     } catch (e: any) {
       setError(e?.response?.data?.detail ?? String(e))
@@ -50,17 +45,6 @@ export default function SessionCreate() {
           className="form-input"
           value={row}
           onChange={(e) => setRow(Number(e.target.value))}
-        />
-      </div>
-      <div className="form-group">
-        <label className="form-label">每 trial 提问预算 B</label>
-        <input
-          type="number"
-          min={1}
-          max={100}
-          className="form-input"
-          value={budget}
-          onChange={(e) => setBudget(Number(e.target.value))}
         />
       </div>
       <div className="form-group">

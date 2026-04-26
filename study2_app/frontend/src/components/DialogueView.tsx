@@ -1,7 +1,7 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useSession } from '../App'
 import * as api from '../api'
-import { Recorder, transcribe } from '../voice'
+import { Recorder, speak, transcribe } from '../voice'
 import type { QATurn, TrialSnapshot } from '../types'
 import { PATTERN_LABELS } from '../types'
 
@@ -43,6 +43,15 @@ export default function DialogueView({ trial }: Props) {
   const [sttNote, setSttNote] = useState<string>('')
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const recorderRef = useRef<Recorder | null>(null)
+  const lastSpokenRef = useRef<string>('')
+
+  // Auto-speak the current question whenever it changes.
+  useEffect(() => {
+    const text = currentQuestion?.question ?? ''
+    if (!text || text === lastSpokenRef.current) return
+    lastSpokenRef.current = text
+    speak(text).catch((e) => console.warn('TTS failed:', e))
+  }, [currentQuestion?.question])
 
   async function handleRecord() {
     if (sttState === 'recording') {

@@ -1,4 +1,4 @@
-"""Voice endpoints — STT via Dashscope paraformer."""
+"""Voice endpoints — STT via Dashscope paraformer; TTS via cosyvoice."""
 from __future__ import annotations
 
 import asyncio
@@ -8,8 +8,11 @@ from pathlib import Path
 from typing import Literal
 
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile
+from fastapi.responses import Response
+from pydantic import BaseModel
 
 from study2_app.backend.voice.stt import transcribe_file
+from study2_app.backend.voice.tts import synthesize
 
 router = APIRouter(prefix="/voice", tags=["voice"])
 
@@ -19,8 +22,32 @@ def health():
     return {
         "status": "ok",
         "stt_backend": "dashscope.paraformer-realtime-v2",
+        "tts_backend": "dashscope.qwen3-tts-instruct-flash-realtime",
         "api_key_set": bool(os.environ.get("DASHSCOPE_API_KEY")),
     }
+
+
+class TTSInput(BaseModel):
+    text: str
+    voice: str = "Cherry"
+
+
+@router.post("/tts")
+async def tts(payload: TTSInput):
+    if not payload.text.strip():
+        raise HTTPException(400, "empty text")
+
+    def _run() -> bytes:
+        return synthesize(payload.text, voice=payload.voice)
+
+    try:
+        audio = await asyncio.to_thread(_run)
+    except RuntimeError as e:
+        raise HTTPException(500, str(e))
+    except Exception as e:
+        raise HTTPException(502, f"Dashscope TTS error: {e}")
+
+    return Response(content=audio, media_type="audio/wav")
 
 
 LANG_MAP = {"zh": "zh", "en": "en", "ja": "ja", "ko": "ko", "auto": None}

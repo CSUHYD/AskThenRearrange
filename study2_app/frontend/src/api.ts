@@ -7,13 +7,11 @@ export async function createSession(
   participantId: string,
   latinSquareRow: number,
   notes: string,
-  budgetTotal: number,
 ): Promise<SessionSnapshot> {
   const res = await api.post('/sessions', {
     participant_id: participantId,
     latin_square_row: latinSquareRow,
     notes,
-    budget_total: budgetTotal,
   })
   return res.data
 }

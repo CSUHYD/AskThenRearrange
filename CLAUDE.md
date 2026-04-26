@@ -6,8 +6,23 @@
 
 ## 项目身份
 
-**PrefQuest** 是一个面向家居整理的偏好学习框架，核心问题是：
-> 智能体在有限提问预算内，如何通过提问策略的选择最大化对未见物品的偏好泛化能力？
+**PrefQuest** 是一个面向家居整理的偏好学习框架。
+
+**核心问题**：
+> 在偏好导向的任务中，机器人应采用何种提问策略，才能引导用户将隐性、情境化的整理偏好建构并表达为可泛化的偏好知识？
+
+**核心主张**（2026-04-25 定稿）：
+> 家居整理偏好以隐性知识的形式存在，不是用户可以主动陈述的显式规则。机器人的提问不是简单"提取"已有规则，而是为用户建构和表达可迁移偏好提供脚手架（scaffolding）。不同提问策略触发不同认知过程，决定提取的知识是否可泛化：让用户自主表达规则（UL）显著优于逐物确认（TO，+12.5 pp）；让机器人代替用户归纳假设再由用户验证（LL）则不如 UL，说明知识的认识论来源（由谁生成规则）是偏好泛化的第一性设计变量。用户研究进一步揭示主客观解离：策略间客观效果差异显著，但用户主观感知并不随之同步变化。
+
+**Motivation 链条**（论文叙事骨架，不得偏离）：
+1. 家居整理偏好以隐性、情境化形式存在，不是可直接陈述的显式规则（Polanyi, 1966；Slovic, 1995）
+2. 偏好在被问到时才在提问的脚手架下被建构、组织、表达出来（preference construction）
+3. 因此 agent 必须 proactive——不是为了"更主动"，而是因为脚手架必须由 agent 设计
+4. 但脚手架的结构决定建构的结果：TO → object-level，UL → user-authored rule，LL → agent-proposed rule
+5. 因此提问策略是偏好知识可泛化性的第一性设计变量
+
+**一句话定位**：
+> Proactive questioning is not merely a way to collect missing labels; it is a mechanism for scaffolding the construction and articulation of transferable user preferences.
 
 目标期刊：**IJHCS**（International Journal of Human-Computer Studies，Elsevier）  
 当前论文文件：`paper_draft_v1/main.tex`（ACM 模板，待迁移至 Elsevier elsarticle）
@@ -93,7 +108,30 @@ Qwen3-8B 的数字（UL 69.8% / TO 58.7%）仅用于 Appendix C，不得出现�
 - 7 处分歧分布于三条维度边界（AO↔PE 3处，AO↔PI 3处，PE↔PI 1处），作为维度数据来源的独立佐证
 - HHI 策略分布：TO = 4（28.6%），UL = 7（50.0%），LL = 3（21.4%），HYB-HHI = 0（未观察到）
 
-**中文草稿**：`docs/section_3_3_draft_zh.md`（v3，当前权威版本）
+**权威版本**：`paper_draft_v1/main.tex` §3 正文（英文，已定稿）  
+**中文参考**：`docs/section_3_3_draft_zh.md`（v3，仅供参考，以 main.tex 为准）
+
+---
+
+## Study 2 LL 定义（与 Study 1 的关键差异）
+
+Study 2 的 LL 策略**不再要求积累 ≥2 条 confirmed_actions 后才能提出 PI 假设**。  
+Agent 可在第 1 轮起就基于常识和先验知识提出规则假设（common-sense PI）。
+
+实现文件：
+- `study2_app/backend/pi_proposer_study2.py` — PI proposer，允许常识驱动假设
+- `study2_app/backend/policy_study2.py` — 策略控制器，`_induction_is_available` 无条件返回 True
+- `study2_app/backend/main.py` — 已切换为 Study2 版本
+
+---
+
+## 论文 RQ 结构（2026-04-25 定稿）
+
+| 编号 | 对应 Study | 核心问题 |
+|---|---|---|
+| **RQ1** | HHI Formative Study | 人类自然涌现哪些提问策略？知识认识论来源有何差异？ |
+| **RQ2** | Simulation + User Study（客观）| 策略选择是否系统性影响 unseen PSR？ |
+| **RQ3** | User Study（主观 + 主客观关系）| 策略产生不同体验吗？客观差异是否反映在主观感知中？ |
 
 ---
 
@@ -111,7 +149,8 @@ AskThenRearrange/
 │   ├── system_overview.md             ← PrefQuest 技术架构说明
 │   ├── study2_frontend_PRD.md         ← Study 2 前端系统需求文档（给开发者）
 │   ├── study2_session_sop.md          ← Study 2 实验员操作 SOP（给实验员，含问卷题目）
-│   └── section_3_3_draft_zh.md        ← §3.3 中文草稿 v3（当前权威，待翻译入 main.tex）
+│   ├── section_3_3_draft_zh.md        ← §3.3 中文草稿 v3（参考，以 main.tex 为准）
+│   └── intro_draft_zh.md              ← Introduction 中文草稿 v1（2026-04-25，待翻译入 main.tex）
 ├── logs/
 │   └── ablation_full_qwen3.jsonl      ← Qwen3 全量实验日志
 └── plots/

@@ -17,20 +17,18 @@ from study2_app.backend.voice import router as voice_router  # noqa: E402
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Initialize LLM components once at startup
-    from question_policy import QuestionPolicyController
-    from proposers import (
-        ActionProposer,
-        PreferenceInductionProposer,
-    )
+    from proposers import ActionProposer
     from state_update import StateUpdate
     from evaluation import FinalPlacementPlanner
 
     from study2_app.backend.pe_proposer_study2 import Study2PreferenceElicitingProposer
+    from study2_app.backend.pi_proposer_study2 import Study2PreferenceInductionProposer
+    from study2_app.backend.policy_study2 import Study2QuestionPolicyController
 
-    app.state.policy = QuestionPolicyController(selection_method="rule")
+    app.state.policy = Study2QuestionPolicyController(selection_method="rule")
     app.state.ao_proposer = ActionProposer()
     app.state.pe_proposer = Study2PreferenceElicitingProposer()
-    app.state.pi_proposer = PreferenceInductionProposer()
+    app.state.pi_proposer = Study2PreferenceInductionProposer()
     app.state.state_updater = StateUpdate()
     app.state.planner = FinalPlacementPlanner()
 

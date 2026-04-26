@@ -97,6 +97,12 @@ export const PATTERN_LABELS: Record<string, string> = {
 }
 
 export const ROOM_LABELS: Record<string, string> = {
+  // Study 2 SOP v2.5 scenes
+  study_desk: '书桌',
+  bar_kitchen: '厨房',
+  fridge: '冰箱',
+  bedroom_practice: '卧室（练习）',
+  // Legacy keys (kept so historical sessions still render).
   'living room': '客厅',
   bedroom: '卧室',
   kitchen: '厨房',

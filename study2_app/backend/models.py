@@ -9,11 +9,11 @@ class CreateSessionInput(BaseModel):
     participant_id: str
     latin_square_row: int  # 1–6
     notes: str = ""
-    budget_total: int = 6  # per-trial question budget
+    budget_total: int = 999  # per-trial question budget (effectively unlimited)
 
 
 class TrialStartInput(BaseModel):
-    room_type: str       # "living room" | "bedroom" | "kitchen"
+    room_type: str       # SOP v2.5 keys: study_desk | bar_kitchen | fridge | bedroom_practice
     episode_index: int   # 0–33
 
 
@@ -71,7 +71,7 @@ class SessionSnapshot(BaseModel):
     agent_state: Optional[Dict[str, Any]] = None  # live serialized AgentState
     strategy_ranking: Optional[List[str]] = None  # set after final_ranking submission
     final_comment: str = ""
-    budget_total: int = 6
+    budget_total: int = 999
 
 
 class NextQuestionResponse(BaseModel):

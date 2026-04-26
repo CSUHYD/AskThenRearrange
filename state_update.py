@@ -390,6 +390,35 @@ Current confirmed_actions:
             question=question,
         )
 
+        # Deterministic post-processors — handle two real-user edge cases the
+        # LLM interpreter can miss without changing its prompt (which would
+        # destabilise the verbose-oracle case used in Study 1):
+        #
+        #   1. RULE REDIRECT: bare-receptacle rejection ("no, on the X" / just
+        #      "X") where X differs from the hypothesis's receptacle → upgrade
+        #      reject_induction to confirmed_rule with refined receptacle.
+        #   2. DEICTIC RESOLUTION: short rejection that uses a deictic ("this
+        #      one" / "that one") and names a receptacle, where exactly one
+        #      object in covered_objects could be the antecedent → fill
+        #      exception_* so the counter-placement is captured.
+        #
+        # Both pre-conditions are NARROW (short answer, contains a receptacle
+        # name, update_type is reject_induction) so they cannot fire on the
+        # verbose oracle answers used in Study 1.
+        interpretation = _maybe_upgrade_redirect(
+            answer=answer,
+            hypothesis=hypothesis,
+            covered_objects=covered_objects,
+            interpretation=interpretation,
+            state=state,
+        )
+        interpretation = _maybe_resolve_deictic(
+            answer=answer,
+            covered_objects=covered_objects,
+            interpretation=interpretation,
+            state=state,
+        )
+
         if interpretation.update_type == "reject_induction":
             rejected = interpretation.negative_preferences or [hypothesis]
             for item in rejected:
@@ -861,6 +890,113 @@ def _auto_resolve_from_hypothesis(
         if obj in unresolved_set:
             _upsert_confirmed_action(state, object_name=obj, receptacle=receptacle)
     return receptacle
+
+
+_DEICTIC_TOKENS = ("this one", "that one", "these", "those", "this", "that")
+_REDIRECT_MAX_TOKENS = 4  # only fire on very bare answers like "no, nightstand" / "床头柜"
+
+
+def _find_receptacles_in_text(text: str, receptacles: List[str]) -> List[str]:
+    t = text.lower()
+    found = []
+    for r in receptacles:
+        if r.lower() in t and r not in found:
+            found.append(r)
+    return found
+
+
+def _maybe_upgrade_redirect(
+    *,
+    answer: str,
+    hypothesis: str,
+    covered_objects: List[str],
+    interpretation: PreferenceInductionInterpretation,
+    state: AgentState,
+) -> PreferenceInductionInterpretation:
+    """If the user gave a terse rejection naming a different receptacle,
+    upgrade reject_induction → confirmed_rule with refined receptacle.
+
+    Pre-conditions (all must hold):
+      - update_type == "reject_induction"
+      - answer is short (≤ _REDIRECT_MAX_TOKENS tokens)
+      - answer names exactly one receptacle from state["receptacles"]
+      - that receptacle is NOT mentioned in the hypothesis
+      - covered_objects is non-empty (so we have something to redirect)
+    """
+    if interpretation.update_type != "reject_induction":
+        return interpretation
+    if not covered_objects:
+        return interpretation
+    word_count = len(answer.split())
+    if word_count > _REDIRECT_MAX_TOKENS:
+        return interpretation
+    # If answer contains a deictic, it's about ONE specific item — redirect
+    # would over-extend to all covered_objects. Defer to deictic resolver.
+    a_lower = answer.lower()
+    if any(tok in a_lower for tok in _DEICTIC_TOKENS):
+        return interpretation
+
+    answer_recs = _find_receptacles_in_text(answer, state["receptacles"])
+    if len(answer_recs) != 1:
+        return interpretation
+    new_rec = answer_recs[0]
+
+    hyp_recs = _find_receptacles_in_text(hypothesis, state["receptacles"])
+    if new_rec in hyp_recs:
+        return interpretation  # user reaffirmed same receptacle
+
+    refined = hypothesis
+    for old in hyp_recs:
+        refined = refined.replace(old, new_rec)
+    if refined == hypothesis:
+        refined = f"{hypothesis.rstrip('.').strip()} (refined to {new_rec})"
+
+    interpretation.update_type = "confirmed_rule"
+    interpretation.confirmed_hypothesis = refined
+    interpretation.confirmed_covered_objects = list(covered_objects)
+    interpretation.confirmed_receptacle = new_rec
+    interpretation.negative_preferences = []
+    return interpretation
+
+
+def _maybe_resolve_deictic(
+    *,
+    answer: str,
+    covered_objects: List[str],
+    interpretation: PreferenceInductionInterpretation,
+    state: AgentState,
+) -> PreferenceInductionInterpretation:
+    """If the user rejected with a deictic ("this one") and named a
+    receptacle, fill exception_* so the apply path adds a confirmed_action.
+
+    Pre-conditions (all must hold):
+      - update_type == "reject_induction"
+      - exception fields are still empty (don't override LLM if it filled them)
+      - answer contains a deictic token AND exactly one receptacle name
+      - covered_objects has exactly one entry (unique antecedent)
+    """
+    if interpretation.update_type != "reject_induction":
+        return interpretation
+    if interpretation.exception_object_name.strip() or interpretation.exception_receptacle.strip():
+        return interpretation
+    if len(covered_objects) != 1:
+        return interpretation
+
+    a = answer.lower()
+    if not any(tok in a for tok in _DEICTIC_TOKENS):
+        return interpretation
+
+    answer_recs = _find_receptacles_in_text(answer, state["receptacles"])
+    if len(answer_recs) != 1:
+        return interpretation
+
+    obj = covered_objects[0]
+    if obj not in state["seen_objects"]:
+        return interpretation
+
+    interpretation.exception_object_name = obj
+    interpretation.exception_receptacle = answer_recs[0]
+    return interpretation
 
 
 def _apply_single_exception(
