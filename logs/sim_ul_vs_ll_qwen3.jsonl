@@ -1,1 +1,0 @@
-{"event": "ablation_started", "sample_indices": [0, 7, 14, 21, 28, 34, 41, 48, 68, 75], "budgets": [1, 3, 5, 10], "modes": ["user_led", "learner_led"], "model": "qwen3", "skip_turn0_probe": true}
