@@ -105,7 +105,26 @@ def _drop_compound_scope_candidates(
     return kept
 
 
+_ROOM_ZH = {
+    "study_desk": "书桌",
+    "bar_kitchen": "厨房",
+    "fridge": "冰箱",
+    "bedroom_practice": "卧室",
+    # Legacy keys (Study 1 dataset)
+    "living room": "客厅",
+    "bedroom": "卧室",
+    "kitchen": "厨房",
+}
+
+
 class Study2PreferenceElicitingProposer(PreferenceElicitingProposer):
+    def __init__(self, *args, skip_turn0_probe: bool = False, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        # Sim-experiment toggle: when True, skip the hardcoded turn-0 room
+        # opener so PE goes straight to candidate selection. Frontend leaves
+        # this False (default) to match the user-study UL opening protocol.
+        self.skip_turn0_probe = skip_turn0_probe
+
     def propose(
         self,
         *,
@@ -113,15 +132,22 @@ class Study2PreferenceElicitingProposer(PreferenceElicitingProposer):
         guidance: str = "",
         max_candidates: int = 5,
     ) -> Optional[PreferenceQuestionIntent]:
-        # NOTE: A previous version had a turn-0 hardcoded probe asking
-        # "How do you usually like to organize your {room}?" This produced
-        # a single-shot "info dump" answer covering every receptacle, which
-        # state_update parsed as ~12 confirmed_actions in one turn — letting
-        # the planner achieve >90% unseen PSR at B=1. That was a methodological
-        # artefact (oracle gave a complete-sentence summary in response to an
-        # open room-level question). Removed so turn 1 goes through the same
-        # candidate-selection path as later turns and asks a category- or
-        # receptacle-level question, not a whole-room one.
+        # Turn-0 hardcoded UL opener: ask a single whole-scene open question
+        # so the participant can describe their organisation principles in one
+        # natural reply. Subsequent turns go through normal candidate selection
+        # (category / receptacle level).
+        n_turns = len(state.get("qa_history", []))
+        if n_turns == 0 and not self.skip_turn0_probe:
+            room_key = state.get("room") or ""
+            room_zh = _ROOM_ZH.get(room_key, room_key or "这个场景")
+            return PreferenceQuestionIntent(
+                question_pattern="preference_eliciting",
+                hypothesis=f"general organization of the {room_key}",
+                covered_objects=list(state.get("seen_objects", [])),
+                receptacle=None,
+                priority=1.0,
+                question=f"你平时怎么整理你的{room_zh}？",
+            )
 
         category_candidates = self._build_preference_candidates(
             state=state,
@@ -200,15 +226,38 @@ class Study2PreferenceElicitingProposer(PreferenceElicitingProposer):
         system_prompt = """
 Choose one preference-eliciting candidate. Pick the one with highest info value.
 
-Question format — always a HOW/principle-style open question about organization habits:
-- Category candidate (non-empty covered_objects): "How do you usually organize [category], like [example1] or [example2]?"
-  Pick 1–2 examples verbatim from that candidate's covered_objects.
-- Receptacle candidate (empty covered_objects): "What kinds of items do you typically keep in the [receptacle]?"
+Question format — always a HOW/principle-style open question about
+organization habits, ANCHORED with concrete example items so the user
+knows exactly which objects you mean. Bare-category questions like
+"你平时怎么整理文具？" / "How do you organize stationery?" are too generic
+and forbidden — always include 2–3 example items.
+
+- Category candidate (non-empty covered_objects):
+  "How do you usually organize [category], like [example1], [example2], and [example3]?"
+  Pick 2–3 examples verbatim from that candidate's covered_objects.
+  At minimum 2 examples — never zero, never one.
+
+- Receptacle candidate (empty covered_objects):
+  "What kinds of items do you typically keep in/on the [receptacle]?"
 
 Hard rules:
 - Use the hypothesis exactly as given.
+- Examples must be exact seen-object names from covered_objects, not paraphrases.
 - Exactly ONE category OR ONE receptacle per question — never two.
+- COMPOUND-CATEGORY FILTER: if a candidate's hypothesis joins two
+  different head nouns with 和/and/或/or/、 (e.g. "液态食物和调料",
+  "饮品和调料", "books and electronics", "工具和文具"), DO NOT pick that
+  candidate. Pick a different one whose hypothesis names exactly ONE head
+  noun. If no clean candidate exists, pick the candidate whose covered
+  objects fit the SINGLE most informative head noun (e.g. choose just
+  "液态食物" or just "调料", never both).
 - No yes/no questions. Ask how/what-kind — not "where do you put X?".
+- Never ask room-level / whole-scene questions. Forbidden patterns:
+  "How do you usually organize your [study desk / fridge / bar / room]?"
+  "你平时怎么整理冰箱？" / "你平时怎么收拾书桌？"
+  These are whole-room probes that elicit a one-shot dump of every rule.
+  Always anchor the question to a SUBSET of objects (a category) or to a
+  SINGLE receptacle, never the entire room.
 """.strip()
 
         covered_receptacles = sorted({
@@ -233,7 +282,9 @@ Fields:
 - covered_objects = verbatim subset from that candidate ([] if receptacle-centric)
 - receptacle = best-guess exact name from the receptacles list
 - priority = 0.0 to 1.0
-- question = HOW/principle-style open question. Category: "How do you usually organize [hypothesis], like [example1] or [example2]?" (pick 1-2 verbatim examples from covered_objects). Receptacle: "What kinds of items do you typically keep in the [receptacle]?"
+- question = HOW/principle-style open question.
+  Category: "How do you usually organize [hypothesis], like [example1], [example2], and [example3]?" (REQUIRED: 2–3 verbatim example object names from covered_objects, never zero, never one).
+  Receptacle: "What kinds of items do you typically keep in/on the [receptacle]?"
 """.strip()
 
         result = self.structured_model.invoke([

@@ -51,11 +51,15 @@ else
   exit 1
 fi
 
-# Bypass any local HTTP proxy (e.g. clash on 127.0.0.1:7890) when calling the
-# LLM host — otherwise the backend's outbound requests get routed through a
-# possibly-dead local proxy and fail with 502 / connection refused.
+# Backend only calls direct endpoints (ollama / openai / Dashscope).
+# Unset every proxy variable so neither HTTP nor WebSocket calls are routed
+# through a local proxy (clash etc.), which adds 5–10 s latency to TTS/STT
+# and can fail outright if the proxy is dead. Belt + braces with NO_PROXY
+# entries for the specific hosts in case some library reads its own variant.
+unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY all_proxy ALL_PROXY \
+      ws_proxy wss_proxy WS_PROXY WSS_PROXY 2>/dev/null
 LLM_HOST="$(printf '%s' "$LLM_BASE_URL" | sed -E 's|^[a-z]+://([^:/]+).*|\1|')"
-export NO_PROXY="${NO_PROXY:+$NO_PROXY,}localhost,127.0.0.1,${LLM_HOST}"
+export NO_PROXY="localhost,127.0.0.1,${LLM_HOST},dashscope.aliyuncs.com,dashscope-finance.aliyuncs.com"
 export no_proxy="$NO_PROXY"
 
 # STT via Aliyun Dashscope (paraformer-realtime-v2).

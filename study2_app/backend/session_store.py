@@ -68,11 +68,10 @@ def get_episode_for_room(room_type: str, episode_index: int) -> Episode:
     return _shrink_episode(episodes[episode_index])
 
 
-# Test-time scene shrink. Until experiment-scenario design is finalized, halve
-# the object set so each trial finishes faster. Override with
-# STUDY2_OBJECT_FRACTION=1.0 to run full scenes. Deterministic (takes the first
-# N // k items) so every session sees the same objects.
-_OBJECT_FRACTION = float(os.environ.get("STUDY2_OBJECT_FRACTION", "0.5"))
+# Optional debug-time scene shrink. SOP v2.5 episodes use the full 12 seen +
+# 12 unseen by default. Set STUDY2_OBJECT_FRACTION=0.5 (etc.) to halve the
+# set for faster pilot runs. Deterministic (takes the first N // k items).
+_OBJECT_FRACTION = float(os.environ.get("STUDY2_OBJECT_FRACTION", "1.0"))
 
 
 def _shrink_episode(ep: Episode) -> Episode:
@@ -186,6 +185,8 @@ class SessionState:
             "turns_used": 0,
             "stop_reason": None,
             "preference_assignments": None,
+            "seen_placements": None,
+            "unseen_placements": None,
             "predicted_placements": None,
             "psr": None,
             "phase": "scene_intro",
@@ -248,12 +249,31 @@ class SessionState:
 _sessions: Dict[str, SessionState] = {}
 
 
+def _derive_latin_square_row(participant_id: str) -> int:
+    """Derive Latin square row from participant ID per SOP §A.
+
+    P01–P04 → row 1, P05–P08 → row 2, ..., P21–P24 → row 6.
+    For P>24 the assignment wraps modulo 6. Falls back to row 1 if the
+    participant ID contains no digits.
+    """
+    import re
+    digits = re.findall(r"\d+", participant_id)
+    if not digits:
+        return 1
+    n = int(digits[0])
+    if n < 1:
+        return 1
+    return ((n - 1) // 4) % 6 + 1
+
+
 def create_session(
     participant_id: str,
-    latin_square_row: int,
-    notes: str,
+    latin_square_row: Optional[int] = None,
+    notes: str = "",
     budget_total: int = 999,
 ) -> SessionState:
+    if latin_square_row is None:
+        latin_square_row = _derive_latin_square_row(participant_id)
     if not 1 <= latin_square_row <= 6:
         raise ValueError(f"latin_square_row must be 1–6, got {latin_square_row}")
     session_id = uuid.uuid4().hex[:8]

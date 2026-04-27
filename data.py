@@ -90,10 +90,15 @@ def _validate_episode(episode: Episode) -> None:
     if overlap:
         raise ValueError(f"seen_objects and unseen_objects overlap: {overlap}")
 
-    _require_exact_keys(episode.seen_placements, episode.seen_objects, "seen_placements")
-    _require_exact_keys(episode.unseen_placements, episode.unseen_objects, "unseen_placements")
-    _validate_receptacles(episode.seen_placements, episode.receptacles, "seen_placements")
-    _validate_receptacles(episode.unseen_placements, episode.receptacles, "unseen_placements")
+    # Placements are optional — Study 2 user-study episodes ship without
+    # ground truth (it is collected from the participant at runtime). Validate
+    # only when the placement map is non-empty.
+    if episode.seen_placements:
+        _require_exact_keys(episode.seen_placements, episode.seen_objects, "seen_placements")
+        _validate_receptacles(episode.seen_placements, episode.receptacles, "seen_placements")
+    if episode.unseen_placements:
+        _require_exact_keys(episode.unseen_placements, episode.unseen_objects, "unseen_placements")
+        _validate_receptacles(episode.unseen_placements, episode.receptacles, "unseen_placements")
 
 
 def _episode_from_record(record: Dict[str, Any], index: int) -> Episode:

@@ -1,0 +1,256 @@
+[
+  {
+    "participant_id": "P01",
+    "issues": [
+      {
+        "trial": 3,
+        "room": "fridge",
+        "strategy": "LL",
+        "where": "dialogue/score",
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=60)",
+        "trace": "Traceback (most recent call last):\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connectionpool.py\", line 534, in _make_request\n    response = conn.getresponse()\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connection.py\", line 571, in getresponse\n    httplib_response = super().getresponse()\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/http/client.py\", line 1375, in getresponse\n    response.begin()\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/http/client.py\", line 318, in begin\n    version, status, reason = self._read_status()\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/http/client.py\", line 279, in _read_status\n    line = str(self.fp.readline(_MAXLINE + 1), \"iso-8859-1\")\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/socket.py\", line 717, in readinto\n    return self._sock.recv_into(b)\nTimeoutError: timed out\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/adapters.py\", line 645, in send\n    resp = conn.urlopen(\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connectionpool.py\", line 841, in urlopen\n    retries = retries.increment(\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/util/retry.py\", line 490, in increment\n    raise reraise(type(error), error, _stacktrace)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/util/util.py\", line 39, in reraise\n    raise value\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connectionpool.py\", line 787, in urlopen\n    response = self._make_request(\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connectionpool.py\", line 536, in _make_request\n    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connectionpool.py\", line 367, in _raise_timeout\n    raise ReadTimeoutError(\nurllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=60)\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/Users/yuanda/Documents/AskThenRearrange/scripts/e2e_test_participants.py\", line 87, in run_participant\n    q = post(f\"/dialogue/{sid}/answer\", {\"answer\": ans})\n  File \"/Users/yuanda/Documents/AskThenRearrange/scripts/e2e_test_participants.py\", line 29, in post\n    r = requests.post(f\"{BACKEND}{path}\", json=json_body or {}, timeout=TIMEOUT)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/api.py\", line 115, in post\n    return request(\"post\", url, data=data, json=json, **kwargs)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/api.py\", line 59, in request\n    return session.request(method=method, url=url, **kwargs)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/sessions.py\", line 592, in request\n    resp = self.send(prep, **send_kwargs)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/sessions.py\", line 706, in send\n    r = adapter.send(request, **kwargs)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/adapters.py\", line 691, in send\n    raise ReadTimeout(e, request=request)\nrequests.exceptions.ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=60)\n"
+      },
+      {
+        "where": "final_ranking",
+        "error": "POST /sessions/80de980b/final_ranking → 400: {\"detail\":\"Not in final_ranking phase (current: dialogue)\"}"
+      }
+    ],
+    "session_id": "80de980b",
+    "latin_square_row": 1,
+    "trial_order": [
+      {
+        "strategy": "TO",
+        "room_type": "study_desk"
+      },
+      {
+        "strategy": "UL",
+        "room_type": "bar_kitchen"
+      },
+      {
+        "strategy": "LL",
+        "room_type": "fridge"
+      }
+    ],
+    "trial_results": [
+      {
+        "trial": 1,
+        "room": "study_desk",
+        "strategy": "TO",
+        "turns": 12,
+        "seen_psr": 1.0,
+        "unseen_psr": 0.4166666666666667,
+        "total_psr": 0.7083333333333334
+      },
+      {
+        "trial": 2,
+        "room": "bar_kitchen",
+        "strategy": "UL",
+        "turns": 5,
+        "seen_psr": 1.0,
+        "unseen_psr": 1.0,
+        "total_psr": 1.0
+      }
+    ],
+    "elapsed_sec": 266.3340715420054
+  },
+  {
+    "participant_id": "P05",
+    "issues": [
+      {
+        "trial": 1,
+        "room": "fridge",
+        "strategy": "UL",
+        "where": "dialogue/score",
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=60)",
+        "trace": "Traceback (most recent call last):\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connectionpool.py\", line 534, in _make_request\n    response = conn.getresponse()\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connection.py\", line 571, in getresponse\n    httplib_response = super().getresponse()\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/http/client.py\", line 1375, in getresponse\n    response.begin()\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/http/client.py\", line 318, in begin\n    version, status, reason = self._read_status()\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/http/client.py\", line 279, in _read_status\n    line = str(self.fp.readline(_MAXLINE + 1), \"iso-8859-1\")\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/socket.py\", line 717, in readinto\n    return self._sock.recv_into(b)\nTimeoutError: timed out\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/adapters.py\", line 645, in send\n    resp = conn.urlopen(\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connectionpool.py\", line 841, in urlopen\n    retries = retries.increment(\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/util/retry.py\", line 490, in increment\n    raise reraise(type(error), error, _stacktrace)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/util/util.py\", line 39, in reraise\n    raise value\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connectionpool.py\", line 787, in urlopen\n    response = self._make_request(\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connectionpool.py\", line 536, in _make_request\n    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connectionpool.py\", line 367, in _raise_timeout\n    raise ReadTimeoutError(\nurllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=60)\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/Users/yuanda/Documents/AskThenRearrange/scripts/e2e_test_participants.py\", line 71, in run_participant\n    s = post(f\"/sessions/{sid}/trial\",\n  File \"/Users/yuanda/Documents/AskThenRearrange/scripts/e2e_test_participants.py\", line 29, in post\n    r = requests.post(f\"{BACKEND}{path}\", json=json_body or {}, timeout=TIMEOUT)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/api.py\", line 115, in post\n    return request(\"post\", url, data=data, json=json, **kwargs)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/api.py\", line 59, in request\n    return session.request(method=method, url=url, **kwargs)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/sessions.py\", line 592, in request\n    resp = self.send(prep, **send_kwargs)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/sessions.py\", line 706, in send\n    r = adapter.send(request, **kwargs)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/adapters.py\", line 691, in send\n    raise ReadTimeout(e, request=request)\nrequests.exceptions.ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=60)\n"
+      },
+      {
+        "trial": 2,
+        "room": "study_desk",
+        "strategy": "LL",
+        "where": "dialogue/score",
+        "error": "POST /sessions/78aad5da/trial → 400: {\"detail\":\"room_type mismatch: Latin square expects 'fridge', got 'study_desk'\"}",
+        "trace": "Traceback (most recent call last):\n  File \"/Users/yuanda/Documents/AskThenRearrange/scripts/e2e_test_participants.py\", line 71, in run_participant\n    s = post(f\"/sessions/{sid}/trial\",\n  File \"/Users/yuanda/Documents/AskThenRearrange/scripts/e2e_test_participants.py\", line 31, in post\n    raise RuntimeError(f\"POST {path} → {r.status_code}: {r.text[:200]}\")\nRuntimeError: POST /sessions/78aad5da/trial → 400: {\"detail\":\"room_type mismatch: Latin square expects 'fridge', got 'study_desk'\"}\n"
+      },
+      {
+        "trial": 3,
+        "room": "bar_kitchen",
+        "strategy": "TO",
+        "where": "dialogue/score",
+        "error": "POST /sessions/78aad5da/trial → 400: {\"detail\":\"room_type mismatch: Latin square expects 'fridge', got 'bar_kitchen'\"}",
+        "trace": "Traceback (most recent call last):\n  File \"/Users/yuanda/Documents/AskThenRearrange/scripts/e2e_test_participants.py\", line 71, in run_participant\n    s = post(f\"/sessions/{sid}/trial\",\n  File \"/Users/yuanda/Documents/AskThenRearrange/scripts/e2e_test_participants.py\", line 31, in post\n    raise RuntimeError(f\"POST {path} → {r.status_code}: {r.text[:200]}\")\nRuntimeError: POST /sessions/78aad5da/trial → 400: {\"detail\":\"room_type mismatch: Latin square expects 'fridge', got 'bar_kitchen'\"}\n"
+      },
+      {
+        "where": "final_ranking",
+        "error": "POST /sessions/78aad5da/final_ranking → 400: {\"detail\":\"Not in final_ranking phase (current: created)\"}"
+      }
+    ],
+    "session_id": "78aad5da",
+    "latin_square_row": 2,
+    "trial_order": [
+      {
+        "strategy": "UL",
+        "room_type": "fridge"
+      },
+      {
+        "strategy": "LL",
+        "room_type": "study_desk"
+      },
+      {
+        "strategy": "TO",
+        "room_type": "bar_kitchen"
+      }
+    ],
+    "elapsed_sec": 60.02719591700588
+  },
+  {
+    "participant_id": "P09",
+    "issues": [
+      {
+        "trial": 1,
+        "room": "bar_kitchen",
+        "strategy": "LL",
+        "where": "dialogue/score",
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=60)",
+        "trace": "Traceback (most recent call last):\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connectionpool.py\", line 534, in _make_request\n    response = conn.getresponse()\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connection.py\", line 571, in getresponse\n    httplib_response = super().getresponse()\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/http/client.py\", line 1375, in getresponse\n    response.begin()\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/http/client.py\", line 318, in begin\n    version, status, reason = self._read_status()\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/http/client.py\", line 279, in _read_status\n    line = str(self.fp.readline(_MAXLINE + 1), \"iso-8859-1\")\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/socket.py\", line 717, in readinto\n    return self._sock.recv_into(b)\nTimeoutError: timed out\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/adapters.py\", line 645, in send\n    resp = conn.urlopen(\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connectionpool.py\", line 841, in urlopen\n    retries = retries.increment(\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/util/retry.py\", line 490, in increment\n    raise reraise(type(error), error, _stacktrace)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/util/util.py\", line 39, in reraise\n    raise value\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connectionpool.py\", line 787, in urlopen\n    response = self._make_request(\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connectionpool.py\", line 536, in _make_request\n    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connectionpool.py\", line 367, in _raise_timeout\n    raise ReadTimeoutError(\nurllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=60)\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/Users/yuanda/Documents/AskThenRearrange/scripts/e2e_test_participants.py\", line 71, in run_participant\n    s = post(f\"/sessions/{sid}/trial\",\n  File \"/Users/yuanda/Documents/AskThenRearrange/scripts/e2e_test_participants.py\", line 29, in post\n    r = requests.post(f\"{BACKEND}{path}\", json=json_body or {}, timeout=TIMEOUT)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/api.py\", line 115, in post\n    return request(\"post\", url, data=data, json=json, **kwargs)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/api.py\", line 59, in request\n    return session.request(method=method, url=url, **kwargs)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/sessions.py\", line 592, in request\n    resp = self.send(prep, **send_kwargs)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/sessions.py\", line 706, in send\n    r = adapter.send(request, **kwargs)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/adapters.py\", line 691, in send\n    raise ReadTimeout(e, request=request)\nrequests.exceptions.ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=60)\n"
+      },
+      {
+        "trial": 2,
+        "room": "fridge",
+        "strategy": "TO",
+        "where": "dialogue/score",
+        "error": "POST /sessions/d17dcc90/trial → 400: {\"detail\":\"room_type mismatch: Latin square expects 'bar_kitchen', got 'fridge'\"}",
+        "trace": "Traceback (most recent call last):\n  File \"/Users/yuanda/Documents/AskThenRearrange/scripts/e2e_test_participants.py\", line 71, in run_participant\n    s = post(f\"/sessions/{sid}/trial\",\n  File \"/Users/yuanda/Documents/AskThenRearrange/scripts/e2e_test_participants.py\", line 31, in post\n    raise RuntimeError(f\"POST {path} → {r.status_code}: {r.text[:200]}\")\nRuntimeError: POST /sessions/d17dcc90/trial → 400: {\"detail\":\"room_type mismatch: Latin square expects 'bar_kitchen', got 'fridge'\"}\n"
+      },
+      {
+        "trial": 3,
+        "room": "study_desk",
+        "strategy": "UL",
+        "where": "dialogue/score",
+        "error": "POST /sessions/d17dcc90/trial → 400: {\"detail\":\"room_type mismatch: Latin square expects 'bar_kitchen', got 'study_desk'\"}",
+        "trace": "Traceback (most recent call last):\n  File \"/Users/yuanda/Documents/AskThenRearrange/scripts/e2e_test_participants.py\", line 71, in run_participant\n    s = post(f\"/sessions/{sid}/trial\",\n  File \"/Users/yuanda/Documents/AskThenRearrange/scripts/e2e_test_participants.py\", line 31, in post\n    raise RuntimeError(f\"POST {path} → {r.status_code}: {r.text[:200]}\")\nRuntimeError: POST /sessions/d17dcc90/trial → 400: {\"detail\":\"room_type mismatch: Latin square expects 'bar_kitchen', got 'study_desk'\"}\n"
+      },
+      {
+        "where": "final_ranking",
+        "error": "POST /sessions/d17dcc90/final_ranking → 400: {\"detail\":\"Not in final_ranking phase (current: created)\"}"
+      }
+    ],
+    "session_id": "d17dcc90",
+    "latin_square_row": 3,
+    "trial_order": [
+      {
+        "strategy": "LL",
+        "room_type": "bar_kitchen"
+      },
+      {
+        "strategy": "TO",
+        "room_type": "fridge"
+      },
+      {
+        "strategy": "UL",
+        "room_type": "study_desk"
+      }
+    ],
+    "elapsed_sec": 60.032826541006216
+  },
+  {
+    "participant_id": "P13",
+    "issues": [
+      {
+        "trial": 1,
+        "room": "fridge",
+        "strategy": "TO",
+        "where": "dialogue/score",
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=60)",
+        "trace": "Traceback (most recent call last):\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connectionpool.py\", line 534, in _make_request\n    response = conn.getresponse()\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connection.py\", line 571, in getresponse\n    httplib_response = super().getresponse()\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/http/client.py\", line 1375, in getresponse\n    response.begin()\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/http/client.py\", line 318, in begin\n    version, status, reason = self._read_status()\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/http/client.py\", line 279, in _read_status\n    line = str(self.fp.readline(_MAXLINE + 1), \"iso-8859-1\")\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/socket.py\", line 717, in readinto\n    return self._sock.recv_into(b)\nTimeoutError: timed out\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/adapters.py\", line 645, in send\n    resp = conn.urlopen(\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connectionpool.py\", line 841, in urlopen\n    retries = retries.increment(\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/util/retry.py\", line 490, in increment\n    raise reraise(type(error), error, _stacktrace)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/util/util.py\", line 39, in reraise\n    raise value\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connectionpool.py\", line 787, in urlopen\n    response = self._make_request(\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connectionpool.py\", line 536, in _make_request\n    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connectionpool.py\", line 367, in _raise_timeout\n    raise ReadTimeoutError(\nurllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=60)\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/Users/yuanda/Documents/AskThenRearrange/scripts/e2e_test_participants.py\", line 71, in run_participant\n    s = post(f\"/sessions/{sid}/trial\",\n  File \"/Users/yuanda/Documents/AskThenRearrange/scripts/e2e_test_participants.py\", line 29, in post\n    r = requests.post(f\"{BACKEND}{path}\", json=json_body or {}, timeout=TIMEOUT)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/api.py\", line 115, in post\n    return request(\"post\", url, data=data, json=json, **kwargs)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/api.py\", line 59, in request\n    return session.request(method=method, url=url, **kwargs)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/sessions.py\", line 592, in request\n    resp = self.send(prep, **send_kwargs)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/sessions.py\", line 706, in send\n    r = adapter.send(request, **kwargs)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/adapters.py\", line 691, in send\n    raise ReadTimeout(e, request=request)\nrequests.exceptions.ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=60)\n"
+      },
+      {
+        "trial": 2,
+        "room": "study_desk",
+        "strategy": "UL",
+        "where": "dialogue/score",
+        "error": "POST /sessions/75ab8856/trial → 400: {\"detail\":\"room_type mismatch: Latin square expects 'fridge', got 'study_desk'\"}",
+        "trace": "Traceback (most recent call last):\n  File \"/Users/yuanda/Documents/AskThenRearrange/scripts/e2e_test_participants.py\", line 71, in run_participant\n    s = post(f\"/sessions/{sid}/trial\",\n  File \"/Users/yuanda/Documents/AskThenRearrange/scripts/e2e_test_participants.py\", line 31, in post\n    raise RuntimeError(f\"POST {path} → {r.status_code}: {r.text[:200]}\")\nRuntimeError: POST /sessions/75ab8856/trial → 400: {\"detail\":\"room_type mismatch: Latin square expects 'fridge', got 'study_desk'\"}\n"
+      },
+      {
+        "trial": 3,
+        "room": "bar_kitchen",
+        "strategy": "LL",
+        "where": "dialogue/score",
+        "error": "POST /sessions/75ab8856/trial → 400: {\"detail\":\"room_type mismatch: Latin square expects 'fridge', got 'bar_kitchen'\"}",
+        "trace": "Traceback (most recent call last):\n  File \"/Users/yuanda/Documents/AskThenRearrange/scripts/e2e_test_participants.py\", line 71, in run_participant\n    s = post(f\"/sessions/{sid}/trial\",\n  File \"/Users/yuanda/Documents/AskThenRearrange/scripts/e2e_test_participants.py\", line 31, in post\n    raise RuntimeError(f\"POST {path} → {r.status_code}: {r.text[:200]}\")\nRuntimeError: POST /sessions/75ab8856/trial → 400: {\"detail\":\"room_type mismatch: Latin square expects 'fridge', got 'bar_kitchen'\"}\n"
+      },
+      {
+        "where": "final_ranking",
+        "error": "POST /sessions/75ab8856/final_ranking → 400: {\"detail\":\"Not in final_ranking phase (current: created)\"}"
+      }
+    ],
+    "session_id": "75ab8856",
+    "latin_square_row": 4,
+    "trial_order": [
+      {
+        "strategy": "TO",
+        "room_type": "fridge"
+      },
+      {
+        "strategy": "UL",
+        "room_type": "study_desk"
+      },
+      {
+        "strategy": "LL",
+        "room_type": "bar_kitchen"
+      }
+    ],
+    "elapsed_sec": 60.0258581659873
+  },
+  {
+    "participant_id": "P17",
+    "issues": [
+      {
+        "trial": 1,
+        "room": "bar_kitchen",
+        "strategy": "UL",
+        "where": "dialogue/score",
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=60)",
+        "trace": "Traceback (most recent call last):\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connectionpool.py\", line 534, in _make_request\n    response = conn.getresponse()\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connection.py\", line 571, in getresponse\n    httplib_response = super().getresponse()\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/http/client.py\", line 1375, in getresponse\n    response.begin()\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/http/client.py\", line 318, in begin\n    version, status, reason = self._read_status()\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/http/client.py\", line 279, in _read_status\n    line = str(self.fp.readline(_MAXLINE + 1), \"iso-8859-1\")\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/socket.py\", line 717, in readinto\n    return self._sock.recv_into(b)\nTimeoutError: timed out\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/adapters.py\", line 645, in send\n    resp = conn.urlopen(\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connectionpool.py\", line 841, in urlopen\n    retries = retries.increment(\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/util/retry.py\", line 490, in increment\n    raise reraise(type(error), error, _stacktrace)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/util/util.py\", line 39, in reraise\n    raise value\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connectionpool.py\", line 787, in urlopen\n    response = self._make_request(\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connectionpool.py\", line 536, in _make_request\n    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/urllib3/connectionpool.py\", line 367, in _raise_timeout\n    raise ReadTimeoutError(\nurllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=60)\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/Users/yuanda/Documents/AskThenRearrange/scripts/e2e_test_participants.py\", line 71, in run_participant\n    s = post(f\"/sessions/{sid}/trial\",\n  File \"/Users/yuanda/Documents/AskThenRearrange/scripts/e2e_test_participants.py\", line 29, in post\n    r = requests.post(f\"{BACKEND}{path}\", json=json_body or {}, timeout=TIMEOUT)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/api.py\", line 115, in post\n    return request(\"post\", url, data=data, json=json, **kwargs)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/api.py\", line 59, in request\n    return session.request(method=method, url=url, **kwargs)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/sessions.py\", line 592, in request\n    resp = self.send(prep, **send_kwargs)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/sessions.py\", line 706, in send\n    r = adapter.send(request, **kwargs)\n  File \"/Users/yuanda/miniconda3/envs/behavior/lib/python3.10/site-packages/requests/adapters.py\", line 691, in send\n    raise ReadTimeout(e, request=request)\nrequests.exceptions.ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=60)\n"
+      },
+      {
+        "trial": 2,
+        "room": "fridge",
+        "strategy": "LL",
+        "where": "dialogue/score",
+        "error": "POST /sessions/e1454cec/trial → 400: {\"detail\":\"room_type mismatch: Latin square expects 'bar_kitchen', got 'fridge'\"}",
+        "trace": "Traceback (most recent call last):\n  File \"/Users/yuanda/Documents/AskThenRearrange/scripts/e2e_test_participants.py\", line 71, in run_participant\n    s = post(f\"/sessions/{sid}/trial\",\n  File \"/Users/yuanda/Documents/AskThenRearrange/scripts/e2e_test_participants.py\", line 31, in post\n    raise RuntimeError(f\"POST {path} → {r.status_code}: {r.text[:200]}\")\nRuntimeError: POST /sessions/e1454cec/trial → 400: {\"detail\":\"room_type mismatch: Latin square expects 'bar_kitchen', got 'fridge'\"}\n"
+      },
+      {
+        "trial": 3,
+        "room": "study_desk",
+        "strategy": "TO",
+        "where": "dialogue/score",
+        "error": "POST /sessions/e1454cec/trial → 400: {\"detail\":\"room_type mismatch: Latin square expects 'bar_kitchen', got 'study_desk'\"}",
+        "trace": "Traceback (most recent call last):\n  File \"/Users/yuanda/Documents/AskThenRearrange/scripts/e2e_test_participants.py\", line 71, in run_participant\n    s = post(f\"/sessions/{sid}/trial\",\n  File \"/Users/yuanda/Documents/AskThenRearrange/scripts/e2e_test_participants.py\", line 31, in post\n    raise RuntimeError(f\"POST {path} → {r.status_code}: {r.text[:200]}\")\nRuntimeError: POST /sessions/e1454cec/trial → 400: {\"detail\":\"room_type mismatch: Latin square expects 'bar_kitchen', got 'study_desk'\"}\n"
+      },
+      {
+        "where": "final_ranking",
+        "error": "POST /sessions/e1454cec/final_ranking → 400: {\"detail\":\"Not in final_ranking phase (current: created)\"}"
+      }
+    ],
+    "session_id": "e1454cec",
+    "latin_square_row": 5,
+    "trial_order": [
+      {
+        "strategy": "UL",
+        "room_type": "bar_kitchen"
+      },
+      {
+        "strategy": "LL",
+        "room_type": "fridge"
+      },
+      {
+        "strategy": "TO",
+        "room_type": "study_desk"
+      }
+    ],
+    "elapsed_sec": 60.05003441699955
+  }
+]

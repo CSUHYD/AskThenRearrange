@@ -98,6 +98,11 @@ def translate_en_to_zh(text: str, name_map: Dict[str, str]) -> str:
     """
     if not text.strip():
         return text
+    # If the input is already (mostly) Chinese, skip the LLM round-trip.
+    # Threshold: ≥30% Han characters → treat as already Chinese.
+    han_chars = sum(1 for ch in text if "\u4e00" <= ch <= "\u9fff")
+    if han_chars / max(len(text), 1) >= 0.3:
+        return text
     glossary = _glossary_lines(name_map)
     system_msg = (
         "把英文问句翻成自然的简体中文口语问句。只输出译文，不要引号、解释、Markdown。\n"
@@ -105,9 +110,12 @@ def translate_en_to_zh(text: str, name_map: Dict[str, str]) -> str:
         "规则：\n"
         "- 简短、直接。保留问句（'?' -> '？'）。不要加原文里没有的信息。\n"
         "- 固定句式映射：\n"
-        "  'How do you usually like to organize your X?' -> '你平时喜欢怎么整理X？'\n"
+        "  # NOTE: 不要保留 'How do you usually organize your [room]?' 这种全房间开放句的中文。\n"
+        "  # 如果原文是 'How do you usually like to organize your X?' 而 X 是房间名（书桌/冰箱/吧台），\n"
+        "  # 翻译时按字面译，但应当极少出现——上游 PE 已禁止生成全房间问题。\n"
         "  'How do you usually organize X?' -> '你是如何整理X的？'\n"
         "  'How do you usually organize X, like A or B?' -> '你是如何整理X的？比如A、B'\n"
+        "  'How do you usually organize X, like A, B, and C?' -> '你是如何整理X的？比如A、B、C'\n"
         "  'How do you usually organize X, like A?' -> '你是如何整理X的？比如A'\n"
         "  'What kinds of items do you typically keep in the X?' -> 'X里你一般放什么类型的物品？'\n"
         "  'Where do you usually put X?' -> 'X你一般放在哪？'\n"

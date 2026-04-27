@@ -1,5 +1,9 @@
 from __future__ import annotations
 
+import json
+from datetime import datetime
+from pathlib import Path
+
 from fastapi import APIRouter, HTTPException, Request
 
 from study2_app.backend.models import (
@@ -101,4 +105,20 @@ def submit_final_ranking(session_id: str, body: FinalInput):
         "strategy_ranking": body.strategy_ranking,
         "comment": body.comment,
     })
-    return session.to_snapshot()
+
+    # Persist the full session snapshot to data/study2_sessions/ for offline
+    # paper analysis. One file per participant × session_id so re-runs don't
+    # overwrite earlier data.
+    snapshot = session.to_snapshot()
+    out_dir = (Path(__file__).resolve().parent.parent.parent.parent
+               / "data" / "study2_sessions")
+    out_dir.mkdir(parents=True, exist_ok=True)
+    ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+    safe_pid = "".join(c if c.isalnum() or c in "-_" else "_"
+                       for c in session.participant_id)
+    out_path = out_dir / f"{safe_pid}_{session.session_id[:8]}_{ts}.json"
+    with out_path.open("w", encoding="utf-8") as f:
+        json.dump(snapshot, f, ensure_ascii=False, indent=2)
+    session.log_event("session_saved", {"path": str(out_path)})
+
+    return snapshot

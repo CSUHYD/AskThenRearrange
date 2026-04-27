@@ -23,7 +23,14 @@ def submit_preference_form(session_id: str, body: PreferenceFormInput):
     if trial is None:
         raise HTTPException(status_code=400, detail="No active trial")
 
-    trial["preference_assignments"] = dict(body.assignments)
+    assignments = dict(body.assignments)
+    trial["preference_assignments"] = assignments
+    # Participant's filled placements ARE the ground truth for this trial.
+    # Split by seen/unseen so downstream evaluation matches Study 1 schema.
+    seen_set = set(trial.get("seen_objects", []))
+    unseen_set = set(trial.get("unseen_objects", []))
+    trial["seen_placements"] = {o: r for o, r in assignments.items() if o in seen_set}
+    trial["unseen_placements"] = {o: r for o, r in assignments.items() if o in unseen_set}
     trial["phase"] = "preference_form"
     session.phase = "preference_form"
 

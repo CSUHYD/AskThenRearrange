@@ -5,12 +5,10 @@ const api = axios.create({ baseURL: '/' })
 
 export async function createSession(
   participantId: string,
-  latinSquareRow: number,
   notes: string,
 ): Promise<SessionSnapshot> {
   const res = await api.post('/sessions', {
     participant_id: participantId,
-    latin_square_row: latinSquareRow,
     notes,
   })
   return res.data

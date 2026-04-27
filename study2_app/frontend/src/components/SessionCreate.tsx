@@ -5,7 +5,6 @@ import * as api from '../api'
 export default function SessionCreate() {
   const { setSession, setLoading, setError, loading, error } = useSession()
   const [participantId, setParticipantId] = useState('')
-  const [row, setRow] = useState(1)
   const [notes, setNotes] = useState('')
 
   async function handleCreate() {
@@ -16,7 +15,9 @@ export default function SessionCreate() {
     setLoading(true)
     setError(null)
     try {
-      const s = await api.createSession(participantId.trim(), row, notes.trim())
+      // Latin square row is derived server-side from participant_id per SOP §A
+      // (P01–P04 row 1, P05–P08 row 2, ...).
+      const s = await api.createSession(participantId.trim(), notes.trim())
       setSession(s)
     } catch (e: any) {
       setError(e?.response?.data?.detail ?? String(e))
@@ -34,17 +35,6 @@ export default function SessionCreate() {
           value={participantId}
           onChange={(e) => setParticipantId(e.target.value)}
           placeholder="例如：P01"
-        />
-      </div>
-      <div className="form-group">
-        <label className="form-label">拉丁方行（1–6）</label>
-        <input
-          type="number"
-          min={1}
-          max={6}
-          className="form-input"
-          value={row}
-          onChange={(e) => setRow(Number(e.target.value))}
         />
       </div>
       <div className="form-group">

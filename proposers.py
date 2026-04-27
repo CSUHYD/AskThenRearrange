@@ -192,19 +192,39 @@ CRITICAL hypothesis rules:
 - hypothesis must describe a category using object attributes — NOT just a one-word type label
 - hypothesis must NOT contain receptacle names, verbs like "should", "belong", "go", "place", "put", "stored"
 - if you know where items go, keep that knowledge to yourself — only name the category with its attributes
+- STRUCTURE: "[modifier1] [modifier2] ... [HEAD_NOUN]" — the HEAD NOUN must be
+  a SINGLE category word (drinkware / electronics / books / 饮品 / 调料 /
+  文具 / 书 / 电子). Modifiers (material, size, power, function) can be
+  plural and joined by 和/and; the HEAD NOUN can NOT.
+- WRONG: "[N1] 和 [N2]" where N1 and N2 are different head nouns. NEVER
+  produce a hypothesis with two head nouns. If you find yourself wanting
+  to combine two categories, ask yourself: "what one parent category
+  contains both?" — use that. If no parent exists, pick ONE; the other
+  category will get its own turn.
 
 Style examples:
-- good: "fragile glass and ceramic drinkware"
+- good: "fragile glass and ceramic drinkware" — one category (drinkware), two material qualifiers
 - good: "small battery-powered handheld devices"
 - good: "plug-in bedside electronics"
-- good: "soft comfort textiles and throws"
-- good: "hardcover reading and reference books"
+- good: "soft comfort textiles and throws" — one category (textiles), unified by "soft comfort"
+- good: "hardcover reading and reference books" — one category (books), two function qualifiers
 - good: "small handheld prep tools"
 - bad: "electronics" — too vague, no distinguishing attributes
 - bad: "lighting tools" — too generic, misses power-source or size
+- bad: "study desk items" / "items in the fridge" / "整理冰箱的物品" — uses
+  room/scene as the category. NEVER use the room name as the category.
+  The hypothesis must describe a SUBSET of objects in the room, not the
+  whole room.
 - bad: "electronics should be placed in the media console" — contains receptacle name and verb
 - bad: "books go on the display shelf" — contains receptacle and verb
 - bad: "storage items for the ottoman" — contains receptacle name
+- bad: "液态食品和调味品" — TWO head nouns (食品 + 调味品); split into separate hypotheses
+- bad: "液态食物和调料" — TWO head nouns (食物 + 调料); split
+- bad: "饮品和调料" — TWO head nouns (饮品 + 调料); split
+- bad: "books and small electronics" — TWO head nouns (books + electronics); split
+- bad: "工具和文具" — TWO head nouns (工具 + 文具); split
+- bad: "餐具和零食" — TWO head nouns (餐具 + 零食); split
+- bad: "饮料和食物" — TWO head nouns; split
 """.strip()
 
         covered_receptacles = sorted({

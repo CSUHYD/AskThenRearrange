@@ -7,7 +7,7 @@ from pydantic import BaseModel
 
 class CreateSessionInput(BaseModel):
     participant_id: str
-    latin_square_row: int  # 1–6
+    latin_square_row: Optional[int] = None  # auto-derived from participant_id if absent
     notes: str = ""
     budget_total: int = 999  # per-trial question budget (effectively unlimited)
 
@@ -54,6 +54,8 @@ class TrialSnapshot(BaseModel):
     turns_used: int
     stop_reason: Optional[str]         # "auto_satisfied" | "user_terminated"
     preference_assignments: Optional[Dict[str, str]]
+    seen_placements: Optional[Dict[str, str]] = None
+    unseen_placements: Optional[Dict[str, str]] = None
     predicted_placements: Optional[Dict[str, str]]
     psr: Optional[Dict[str, Any]]      # seen_psr, unseen_psr, total_psr, item_scores
     phase: str                         # trial-level phase

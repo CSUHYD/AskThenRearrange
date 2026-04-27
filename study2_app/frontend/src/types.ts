@@ -40,6 +40,8 @@ export interface TrialSnapshot {
   turns_used: number
   stop_reason: string | null
   preference_assignments: Record<string, string> | null
+  seen_placements: Record<string, string> | null
+  unseen_placements: Record<string, string> | null
   predicted_placements: Record<string, string> | null
   psr: {
     seen_psr: number
