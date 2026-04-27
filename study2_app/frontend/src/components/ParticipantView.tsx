@@ -48,6 +48,13 @@ export default function ParticipantView() {
         <PredictionView trial={lastCompletedTrial} showNext />
       )}
 
+      {/* Trial 3 prediction is shown together with the final-ranking page,
+          since phase jumps preference_form → final_ranking with no
+          intermediate 'created' state to display predictions. */}
+      {phase === 'final_ranking' && lastCompletedTrial?.psr && (
+        <PredictionView trial={lastCompletedTrial} />
+      )}
+
       {/* Scene is loaded — show scene info */}
       {(phase === 'scene_intro' || phase === 'dialogue' || phase === 'dialogue_complete') &&
         currentTrial && <SceneIntro trial={currentTrial} />}

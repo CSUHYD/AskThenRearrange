@@ -52,6 +52,19 @@ def build_name_mapping(english_names: List[str]) -> Dict[str, str]:
         return {}
     unique = list(dict.fromkeys(english_names))
 
+    # Short-circuit when the dataset is already Chinese (Study 2 SOP v2.5
+    # ships raw Chinese receptacle / object names). Sending Chinese to the
+    # English-to-Chinese translator can produce drift; identity mapping is
+    # both faster and stable. Threshold: ≥1 Han character per name OR ≥30%
+    # of the names are predominantly Chinese.
+    def _is_chinese(s: str) -> bool:
+        if not s:
+            return False
+        han = sum(1 for ch in s if "\u4e00" <= ch <= "\u9fff")
+        return han >= 1 and han / max(len(s), 1) >= 0.3
+    if all(_is_chinese(n) for n in unique):
+        return {n: n for n in unique}
+
     system_msg = (
         "You are a precise translator for household objects and furniture.\n"
         "Translate English names to Simplified Chinese.\n"
