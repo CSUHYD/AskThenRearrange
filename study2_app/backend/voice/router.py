@@ -8,11 +8,11 @@ from pathlib import Path
 from typing import Literal
 
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile
-from fastapi.responses import Response
+from fastapi.responses import Response, StreamingResponse
 from pydantic import BaseModel
 
 from study2_app.backend.voice.stt import transcribe_file
-from study2_app.backend.voice.tts import synthesize
+from study2_app.backend.voice.tts import synthesize, synthesize_stream
 
 router = APIRouter(prefix="/voice", tags=["voice"])
 
@@ -34,20 +34,36 @@ class TTSInput(BaseModel):
 
 @router.post("/tts")
 async def tts(payload: TTSInput):
+    """Stream WAV audio as Dashscope produces PCM chunks. The WAV header is
+    sent immediately with a sentinel data length so the browser can begin
+    playback before synthesis finishes — saves ~1-2s of perceived latency
+    versus collecting all chunks server-side first.
+    """
     if not payload.text.strip():
         raise HTTPException(400, "empty text")
 
-    def _run() -> bytes:
-        return synthesize(payload.text, voice=payload.voice)
-
     try:
-        audio = await asyncio.to_thread(_run)
+        gen = synthesize_stream(payload.text, voice=payload.voice)
     except RuntimeError as e:
         raise HTTPException(500, str(e))
     except Exception as e:
         raise HTTPException(502, f"Dashscope TTS error: {e}")
 
-    return Response(content=audio, media_type="audio/wav")
+    return StreamingResponse(gen, media_type="audio/wav")
+
+
+@router.get("/tts")
+async def tts_stream_get(text: str, voice: str = "Cherry"):
+    """GET variant so HTMLAudioElement can stream directly via `audio.src`."""
+    if not text.strip():
+        raise HTTPException(400, "empty text")
+    try:
+        gen = synthesize_stream(text, voice=voice)
+    except RuntimeError as e:
+        raise HTTPException(500, str(e))
+    except Exception as e:
+        raise HTTPException(502, f"Dashscope TTS error: {e}")
+    return StreamingResponse(gen, media_type="audio/wav")
 
 
 LANG_MAP = {"zh": "zh", "en": "en", "ja": "ja", "ko": "ko", "auto": None}

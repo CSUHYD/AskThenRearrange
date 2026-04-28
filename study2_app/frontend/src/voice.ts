@@ -26,18 +26,12 @@ export async function speak(text: string, voice = 'Cherry'): Promise<void> {
     currentTtsAudio.pause()
     currentTtsAudio = null
   }
-  const r = await fetch('/voice/tts', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ text, voice }),
-  })
-  if (!r.ok) throw new Error(`TTS HTTP ${r.status}: ${(await r.text()).slice(0, 200)}`)
-  const blob = await r.blob()
-  const url = URL.createObjectURL(blob)
+  // Stream the WAV directly via GET so playback begins on the first chunk
+  // (saves the ~3-5s wait while the server collects all PCM into one Blob).
+  const url = `/voice/tts?text=${encodeURIComponent(text)}&voice=${encodeURIComponent(voice)}`
   const audio = new Audio(url)
   currentTtsAudio = audio
   await audio.play()
-  audio.addEventListener('ended', () => URL.revokeObjectURL(url), { once: true })
 }
 
 

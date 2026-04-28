@@ -8,8 +8,10 @@ from __future__ import annotations
 
 import base64
 import os
+import queue
 import struct
 import threading
+from typing import Iterator
 
 import dashscope
 from dashscope.audio.qwen_tts_realtime import (
@@ -67,17 +69,99 @@ class _CollectorCallback(QwenTtsRealtimeCallback):
         return b"".join(self._chunks)
 
 
-def _wrap_wav(pcm: bytes) -> bytes:
-    """Wrap raw PCM (24kHz mono 16-bit) in a WAV container."""
-    n = len(pcm)
+def _wav_header(data_size: int) -> bytes:
+    """Build a 44-byte WAV header for a PCM stream of ``data_size`` bytes.
+
+    For streaming (size unknown at start) pass a sentinel like ``2**31 - 1``
+    so the header parses; browsers tolerate over-declared length and stop
+    when the stream ends.
+    """
     byte_rate = _SAMPLE_RATE * _CHANNELS * _BITS // 8
     block_align = _CHANNELS * _BITS // 8
-    header = b"RIFF" + struct.pack("<I", 36 + n) + b"WAVE"
+    header = b"RIFF" + struct.pack("<I", 36 + data_size) + b"WAVE"
     header += b"fmt " + struct.pack(
         "<IHHIIHH", 16, 1, _CHANNELS, _SAMPLE_RATE, byte_rate, block_align, _BITS
     )
-    header += b"data" + struct.pack("<I", n)
-    return header + pcm
+    header += b"data" + struct.pack("<I", data_size)
+    return header
+
+
+def _wrap_wav(pcm: bytes) -> bytes:
+    """Wrap raw PCM (24kHz mono 16-bit) in a WAV container (one-shot)."""
+    return _wav_header(len(pcm)) + pcm
+
+
+class _StreamingCallback(QwenTtsRealtimeCallback):
+    """Pushes each PCM chunk into a queue as soon as it arrives."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self._q: "queue.Queue[bytes | None]" = queue.Queue()
+        self._error: str | None = None
+
+    def on_open(self) -> None:
+        pass
+
+    def on_close(self, close_status_code, close_msg) -> None:
+        self._q.put(None)
+
+    def on_event(self, response) -> None:
+        try:
+            t = response.get("type") if isinstance(response, dict) else None
+            if t == "response.audio.delta":
+                self._q.put(base64.b64decode(response["delta"]))
+            elif t == "session.finished":
+                self._q.put(None)
+            elif t == "error":
+                err = response.get("error") or {}
+                self._error = err.get("message") if isinstance(err, dict) else str(err)
+                self._q.put(None)
+        except Exception as e:  # pragma: no cover
+            self._error = str(e)
+            self._q.put(None)
+
+    def chunks(self, timeout: float = 30.0) -> Iterator[bytes]:
+        while True:
+            try:
+                item = self._q.get(timeout=timeout)
+            except queue.Empty:
+                raise RuntimeError("TTS timeout waiting for next chunk")
+            if item is None:
+                if self._error:
+                    raise RuntimeError(f"TTS error: {self._error}")
+                return
+            yield item
+
+
+def synthesize_stream(
+    text: str,
+    *,
+    voice: str = "Cherry",
+    model: str = "qwen3-tts-instruct-flash-realtime",
+) -> Iterator[bytes]:
+    """Yield WAV bytes incrementally — first the 44-byte header, then PCM
+    chunks as Dashscope returns them. Use with FastAPI ``StreamingResponse``
+    so the browser can start playing audio as soon as the first chunk lands
+    instead of waiting for the whole synthesis to finish.
+    """
+    if not DASHSCOPE_API_KEY:
+        raise RuntimeError("DASHSCOPE_API_KEY not set.")
+    if not text.strip():
+        raise ValueError("text must not be empty")
+    cb = _StreamingCallback()
+    rt = QwenTtsRealtime(model=model, callback=cb)
+    rt.connect()
+    rt.update_session(
+        voice=voice,
+        response_format=AudioFormat.PCM_24000HZ_MONO_16BIT,
+        mode="server_commit",
+    )
+    rt.append_text(text)
+    rt.finish()
+    # Send a maximum-length WAV header up front so the browser can begin
+    # decoding immediately. Real chunks follow as they arrive over WS.
+    yield _wav_header(2**31 - 36)
+    yield from cb.chunks(timeout=30.0)
 
 
 def _synthesize_once(text: str, *, voice: str, model: str) -> bytes:
