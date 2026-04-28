@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { useSession } from '../App'
+import * as api from '../api'
+import { primeAudio } from '../voice'
 import SceneIntro from './SceneIntro'
 import DialogueView from './DialogueView'
 import PreferenceForm from './PreferenceForm'
@@ -8,8 +10,26 @@ import FinalRanking from './FinalRanking'
 import SessionReport from './SessionReport'
 
 export default function ParticipantView() {
-  const { session, error } = useSession()
+  const { session, setSession, setCurrentQuestion, setLoading, setError, loading, error } =
+    useSession()
   const [showReport, setShowReport] = useState(false)
+
+  async function handleStart() {
+    if (!session) return
+    setLoading(true)
+    setError(null)
+    primeAudio()
+    try {
+      const q = await api.startDialogue(session.session_id)
+      setCurrentQuestion(q)
+      const s = await api.getSession(session.session_id)
+      setSession(s)
+    } catch (e: any) {
+      setError(e?.response?.data?.detail ?? String(e))
+    } finally {
+      setLoading(false)
+    }
+  }
 
   if (!session) {
     return (
@@ -58,6 +78,25 @@ export default function ParticipantView() {
       {/* Scene is loaded — show scene info */}
       {(phase === 'scene_intro' || phase === 'dialogue' || phase === 'dialogue_complete') &&
         currentTrial && <SceneIntro trial={currentTrial} />}
+
+      {/* Participant-side start button: shown only after scene is loaded
+          and before dialogue begins. Triggers the same /dialogue/start
+          endpoint as the experimenter's '开始对话' button. */}
+      {phase === 'scene_intro' && currentTrial && (
+        <div className="participant-card" style={{ textAlign: 'center' }}>
+          <button
+            className="btn btn-success"
+            onClick={handleStart}
+            disabled={loading}
+            style={{ fontSize: 18, padding: '12px 32px', minWidth: 200 }}
+          >
+            {loading ? '请稍候…' : '开始'}
+          </button>
+          <p style={{ fontSize: 12, color: '#888', marginTop: 12 }}>
+            熟悉好场景后，点击"开始"开启与机器人的对话
+          </p>
+        </div>
+      )}
 
       {/* Active or ended dialogue */}
       {(phase === 'dialogue' || phase === 'dialogue_complete') && currentTrial && (

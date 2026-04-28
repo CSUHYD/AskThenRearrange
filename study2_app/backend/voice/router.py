@@ -22,14 +22,14 @@ def health():
     return {
         "status": "ok",
         "stt_backend": "dashscope.paraformer-realtime-v2",
-        "tts_backend": "dashscope.qwen3-tts-instruct-flash-realtime",
+        "tts_backend": "dashscope.cosyvoice-v1",
         "api_key_set": bool(os.environ.get("DASHSCOPE_API_KEY")),
     }
 
 
 class TTSInput(BaseModel):
     text: str
-    voice: str = "Cherry"
+    voice: str = "longxiaochun"
 
 
 @router.post("/tts")
@@ -49,12 +49,12 @@ async def tts(payload: TTSInput):
     except Exception as e:
         raise HTTPException(502, f"Dashscope TTS error: {e}")
 
-    return StreamingResponse(gen, media_type="audio/wav")
+    return StreamingResponse(gen, media_type="audio/mpeg")
 
 
 @router.get("/tts")
-async def tts_stream_get(text: str, voice: str = "Cherry"):
-    """GET variant so HTMLAudioElement can stream directly via `audio.src`."""
+async def tts_stream_get(text: str, voice: str = "longxiaochun"):
+    """GET variant so HTMLAudioElement can play directly via `audio.src`."""
     if not text.strip():
         raise HTTPException(400, "empty text")
     try:
@@ -63,7 +63,7 @@ async def tts_stream_get(text: str, voice: str = "Cherry"):
         raise HTTPException(500, str(e))
     except Exception as e:
         raise HTTPException(502, f"Dashscope TTS error: {e}")
-    return StreamingResponse(gen, media_type="audio/wav")
+    return StreamingResponse(gen, media_type="audio/mpeg")
 
 
 LANG_MAP = {"zh": "zh", "en": "en", "ja": "ja", "ko": "ko", "auto": None}

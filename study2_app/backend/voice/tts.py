@@ -136,32 +136,41 @@ class _StreamingCallback(QwenTtsRealtimeCallback):
 def synthesize_stream(
     text: str,
     *,
-    voice: str = "Cherry",
-    model: str = "qwen3-tts-instruct-flash-realtime",
+    voice: str = "longxiaochun",
+    model: str = "cosyvoice-v1",
+    retries: int = 2,
 ) -> Iterator[bytes]:
-    """Yield WAV bytes incrementally — first the 44-byte header, then PCM
-    chunks as Dashscope returns them. Use with FastAPI ``StreamingResponse``
-    so the browser can start playing audio as soon as the first chunk lands
-    instead of waiting for the whole synthesis to finish.
+    """Yield MP3 audio bytes for ``text``.
+
+    Uses Dashscope cosyvoice-v1 HTTP API (one-shot synth) instead of the
+    qwen3-tts realtime WebSocket — empirically the WS endpoint fails to
+    connect in <5s on roughly 80% of attempts (5/6 in our diagnostic), so
+    even though it offers real-time chunks, the perceived latency is much
+    worse. cosyvoice-v1 returns the whole MP3 in 3-8s but is 100% reliable.
+    Yielded as a single chunk via FastAPI StreamingResponse so the HTTP
+    layer can flush it as soon as it's ready.
     """
     if not DASHSCOPE_API_KEY:
         raise RuntimeError("DASHSCOPE_API_KEY not set.")
     if not text.strip():
         raise ValueError("text must not be empty")
-    cb = _StreamingCallback()
-    rt = QwenTtsRealtime(model=model, callback=cb)
-    rt.connect()
-    rt.update_session(
-        voice=voice,
-        response_format=AudioFormat.PCM_24000HZ_MONO_16BIT,
-        mode="server_commit",
-    )
-    rt.append_text(text)
-    rt.finish()
-    # Send a maximum-length WAV header up front so the browser can begin
-    # decoding immediately. Real chunks follow as they arrive over WS.
-    yield _wav_header(2**31 - 36)
-    yield from cb.chunks(timeout=30.0)
+    last_exc: Exception | None = None
+    for attempt in range(1, retries + 1):
+        try:
+            from dashscope.audio.tts_v2 import SpeechSynthesizer
+            synthesizer = SpeechSynthesizer(model=model, voice=voice)
+            audio = synthesizer.call(text)
+            if not audio:
+                raise RuntimeError(f"empty audio for text='{text[:60]}'")
+            yield audio
+            return
+        except Exception as e:
+            last_exc = e
+            if attempt < retries:
+                import time as _time
+                _time.sleep(0.5)
+            continue
+    raise RuntimeError(f"Dashscope TTS failed after {retries} attempts: {last_exc}")
 
 
 def _synthesize_once(text: str, *, voice: str, model: str) -> bytes:

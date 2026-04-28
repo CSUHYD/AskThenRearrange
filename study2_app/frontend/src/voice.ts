@@ -19,7 +19,7 @@ export async function primeAudio(): Promise<void> {
   }
 }
 
-export async function speak(text: string, voice = 'Cherry'): Promise<void> {
+export async function speak(text: string, voice = 'longxiaochun'): Promise<void> {
   if (!text.trim()) return
   // Stop any in-flight playback so back-to-back questions don't overlap.
   if (currentTtsAudio) {
