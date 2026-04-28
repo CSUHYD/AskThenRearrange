@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSession } from '../App'
 import { STRATEGY_LABELS, ROOM_LABELS } from '../types'
+import TrialHistory from './TrialHistory'
 
 function pct(v: number | undefined | null): string {
   if (v === undefined || v === null) return '—'
@@ -105,6 +106,12 @@ export default function SessionReport() {
             </tr>
           </tbody>
         </table>
+      </div>
+
+      {/* Per-trial QA history (collapsible) */}
+      <div style={{ marginTop: 20 }}>
+        <h3 style={{ fontSize: 14, marginBottom: 10 }}>三轮问答记录</h3>
+        <TrialHistory />
       </div>
 
       {/* Strategy ranking */}

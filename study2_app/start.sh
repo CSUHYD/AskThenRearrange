@@ -2,11 +2,13 @@
 # Start backend and frontend for PrefQuest Study 2.
 #
 # Usage:
-#   bash study2_app/start.sh              # default provider (qwen3)
-#   bash study2_app/start.sh qwen3        # explicit qwen3 (remote ollama)
-#   bash study2_app/start.sh gpt5-chat    # gpt-5-chat via gptsapi.net
+#   bash study2_app/start.sh                # default provider (qwen3)
+#   bash study2_app/start.sh qwen3          # ollama @ 110.42.252.68:8080
+#   bash study2_app/start.sh gpt5-gptsapi   # gpt-5-chat via api.gptsapi.net
+#   bash study2_app/start.sh gpt5-vveai     # gpt-5-chat-latest via api.vveai.com
+#   bash study2_app/start.sh gpt5-chat      # alias for gpt5-vveai (current default)
 #
-# Or override via env: LLM_PROVIDER=gpt5-chat bash study2_app/start.sh
+# Or override via env: LLM_PROVIDER=gpt5-vveai bash study2_app/start.sh
 set -e
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -23,14 +25,24 @@ case "$PROVIDER" in
     export LLM_BASE_URL="http://110.42.252.68:8080"
     unset LLM_API_KEY
     ;;
-  gpt5-chat|gpt5|openai)
+  gpt5-vveai|vveai|gpt5-chat|gpt5|openai)
+    # Default GPT-5 route — vveai is currently the more reliable relay
+    # (~1.5s warm, ≤15s tail) vs gptsapi (60–90s tail outliers).
+    export LLM_BACKEND="openai"
+    export LLM_MODEL="gpt-5-chat-latest"
+    export LLM_BASE_URL="https://api.vveai.com/v1"
+    export LLM_API_KEY="sk-d1hYvDLO5zyLXb8XF1A65a33F2Dc4e10828b1585Aa2c079b"
+    ;;
+  gpt5-gptsapi|gptsapi)
+    # Legacy GPT-5 relay (gptsapi.net). Kept as opt-in fallback in case
+    # vveai goes down — has known long-tail latency outliers.
     export LLM_BACKEND="openai"
     export LLM_MODEL="gpt-5-chat"
     export LLM_BASE_URL="https://api.gptsapi.net/v1"
     export LLM_API_KEY="sk-SBW375246ecb7151533516297e5c382b866154a68fdfd9uZ"
     ;;
   *)
-    echo "ERROR: unknown LLM provider '$PROVIDER'. Supported: qwen3 | gpt5-chat" >&2
+    echo "ERROR: unknown LLM provider '$PROVIDER'. Supported: qwen3 | gpt5-vveai | gpt5-gptsapi" >&2
     exit 1
     ;;
 esac
