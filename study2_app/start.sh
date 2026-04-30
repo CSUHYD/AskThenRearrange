@@ -2,13 +2,14 @@
 # Start backend and frontend for PrefQuest Study 2.
 #
 # Usage:
-#   bash study2_app/start.sh                # default provider (qwen3)
-#   bash study2_app/start.sh qwen3          # ollama @ 110.42.252.68:8080
-#   bash study2_app/start.sh gpt5-gptsapi   # gpt-5-chat via api.gptsapi.net
-#   bash study2_app/start.sh gpt5-vveai     # gpt-5-chat-latest via api.vveai.com
-#   bash study2_app/start.sh gpt5-chat      # alias for gpt5-vveai (current default)
+#   bash study2_app/start.sh                  # default provider (qwen3)
+#   bash study2_app/start.sh qwen3            # ollama @ 110.42.252.68:8080
+#   bash study2_app/start.sh claude-sonnet-4-5 # claude-sonnet-4-5 via api.vveai.com  ⚡ fastest
+#   bash study2_app/start.sh gpt5-chat-latest # gpt-5-chat-latest via api.vveai.com
+#   bash study2_app/start.sh gpt5-gptsapi     # gpt-5-chat via api.gptsapi.net (legacy)
+#   bash study2_app/start.sh gpt5-chat        # alias for claude-sonnet-4-5 (current default LLM)
 #
-# Or override via env: LLM_PROVIDER=gpt5-vveai bash study2_app/start.sh
+# Or override via env: LLM_PROVIDER=claude-sonnet-4-5 bash study2_app/start.sh
 set -e
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -25,9 +26,20 @@ case "$PROVIDER" in
     export LLM_BASE_URL="http://110.42.252.68:8080"
     unset LLM_API_KEY
     ;;
-  gpt5-vveai|vveai|gpt5-chat|gpt5|openai)
-    # Default GPT-5 route — vveai is currently the more reliable relay
-    # (~1.5s warm, ≤15s tail) vs gptsapi (60–90s tail outliers).
+  claude-sonnet-4-5|sonnet-4-5|claude|gpt5-vveai|vveai|gpt5-chat|gpt5|openai)
+    # Default LLM route — claude-sonnet-4-5 via vveai. Picked after a
+    # cross-model probe found it has the fastest single-call latency
+    # (~2.3s) on this relay among models that consistently complete.
+    # The gpt5-* / openai aliases also resolve here so existing scripts
+    # keep working.
+    export LLM_BACKEND="openai"
+    export LLM_MODEL="claude-sonnet-4-5"
+    export LLM_BASE_URL="https://api.vveai.com/v1"
+    export LLM_API_KEY="sk-d1hYvDLO5zyLXb8XF1A65a33F2Dc4e10828b1585Aa2c079b"
+    ;;
+  gpt5-chat-latest)
+    # Opt-in: gpt-5-chat-latest via vveai. Slower than claude-sonnet-4-5
+    # in current measurements but available if you specifically want GPT.
     export LLM_BACKEND="openai"
     export LLM_MODEL="gpt-5-chat-latest"
     export LLM_BASE_URL="https://api.vveai.com/v1"
